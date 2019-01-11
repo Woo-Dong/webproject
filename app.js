@@ -10,12 +10,10 @@ var methodOverride = require('method-override');
 var flash = require('connect-flash');
 var mongoose   = require('mongoose');
 
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-
 
 var mongoose = require('mongoose');
 const connStr = 'mongodb://localhost/mydb1';
@@ -91,6 +89,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 module.exports = app;

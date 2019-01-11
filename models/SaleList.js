@@ -22,4 +22,6 @@ var schema = new Schema({
 
 var SaleList = mongoose.model('SaleList', schema);
 
+
+
 module.exports = SaleList;

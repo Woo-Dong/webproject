@@ -15,7 +15,6 @@ var schema = new Schema({
   onOff: {type: String, required: true, default: '온/오프라인'},
   place: {type: String, default: '전 지점'}
   
-  
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}

@@ -7,4 +7,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'asd' });
 });
 
+router.get('/signin', function(req, res, next) {
+  res.render('signIn');
+});
+
 module.exports = router;

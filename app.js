@@ -16,7 +16,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 var mongoose = require('mongoose');
-const connStr = 'mongodb://localhost/mydb1';
+const connStr = 'mongodb://user:user123@ds115350.mlab.com:15350/heeburndeuk';
 mongoose.connect(connStr, {useMongoClient: true });
 mongoose.connection.on('error', console.error);
 
@@ -75,9 +75,10 @@ app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
-
 
 // error handler
 app.use(function(err, req, res, next) {

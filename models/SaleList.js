@@ -17,7 +17,7 @@ var schema = new Schema({
   
 }, {
   toJSON: { virtuals: true},
-  toObject: {virtuals: true}
+  toObject: {virtuals: true} 
 });
 
 var SaleList = mongoose.model('SaleList', schema);

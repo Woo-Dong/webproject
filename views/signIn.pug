@@ -1,0 +1,51 @@
+doctype html
+html(lang='ko')
+  head
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css', integrity='sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS', crossorigin='anonymous')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='/stylesheets/login.css', rel='stylesheet')
+    title Hello, world!
+  body
+
+    a.header-logo.text-warning(href='/')
+      h1
+        b 희번득.
+    h5 로그인 화면
+    if flashMessages
+      each texts, type in flashMessages
+        .container
+          .alert.alert-dismissible.fade.show(class=`alert-${type}`)
+            each msg in texts
+              | #{msg} 
+            button.close(type='button', data-dismiss='alert', aria-label='close')
+              span(aria-hidden='true') &times;
+    .form-signin   
+      .input0
+        form(action='/signin', method='POST')
+        input(type='text', id='idname', name='idname', placeholder='email')
+        input(type='password', id='password', name='password', placeholder='password')
+        button.loginbutt.btn.btn-block(type='submit') 로그인
+              
+
+        hr
+        a(href='/users/new')
+            p.signupbutt 희번득 아이디로 회원가입
+        hr
+        a(href='/auth/kakao')
+            p.otherway.login-kakao(style="color:black") kakao 아이디로 로그인
+        
+        a(href='/auth/naver')
+            p.otherway.login-naver naver 아이디로 로그인
+
+        a(href='/auth/gmail')
+            p.otherway.login-google google 아이디로 로그인
+
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js', integrity='sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js', integrity='sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k', crossorigin='anonymous')
+
+    

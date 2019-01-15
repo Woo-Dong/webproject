@@ -1,0 +1,111 @@
+.header-logo {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-size: 2.25rem;
+    text-align: center;
+  }
+  
+.header-logo:hover {
+    text-decoration: none;
+}
+
+h5 {
+    text-align: center;
+}
+
+
+
+.form-signin {
+    width: 50%;
+    padding: 20px 25px 40px;
+    margin: 20px auto;
+    background: #f5eda3c4;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-bottom {
+    display: inline;
+}
+
+.ID{
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    font-size: 18px;
+    border: 0;
+    border-radius: 0px;
+    outline: 0;
+    padding: 10px 5px;
+    margin-top: 15px;
+    
+}
+
+p.otherway-menu {
+    width: 10%;
+    margin: 15px auto;
+    background: #f1e897;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.loginbutt {
+    font-size: 20px;
+    border: 0;
+    border-radius: 5px;
+    outline: 0;
+    padding: 10px 15px;
+    margin-top: 15px;
+    color: #f3f3f3;
+    background: #1888ff;
+    text-align: center;
+}
+
+.signupbutt{
+    background: rgb(253, 172, 21);
+    font-size: 18px;
+    border: 0;
+    border-radius: 5px;
+    outline: 0;
+    padding: 10px 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: #f3f3f3;
+    text-align: center;
+}
+
+.login-kakao{
+    background: #f9e001;
+    
+}
+
+.login-naver{
+    background: #03cf5d;
+}
+
+.login-google{
+    background: #ea4335;
+}
+
+p.otherway {
+    font-size: 14px;
+    border: 0;
+    border-radius: 5px;
+    outline: 0;
+    padding: 10px 5px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    color: #f3f3f3;
+    text-align: center;
+}
+
+hr {
+    width:100%;
+    border-bottom: 0px;
+    height: 5px;
+    text-align: center;
+    margin-left: 0px;
+}

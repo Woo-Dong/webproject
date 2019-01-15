@@ -2,7 +2,37 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
-a {
-  color: #00B7FF; }
+.jumbotron {
+  text-align: center;
+}
 
-/*# sourceMappingURL=style.css.map */
+header{
+  /* position: fixed; */
+  top: 10px;
+}
+/* The sidebar menu*/
+aside{
+  display: inline;
+  position: fixed;
+  z-index: 1;
+  padding-left: 0%;
+  /* background-color: #ffec41; */
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
+/* The navigation menu links */
+.detailed  {
+  padding: 6px 8px 6px 4px;
+  font-size: 15px;
+  text-decoration-color: #f1f1f1;
+  background-color: #fda117;
+  display: block;
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) 
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}*/

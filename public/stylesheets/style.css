@@ -1,32 +1,48 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
-
+  /* padding: 50px; */
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
+}
+.content {
+  margin-left: 5%;
+  margin-right: 5%;
+}
 .jumbotron {
   text-align: center;
+  margin-bottom: -32px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
 }
 
-header{
-  /* position: fixed; */
-  top: 10px;
+.formdiv {
+  text-align: center;
+  margin: auto;
 }
-/* The sidebar menu*/
-aside{
-  display: inline;
-  position: fixed;
-  z-index: 1;
-  padding-left: 0%;
-  /* background-color: #ffec41; */
-  padding-top: 100px;
-  padding-bottom: 20px;
+.loginbutt{
+  /* padding: 1em; */
+
+}
+.topslide {
+  padding-top: 20px;
+}
+.topnavbar {
+  /* vertical-align: center; */
+  margin-left: 5%;
+  margin-right: 5%;
 }
 /* The navigation menu links */
-.detailed  {
-  padding: 6px 8px 6px 4px;
+.content {
+  margin-top: 5px;
+}
+.sidenav .detailed  {
   font-size: 15px;
-  text-decoration-color: #f1f1f1;
-  background-color: #fda117;
+  color: #f1f1f1;
+  background-color: #a7a7a7;
   display: block;
+  
+}
+.detailed > h4 {
+  font-style: italic;
 }
 .sidenav a:hover {
   color: #f1f1f1;

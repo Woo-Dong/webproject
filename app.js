@@ -15,8 +15,9 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-var mongoose = require('mongoose');
-const connStr = 'mongodb://user:user123@ds115350.mlab.com:15350/heeburndeuk';
+mongoose.Promise = global.Promise;
+// const connStr = 'mongodb://user:user123@ds115350.mlab.com:15350/heeburndeuk';
+const connStr = 'mongodb://localhost/mydb1';
 mongoose.connect(connStr, {useMongoClient: true });
 mongoose.connection.on('error', console.error);
 

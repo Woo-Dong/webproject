@@ -1,0 +1,33 @@
+.jumbotron.jumbotron-fluid
+    .container    
+        h1.display-4 
+            a.navbar-brand(href='#') 희번득
+        p.lead
+        | 대한민국의 모든 화장품 세일을 한눈에 모아 희번득하다.
+.topnavbar
+    if (!currentUser)
+        nav.navbar.navbar-expand-lg.navbar-light.bg-warning
+            p 희번득
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarToggler', aria-controls='navbarToggler', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+
+            #navbarToggler.collapse.navbar-collapse
+                .container.formdiv.center-block
+                    form.form-inline
+                        input.form-control(type='search', name='seaerch', placeholder='Search')
+                        button.btn.btn-outline-success(type='submit') Search
+                p
+                    a.btn.btn-outline-primary(href="/signin") 로그인
+                    |
+                    a.btn.btn-outline-success(href="/users/new") 회원가입
+    else
+        nav.navbar.navbar-expand-lg.navbar-light.bg-warning
+            p 희번득
+            form.form-inline.center-block
+                    input.form-control(type='search', placeholder='Search')
+                    button.btn.btn-outline-success(type='submit') Search
+
+            .col-4.d-flex.justify-content-end
+                p #{currentUser.name}님 반갑습니다.
+                a.nav-link(href=`/users/${currentUser._id}`) 마이 페이지
+                a.btn.btn-outline-primary(href="/signout") 로그아웃

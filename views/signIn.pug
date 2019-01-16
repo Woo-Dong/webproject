@@ -8,7 +8,7 @@ html(lang='ko')
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css', integrity='sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS', crossorigin='anonymous')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(href='/stylesheets/login.css', rel='stylesheet')
-    title Hello, world!
+    title 로그인 화면
   body
 
     a.header-logo.text-warning(href='/')
@@ -26,9 +26,9 @@ html(lang='ko')
     .form-signin   
       .input0
         form(action='/signin', method='POST')
-        input(type='text', id='idname', name='idname', placeholder='email')
-        input(type='password', id='password', name='password', placeholder='password')
-        button.loginbutt.btn.btn-block(type='submit') 로그인
+          input(type='text', id='email', name='email', placeholder='email')
+          input(type='password', id='password', name='password', placeholder='password')
+          button.loginbutt.btn.btn-block(type='submit') 로그인
               
 
         hr

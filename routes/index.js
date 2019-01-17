@@ -12,6 +12,18 @@ router.get('/signin', function(req, res, next) {
   res.render('signIn');
 });
 
+router.get('/member', function(req, res, next) {
+  res.render('member');
+});
+
+router.get('/member/memanager', function(req, res, next) {
+  res.render('memanager');
+});
+
+router.get('/coslist', function(req, res, next) {
+  res.render('coslist');
+});
+
 
 // 09-1. Session 참고: 세션을 이용한 로그인
 router.post('/signin', function(req, res, next) {

@@ -12,10 +12,24 @@ block content
       dt.col-sm-3 Created At
       dd.col-sm-9= user.createdAt
 
+      dt.col-sm-3 관심브랜드
+      if (!user.brandLike)
+        dd.col-sm-9 설정한 관심 브랜드가 없습니다.
+      else
+        dd.col-sm-9= user.brandLike
+      dt.col-sm-3 관심카테고리
+      if (!user.categoryLike)
+        dd.col-sm-9 설정한 관심 카테고리가 없습니다.
+      else
+        dd.col-sm-9= user.categoryLike
+      dt.col-sm-3 관심품목
+      if (!user.productLike)
+        dd.col-sm-9 설정한 관심 품목이 없습니다.
+      else
+        dd.col-sm-9= user.productLike
+
     hr
     p
-      a.btn.btn-outline-secondary(href='/users/') List
+      a.btn.btn-outline-primary(href=`/users/${user._id}/edit`) 회원정보 수정
       | 
-      a.btn.btn-outline-primary(href=`/users/${user._id}/edit`) Edit
-      | 
-      a.btn.btn-outline-danger(href=`/users/${user._id}?_method=DELETE`) Delete
+      a.btn.btn-outline-danger(href=`/users/${user._id}?_method=DELETE`) 회원 탈퇴하기 

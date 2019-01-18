@@ -18,7 +18,7 @@
             else
                 ul.nav
                     li #{currentUser.name}님 반갑습니다.
-                    a#login.border(href="/users/:id")
+                    a#login.border(href=`/users/${currentUser._id}`)
                         | 마이페이지        
                     a#login.border(href="/signout")
                         | 로그아웃                    

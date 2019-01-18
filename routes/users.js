@@ -6,7 +6,7 @@ function needAuth(req, res, next) {
     if (req.session.user) {
       next();
     } else {
-      req.flash('danger', 'Please signin first.');
+      req.flash('danger', '다시 로그인해 주세요.');
       res.redirect('/signin');
     }
 }
@@ -51,7 +51,7 @@ router.get('/', needAuth, (req, res, next) => {
 });
 
 router.get('/new', (req, res, next) => {
-  res.render('signup', {messages: req.flash()});
+  res.render('users/signup', {messages: req.flash()});
 });
 
 router.get('/:id/edit', needAuth, (req, res, next) => {
@@ -64,38 +64,37 @@ router.get('/:id/edit', needAuth, (req, res, next) => {
 });
 
 router.put('/:id', needAuth, (req, res, next) => {
-  var err = validateForm(req.body);
-  if (err) {
-    req.flash('danger', err);
-    return res.redirect('back');
-  }
+  // var err = validateForm(req.body);
+  // if (err) {
+  //   req.flash('danger', err);
+  //   return res.redirect('back');
+  // }
 
   User.findById({_id: req.params.id}, function(err, user) {
     if (err) {
       return next(err);
     }
     if (!user) {
-      req.flash('danger', 'Not exist user.');
+      req.flash('danger', '해당하는 회원이 존재하지 않습니다..');
       return res.redirect('back');
     }
-
-    if (user.password !== req.body.current_password) {
-      req.flash('danger', 'Password is incorrect');
-      return res.redirect('back');
+    if(req.body.password){
+      if (user.password !== req.body.current_password) {
+        req.flash('danger', '비밀번호가 다릅니다.');
+        return res.redirect('back');
+      }
+      user.password = req.body.password;
     }
 
     user.name = req.body.name;
     user.email = req.body.email;
-    if (req.body.password) {
-      user.password = req.body.password;
-    }
 
     user.save(function(err) {
       if (err) {
         return next(err);
       }
-      req.flash('success', 'Updated successfully.');
-      res.redirect('/users');
+      req.flash('success', '성공적으로 회원정보가 수정되었습니다.');
+      res.redirect('back');
     });
   });
 });
@@ -105,8 +104,9 @@ router.delete('/:id', needAuth, (req, res, next) => {
     if (err) {
       return next(err);
     }
-    req.flash('success', 'Deleted Successfully.');
-    res.redirect('/users');
+    delete req.session.user;
+    req.flash('success', '성공적으로 회원탈퇴 하였습니다.');
+    res.redirect('/');
   });
 });
 
@@ -121,7 +121,6 @@ router.get('/:id', (req, res, next) => {
 
 
 router.post('/', (req, res, next) => {
-  console.log("subitted");
   var err = validateForm(req.body, {needPassword: true});
   if (err) {
     req.flash('danger', err);

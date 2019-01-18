@@ -1,33 +1,59 @@
-.jumbotron.jumbotron-fluid
-    .container    
-        h1.display-4 
-            a.navbar-brand(href='#') 희번득
-        p.lead
-        | 대한민국의 모든 화장품 세일을 한눈에 모아 희번득하다.
-.topnavbar
-    if (!currentUser)
-        nav.navbar.navbar-expand-lg.navbar-light.bg-warning
-            p 희번득
-            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarToggler', aria-controls='navbarToggler', aria-expanded='false', aria-label='Toggle navigation')
-                span.navbar-toggler-icon
+.container-fluid(style='width:1250px;')
+        nav.border.navbar.navbar-dark.fixed-top.bg-dark.p-0.shadow
+            ul.nav(style='width:300px;')
+                span.logo 0_0
+                a.logo-text.under(href='/') 희번득
 
-            #navbarToggler.collapse.navbar-collapse
-                .container.formdiv.center-block
-                    form.form-inline
-                        input.form-control(type='search', name='seaerch', placeholder='Search')
-                        button.btn.btn-outline-success(type='submit') Search
-                p
-                    a.btn.btn-outline-primary(href="/signin") 로그인
-                    |
-                    a.btn.btn-outline-success(href="/users/new") 회원가입
-    else
-        nav.navbar.navbar-expand-lg.navbar-light.bg-warning
-            p 희번득
-            form.form-inline.center-block
-                    input.form-control(type='search', placeholder='Search')
-                    button.btn.btn-outline-success(type='submit') Search
+            .form-group
+                input#search.navbar.w-100(type='email' aria-describedby='emailHelp' placeholder='Search 0_0')
 
-            .col-4.d-flex.justify-content-end
-                p #{currentUser.name}님 반갑습니다.
-                a.nav-link(href=`/users/${currentUser._id}`) 마이 페이지
-                a.btn.btn-outline-primary(href="/signout") 로그아웃
+            //- #search.border.w-100
+            //-     ul search
+            if (!currentUser)
+                ul.nav
+                    a#login.border(href='/signin')
+                        | 로그인
+                    a#login.border(href="/users/new")
+                        | 회원가입
+            else
+                ul.nav
+                    li #{currentUser.name}님 반갑습니다.
+                    a#login.border(href="/users/:id")
+                        | 마이페이지        
+                    a#login.border(href="/signout")
+                        | 로그아웃                    
+//- .jumbotron.jumbotron-fluid
+//-     .container    
+//-         h1.display-4 
+//-             a.navbar-brand(href='/') 희번득
+//-         p.lead
+//-         | 대한민국의 모든 화장품 세일을 한눈에 모아 희번득하다.
+//- .topnavbar
+//-     .nav-scroller.py-1.mb-2
+//-         
+//-             nav.navbar.navbar-expand-lg.navbar-light.bg-warning
+//-                 p 희번득
+//-                 button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarToggler', aria-controls='navbarToggler', aria-expanded='false', aria-label='Toggle navigation')
+//-                     span.navbar-toggler-icon
+
+//-                 #navbarToggler.collapse.navbar-collapse
+//-                     .container.formdiv.center-block.pull-center
+//-                         form.form-inline
+//-                             input.form-control(type='search', name='seaerch', placeholder='Search')
+//-                             button.btn.btn-outline-success(type='submit') Search
+//-                     p
+//-                         a.btn.btn-outline-primary.pull-right(href="/signin") 로그인
+//-                         |
+//-                         a.btn.btn-outline-success.pull-right(href="/users/new") 회원가입
+//-         else
+//-             nav.navbar.navbar-expand-lg.navbar-light.bg-warning
+//-                 a.p-2.text-white 희번득
+//-                 .p-6.text-white
+//-                     form.form-inline.center-block
+//-                             input.form-control(type='search', placeholder='Search')
+//-                             button.btn.btn-outline-success(type='submit') Search
+//-                 .p-2.text-white
+//-                     p #{currentUser.name}님 반갑습니다.
+//-                     |
+//-                     a.btn.btn-outline-primary.pull-right(href=`/users/${currentUser._id}`) 마이 페이지
+//-                     a.btn.btn-outline-primary.pull-right(href="/signout") 로그아웃

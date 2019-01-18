@@ -1,54 +1,109 @@
-body {
-  /* padding: 50px; */
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
-}
-.content {
-  margin-left: 5%;
-  margin-right: 5%;
-}
-.jumbotron {
-  text-align: center;
-  margin-bottom: -32px;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 5%;
+* {
+  margin: 20px;
+  text-decoration: none;
+  box-sizing: border-box!important;
 }
 
-.formdiv {
-  text-align: center;
-  margin: auto;
+html, body{
+  margin: 0!important;
 }
-.loginbutt{
-  /* padding: 1em; */
 
+.border {border: 1px solid #ced4da;}
+a {background-color: transparent;display:block;}
+li {list-style: none;
 }
-.topslide {
-  padding-top: 20px;
+
+/* 상단바 */
+nav{display: inline-block;}
+ul{padding: 0;margin: 0;}
+.navbar{display: flex;align-items: center;justify-content: space-between;padding: 0!important;margin: 0!important;}
+.nav{display: inline-block;color: #f8f9fa;white-space: pre-line;}
+.nav > a{color: #f8f9fa;}
+.p-0{padding: 0;}
+.fixed-top{
+  position: fixed;
+  top: 0;
+  right: 0!important;
+  left: 0;
+  z-index: 1030;
+  margin-bottom: 200px;
 }
-.topnavbar {
-  /* vertical-align: center; */
-  margin-left: 5%;
-  margin-right: 5%;
+.bg-dark{background-color: #343a40!important;}
+.w-100{width: 100%!important;}
+
+.logo {
+	display: inline-block;
+	background: orange;
+	color: white;
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+	margin: 5px 40px; margin-right: 5px;
+	transform: rotate(-15deg);
+  animation: beat .8s ease infinite alternate;
 }
-/* The navigation menu links */
-.content {
-  margin-top: 5px;
+.logo-text{white-space: nowrap;display:inline;}
+
+@keyframes beat {
+	from {	transform: rotate(-20deg) scale(1); }
+	to {	transform: rotate(-20deg) scale(1.2); }
 }
-.sidenav .detailed  {
-  font-size: 15px;
-  color: #f1f1f1;
-  background-color: #a7a7a7;
-  display: block;
+#search{
+    display: inline-block;
+    border-width: 0; border-radius: 0;
+    color: #fff;background-color:rgba(255,255,255,.1);border-color:rgba(255,255,255,.1);
+    
+    line-height: 1.5;
+  }
+#search > ul{color: rgba(143, 140, 140, 0.7);margin: 5px;}
+
+#login{
+    display: inline-block;
+    margin: 0px;
+    font-size: 14px;
+    text-align: center;
+    word-break: keep-all;
+    margin-right: 10px;
+  }
+
   
+/* 좌측바 */
+#sidebar{
+    display: block;
+    position: fixed;
+    height: calc(100vh - 48px);width: 190px;
+    padding-top: 100px;
+    top: 42px;left: 0;
+    margin-top: 0!important;margin-left: 0!important;
+    background-color: #e9ecef
+  }
+.icon-category{display: inline;margin:0!important;padding-right: 3px!important;}
+.subt{font-size: 20px;}
+.icon-sub{padding-top:5px!important;padding-right: 5px!important;}
+.icon-title{right: 0px;}
+.side > a {font-size: 13px;}
+.side>a.subt{font-size: 25px;}
+.under{padding-top:10px;}
+
+/* 가운데 contents*/
+#content{display: inline-block;margin-left: 200px;margin-top: 45px;}
+.chartjs-render-monitor {
+    animation-name: chartjs-render-animation;
+    animation-duration: 0.001s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+  }
+.data{display: inline-block;height: 203px;font-size: 12px;}
+.my-4{margin-bottom: 1.5rem!important; margin-top: 1.5rem!important;}
+.block{display: block;}
+
+.content {
+  margin-top: 100px;
+  margin-left: 90px;
 }
-.detailed > h4 {
-  font-style: italic;
-}
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}*/

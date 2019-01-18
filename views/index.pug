@@ -1,11 +1,10 @@
 extends layout
 
 block content
-  .content
-    .row
-      .col-md-3
-        block sidenav
-          include ./includes/sidenav
-      .col-md-9
-        block maincontent
-          include ./includes/maincontent
+  .content.container
+    block sidenav
+      include ./includes/sidenav
+
+    block maincontent
+      include ./includes/alert
+      include ./includes/maincontent

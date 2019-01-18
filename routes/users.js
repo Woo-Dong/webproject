@@ -47,7 +47,7 @@ router.get('/', needAuth, (req, res, next) => {
       return next(err);
     }
     res.render('users/index', {users: users});
-  }); // TODO: pagination?
+  });
 });
 
 router.get('/new', (req, res, next) => {
@@ -151,6 +151,5 @@ router.post('/', (req, res, next) => {
     });
   });
 });
-
 
 module.exports = router;

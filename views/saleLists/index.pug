@@ -1,0 +1,141 @@
+extends ../layout
+
+block content
+    link(rel='stylesheet', href='/stylesheets/salelist.css')
+    
+    .row
+        .col-md-2
+            include ../includes/sidenav
+        .content.container
+            .col-md-10
+                include ../includes/alert
+            
+                .sale-area
+                    // 메인페이지에서 세일눌렀을 때, 기본값은 세일과 증정품 중에서 '세일'임(수량이 압도적)
+                    .salecategory-group
+                        button.btn.btn-outline-secondary.btn-lg(type='button')  세일상품 
+                        button.btn.btn-outline-secondary.btn-lg(type='button')  원플러스원 / 증정품 
+                    // 상품 브랜드별 분류
+                    .btn-group(role='group', aria-label='Basic example')
+                        button.btn.btn-secondary(type='button') 전체 브랜드
+                        button.btn.btn-secondary(type='button') 이니스프리
+                        button.btn.btn-secondary(type='button') 네이처리퍼블릭
+                        button.btn.btn-secondary(type='button') 아리따움
+                        button.btn.btn-secondary(type='button') 스킨푸드
+                        button.btn.btn-secondary(type='button') 더페이스샵
+                    .btn-group(role='group', aria-label='Basic example')
+                        button.btn.btn-secondary(type='button') 애터미
+                        button.btn.btn-secondary(type='button') 헤라
+                        button.btn.btn-secondary(type='button') 디올
+                        button.btn.btn-secondary(type='button') 배불러
+                        button.btn.btn-secondary(type='button') 배고파
+                        button.btn.btn-secondary(type='button') 또뭐있지
+                    // 상품 종류별 분류
+                    //
+                        버튼이 글자크기에 따라 사이즈가 달라진다
+                        버튼 크기를 고정하든, 글자 간격을 조절하든 해야 한다.
+                    .btn-group(role='group', aria-label='Basic example')
+                        button.btn.btn-secondary(type='button') 전체 상품 종류
+                        button.btn.btn-secondary(type='button') 스킨로션
+                        button.btn.btn-secondary(type='button') 수분크림
+                        button.btn.btn-secondary(type='button') 마스크팩
+                        button.btn.btn-secondary(type='button') 미스트
+                        button.btn.btn-secondary(type='button') 향수
+                    .btn-group(role='group', aria-label='Basic example')
+                        button.btn.btn-secondary(type='button') 립밤
+                        button.btn.btn-secondary(type='button') 바디로션
+                        button.btn.btn-secondary(type='button') 클렌징
+                        button.btn.btn-secondary(type='button') 썬크림
+                        button.btn.btn-secondary(type='button') 베이비파우더
+                        button.btn.btn-secondary(type='button') 또뭐있지
+                // Tabsconts on: 상품 분류방법 및 상품 디스플레이 총괄 클래스
+                .TabsConts_on
+                    // class cate_info_tx 새로 지정해주어야 한다.
+                    // N개의 상품이 있습니다.
+                    .cate_info_tx(style='text-align: center;')
+                        | 전체 
+                        span N개
+                        | 의 상품이 등록되어 있습니다.
+                    nav.navbar.navbar-light.bg-light(style='display: inline-block')
+                        form.form-inline(style='display: inline-block')
+                            input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
+                            button.btn.btn-outline-success.my-2.my-sm-0(type='submit', style='border: solid 1px black; color: black;') Search
+                    // 상품 분류 바(bar)
+                    .cate_align_box
+                        .align_sort
+                            ul
+                                li
+                                    a(href='#') 인기순
+                                li
+                                    a(href='#') 최근등록순
+                                li
+                                    a(href='#') 판매수량순
+                                li
+                                    a(href='#') 낮은 가격순
+                                li
+                                    a(href='#') 높은 가격순
+                        .count_sort_num
+                            span.tx_view VIEW
+                            ul
+                                li
+                                    a(href='#', style='margin-left: 30px;') 24
+                                li
+                                    a(href='#') 36
+                                li
+                                    a(href='#', style='margin-right:30px;') 48
+                            .type_sort
+                                button.material-icons  view_comfy 
+                                // 바둑판식, 관련 아이콘 필요
+                                button.material-icons  list 
+                                // 리스트식, 관련 아이콘 필요
+                                // 상품 전시
+                                ul.cate_prd_list
+                                    // 하나의 층 배열
+                                    li.flag
+                                        // 상품 하나 덩어리 (여백포함)
+                                        .prd_info
+                                            // 상품 하나 덩어리 (여백제외)
+                                            img(src='images/hero_header.jpg')
+                                            .prd_name
+                                                p.tx_brand 브랜드 이름
+                                                span.tx_name 상세 제품 이름
+                                            .prd_price
+                                                span.tx_org 정가
+                                                span.tx_sale 세일가
+                                            button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
+                                    li.flag
+                                        // 상품 하나 덩어리 (여백포함)
+                                        .prd_info
+                                            // 상품 하나 덩어리 (여백제외)
+                                            img(src='images/hero_header.jpg')
+                                            .prd_name
+                                                p.tx_brand 브랜드 이름
+                                                span.tx_name 상세 제품 이름
+                                            .prd_price
+                                                span.tx_org 정가
+                                                span.tx_sale 세일가
+                                            button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
+                                    li.flag
+                                        // 상품 하나 덩어리 (여백포함)
+                                        .prd_info
+                                            // 상품 하나 덩어리 (여백제외)
+                                            img(src='images/hero_header.jpg')
+                                            .prd_name
+                                                p.tx_brand 브랜드 이름
+                                                span.tx_name 상세 제품 이름
+                                            .prd_price
+                                                span.tx_org 정가
+                                                span.tx_sale 세일가
+                                            button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
+                                    li.flag
+                                        // 상품 하나 덩어리 (여백포함)
+                                        .prd_info
+                                            // 상품 하나 덩어리 (여백제외)
+                                            img(src='images/hero_header.jpg')
+                                            .prd_name
+                                                p.tx_brand 브랜드 이름
+                                                span.tx_name 상세 제품 이름
+                                            .prd_price
+                                                span.tx_org 정가
+                                                span.tx_sale 세일가
+                                            button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite

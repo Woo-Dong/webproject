@@ -88,6 +88,7 @@ router.put('/:id', needAuth, (req, res, next) => {
 
     user.name = req.body.name;
     user.email = req.body.email;
+    user.isAdmin = req.body.isAdmin;
 
     user.save(function(err) {
       if (err) {
@@ -104,7 +105,6 @@ router.delete('/:id', needAuth, (req, res, next) => {
     if (err) {
       return next(err);
     }
-    delete req.session.user;
     req.flash('success', '성공적으로 회원탈퇴 하였습니다.');
     res.redirect('/');
   });

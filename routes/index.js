@@ -2,9 +2,9 @@ var express = require('express');
     User = require('../models/user');
 var router = express.Router();
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
   res.render('index');
 });
 
@@ -12,20 +12,6 @@ router.get('/signin', function(req, res, next) {
   res.render('signIn');
 });
 
-router.get('/member', function(req, res, next) {
-  res.render('member');
-});
-
-router.get('/member/memanager', function(req, res, next) {
-  res.render('memanager');
-});
-
-router.get('/coslist', function(req, res, next) {
-  res.render('coslist');
-});
-
-
-// 09-1. Session 참고: 세션을 이용한 로그인
 router.post('/signin', function(req, res, next) {
   User.findOne({email: req.body.email}, function(err, user) {
     if (err) {
@@ -46,6 +32,5 @@ router.get('/signout', function(req, res, next) {
   req.flash('success', 'Successfully signed out.');
   res.redirect('/');
 });
-
 
 module.exports = router;

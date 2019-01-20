@@ -1,0 +1,38 @@
+extends index
+
+include ../includes/_paginate
+block maincontent
+
+    h1 회원관리
+    .container.formdiv.col-md-8
+        form.form-inline
+            input.form-control(type='search', name='seaerch', placeholder='회원 검색')
+            button.btn.btn-primary(type='submit') 검색
+        
+    hr
+    if users.total > 0
+        .table-area
+            table.table.table-hover.text-center
+                thead
+                tr.bg-secondary
+                    th N0.
+                    th 회원
+                    th 이름(닉네임)
+                    th 가입일
+                    th 관리자 여부
+                    th 관리
+                tbody       
+                each user, index in users.docs
+                    tr
+                        td(scope='row')
+                            h6= index+1
+                        td
+                            a(href=`/users/${user.id}`)=user.email
+                        td= user.name
+                        td #{moment(user.createdAt).format('YYYY-MM-DD')}
+                        td= user.isAdmin
+                        td 
+                            a.btn.btn-outline-primary.btn-sm(href=`/users/${user._id}/edit`)  수정
+                            a.btn.btn-outline-danger.btn-sm.delete-btn(href=`/users/${user._id}?_method=DELETE`) 삭제
+    .pagination
+        +paginate(users, '/admin/users', query)

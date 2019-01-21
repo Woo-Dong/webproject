@@ -2,74 +2,73 @@ extends ../layout
   
 block content
   
-  a.header-logo.text-warning(href='/')
-    h1.text-center
-      b 회원가입
-  .input-box(style='width:35%; margin-left:auto; margin-right:auto;')
-      h5(style='background: orange; width:30%; margin-left:auto; margin-right: auto; margin-bottom: 30px; margint-top: 15px;') 회원가입해야돼
-      include ../includes/alert
-      form(action='/users', method='POST')
-          .form-group
-              label(for='email', style=' margin-bottom:4px;')  * 이메일 주소 
-              input#exampleInputEmail1.form-control(type='email', name='email', aria-describedby='emailHelp', placeholder='Enter email', style='margin-top:5px;')
-              small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
-          .form-group
-              label(for='password', style=' margin-bottom:4px;')  * 비밀번호 
-              input#exampleInputPassword1.form-control(type='password', name='password' placeholder='Password', style='margin-top:5px;')
-          
-          //- .form-group(style='width:35%; margin-left:auto; margin-right:auto;')
-          .form-group
-              label(for='passwordconf', style=' margin-bottom:4px;')  * 비밀번호 확인 
-              input#exampleInputPassword1.form-control(type='password', name='passwordconf' placeholder='Password', style='margin-top:5px;')
-          //- .form-group(style='margin-left: 30%;')
-          //-     input#exampleCheck1.form-check-input(type='checkbox', value="agree")
-          //-     label.form-check-label(for='exampleCheck1', style=' margin-bottom:4px;') Check me out
-          
-          //- .form-group(style='width:35%; margin-left:auto; margin-right:auto;')
-          .form-group
-              label(for='name', style='margin-bottom:4px;')  * 이름(닉네임) 
-              input.form-control(type='text', id='name', name='name', placeholder='Enter name', style='margin-top:5px;')
-      
-      
-          //- .combination-like
-          //-     h5  관심 브랜드 체크세주세요... 싫음 말고
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox1.form-check-input(type='checkbox', value='option1')
-          //-         label.form-check-label(for='inlineCheckbox1') 일니스프리
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox2.form-check-input(type='checkbox', value='option2')
-          //-         label.form-check-label(for='inlineCheckbox2') 이니스프리
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox3.form-check-input(type='checkbox', value='option3')
-          //-         label.form-check-label(for='inlineCheckbox3') 삼니스프리
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox1.form-check-input(type='checkbox', value='option4')
-          //-         label.form-check-label(for='inlineCheckbox1') 사니스프리
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox2.form-check-input(type='checkbox', value='option5')
-          //-         label.form-check-label(for='inlineCheckbox2') 오니스프리
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox3.form-check-input(type='checkbox', value='option6')
-          //-         label.form-check-label(for='inlineCheckbox3') 육니스프리
-          //-     // 관심 카테고리 체크
-          //-     h5  관심 카테고리 체크세주세요... 싫음 말고
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox1.form-check-input(type='checkbox', value='skincare')
-          //-         label.form-check-label(for='inlineCheckbox1') 스킨케어
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox2.form-check-input(type='checkbox', value='cleansing')
-          //-         label.form-check-label(for='inlineCheckbox2') 클렌징
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox3.form-check-input(type='checkbox', value='baseMakeup')
-          //-         label.form-check-label(for='inlineCheckbox3') 베이스메이크업
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox1.form-check-input(type='checkbox', value='colorMakeup')
-          //-         label.form-check-label(for='inlineCheckbox1') 색조메이크업
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox2.form-check-input(type='checkbox', value='physical')
-          //-         label.form-check-label(for='inlineCheckbox2') 바디
-          //-     .form-check.form-check-inline
-          //-         input#inlineCheckbox3.form-check-input(type='checkbox', value='etc')
-          //-         label.form-check-label(for='inlineCheckbox3') 기타제품
+    a.header-logo.text-warning(href='/')
+        h1.text-center
+            b 회원가입
+    .input-box(style='width:35%; margin-left:auto; margin-right:auto;')
+        include ../includes/alert
+        form(action='/users', method='POST')
+            .form-group
+                label(for='email', style=' margin-bottom:4px;')  * 이메일 주소 
+                input#exampleInputEmail1.form-control(type='email', name='email', aria-describedby='emailHelp', placeholder='Enter email', style='margin-top:5px;')
+                small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+            .form-group
+                label(for='password', style=' margin-bottom:4px;')  * 비밀번호 
+                input#exampleInputPassword1.form-control(type='password', name='password' placeholder='Password', style='margin-top:5px;')
+            
+            //- .form-group(style='width:35%; margin-left:auto; margin-right:auto;')
+            .form-group
+                label(for='passwordconf', style=' margin-bottom:4px;')  * 비밀번호 확인 
+                input#exampleInputPassword1.form-control(type='password', name='passwordconf' placeholder='Password', style='margin-top:5px;')
+            //- .form-group(style='margin-left: 30%;')
+            //-     input#exampleCheck1.form-check-input(type='checkbox', value="agree")
+            //-     label.form-check-label(for='exampleCheck1', style=' margin-bottom:4px;') Check me out
+            
+            //- .form-group(style='width:35%; margin-left:auto; margin-right:auto;')
+            .form-group
+                label(for='name', style='margin-bottom:4px;')  * 이름(닉네임) 
+                input.form-control(type='text', id='name', name='name', placeholder='Enter name', style='margin-top:5px;')
+        
+        
+            //- .combination-like
+            //-     h5  관심 브랜드 체크세주세요... 싫음 말고
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox1.form-check-input(type='checkbox', value='option1')
+            //-         label.form-check-label(for='inlineCheckbox1') 일니스프리
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox2.form-check-input(type='checkbox', value='option2')
+            //-         label.form-check-label(for='inlineCheckbox2') 이니스프리
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox3.form-check-input(type='checkbox', value='option3')
+            //-         label.form-check-label(for='inlineCheckbox3') 삼니스프리
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox1.form-check-input(type='checkbox', value='option4')
+            //-         label.form-check-label(for='inlineCheckbox1') 사니스프리
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox2.form-check-input(type='checkbox', value='option5')
+            //-         label.form-check-label(for='inlineCheckbox2') 오니스프리
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox3.form-check-input(type='checkbox', value='option6')
+            //-         label.form-check-label(for='inlineCheckbox3') 육니스프리
+            //-     // 관심 카테고리 체크
+            //-     h5  관심 카테고리 체크세주세요... 싫음 말고
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox1.form-check-input(type='checkbox', value='skincare')
+            //-         label.form-check-label(for='inlineCheckbox1') 스킨케어
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox2.form-check-input(type='checkbox', value='cleansing')
+            //-         label.form-check-label(for='inlineCheckbox2') 클렌징
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox3.form-check-input(type='checkbox', value='baseMakeup')
+            //-         label.form-check-label(for='inlineCheckbox3') 베이스메이크업
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox1.form-check-input(type='checkbox', value='colorMakeup')
+            //-         label.form-check-label(for='inlineCheckbox1') 색조메이크업
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox2.form-check-input(type='checkbox', value='physical')
+            //-         label.form-check-label(for='inlineCheckbox2') 바디
+            //-     .form-check.form-check-inline
+            //-         input#inlineCheckbox3.form-check-input(type='checkbox', value='etc')
+            //-         label.form-check-label(for='inlineCheckbox3') 기타제품
 
-          button.btn.btn-primary(type='submit') 회원가입
+            button.btn.btn-primary(type='submit') 회원가입

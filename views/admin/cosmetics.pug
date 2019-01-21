@@ -1,0 +1,38 @@
+extends index
+
+include ../includes/_paginate
+block maincontent
+
+    h1 화장품관리
+    .container.formdiv.col-md-8
+        form.form-inline
+            input.form-control(type='search', name='seaerch', placeholder='화장품 검색')
+            button.btn.btn-primary(type='submit') 검색
+        
+    hr
+    if cosmetics.total > 0
+        .table-area
+            table.table.table-hover.text-center
+                thead
+                tr.bg-secondary
+                    th N0.
+                    th 화장품명
+                    th 회사
+                    th 카테고리
+                    th 판매처
+                    th 관리
+                tbody       
+                each cosmetic, index in cosmetics.docs
+                    tr
+                        td(scope='row')
+                            h6= index+1
+                        td
+                            a(href=`/cosmetics/${cosmetic.id}`)=cosmetic.name
+                        td= cosmetic.company
+                        td= cosmetic.category
+                        td= cosmetic.shop
+                        td 
+                            a.btn.btn-outline-primary.btn-sm(href=`/cosmetics/${cosmetic._id}/edit`)  수정
+                            a.btn.btn-outline-danger.btn-sm.delete-btn(href=`/cosmetics/${cosmetic._id}?_method=DELETE`) 삭제
+    .pagination
+        +paginate(cosmetics, '/admin/cosmetics', query)

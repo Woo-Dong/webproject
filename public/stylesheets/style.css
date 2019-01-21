@@ -16,7 +16,14 @@ li {list-style: none;
 /* 상단바 */
 nav{display: inline-block;}
 ul{padding: 0;margin: 0;}
-.navbar{display: flex;align-items: center;justify-content: space-between;padding: 0!important;margin: 0!important;}
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0!important;
+  margin: 0!important;
+}
+
 .nav{display: inline-block;color: #f8f9fa;white-space: pre-line;}
 .nav > a{color: #f8f9fa;}
 .p-0{padding: 0;}

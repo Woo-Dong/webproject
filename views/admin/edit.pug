@@ -1,11 +1,11 @@
-extends layout
+extends ../layout
 
 block content
   .content
     .row
       .col-md-3
         block sidenav
-          include ./admin/ad_sidenav
+            include sidenav
       .col-md-9
         .input-box(style='width:35%; margin-left:auto; margin-right:auto;')
             hr
@@ -16,7 +16,6 @@ block content
                 label.control-label(for='Email')
                     | * 이메일 주소 
                 input.form-control(type='text' placeholder='너의@이메일.com' readonly='')
-
             
             .form-group
                 label(for='exampleInputName2') * 이름(닉네임) 변경

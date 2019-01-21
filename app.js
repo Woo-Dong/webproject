@@ -12,12 +12,15 @@ var mongoose   = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var adminRouter = require('./routes/admin');
+var cosmeticsRouter = require('./routes/cosmetics');
+var salelistsRouter = require('./routes/salelists');
 
 var app = express();
 
 mongoose.Promise = global.Promise;
-const connStr = 'mongodb://user:user123@ds115350.mlab.com:15350/heeburndeuk';
-// const connStr = 'mongodb://localhost/mydb1';
+// const connStr = 'mongodb://user:user123@ds115350.mlab.com:15350/heeburndeuk';
+const connStr = 'mongodb://localhost/mydb1';
 mongoose.connect(connStr, {useMongoClient: true });
 mongoose.connection.on('error', console.error);
 
@@ -32,7 +35,7 @@ app.locals.querystring = require('querystring');
 
 
 // favicon - 웹사이트 아이콘
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -72,7 +75,9 @@ app.use(function(req, res, next) {
 // Route
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/admin', adminRouter);
+app.use('/cosmetics', cosmeticsRouter);
+app.use('/salelists', salelistsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

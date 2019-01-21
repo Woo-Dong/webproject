@@ -1,0 +1,16 @@
+.data {
+    display: inline-block;
+    height: 203px;
+    font-size: 12px;
+    text-align: left;
+}
+.card {
+    align-items: flex-start; 
+    display: flex;
+}
+.border {
+    border: 1px solid #ced4da;
+}
+.data > li {
+    display: block
+}

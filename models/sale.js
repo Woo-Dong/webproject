@@ -1,5 +1,7 @@
 var mongoose = require('mongoose'),
+    mongoosePaginate = require('mongoose-paginate'),
     Schema = mongoose.Schema;
+
 
 
 var schema = new Schema({
@@ -17,8 +19,10 @@ var schema = new Schema({
   
 }, {
   toJSON: { virtuals: true},
-  toObject: {virtuals: true}
+  toObject: {virtuals: true} 
 });
+
+schema.plugin(mongoosePaginate);
 
 var SaleList = mongoose.model('SaleList', schema);
 

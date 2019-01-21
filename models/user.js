@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    mongoosePaginate = require('mongoose-paginate'),
     Schema = mongoose.Schema;
 const crypto = require("crypto");
 
@@ -18,6 +19,7 @@ var schema = new Schema({
   toJSON: { virtuals: true},
   toObject: {virtuals: true}
 });
+schema.plugin(mongoosePaginate);
 
 schema.methods.validPassword = function(password) {
   let inputPassword = password;

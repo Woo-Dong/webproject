@@ -1,0 +1,54 @@
+extends ../layout
+
+block content
+  .container
+    h1.main-title= user.name
+
+    ul#myTab.nav.nav-tabs(role='tablist')
+        li.nav-item
+            a#home-tab.nav-link.active(data-toggle='tab' href='#home' role='tab' aria-controls='home' aria-selected='true') 기본 사항
+        li.nav-item
+            a#brandLike-tab.nav-link(data-toggle='tab' href='#brandLike' role='tab' aria-controls='brandLike' aria-selected='false') 관심 브랜드
+        li.nav-item
+            a#categoryLike-tab.nav-link(data-toggle='tab' href='#categoryLike' role='tab' aria-controls='categoryLike' aria-selected='false') 관심 카테고리
+        li.nav-item
+            a#productLike-tab.nav-link(data-toggle='tab' href='#productLike' role='tab' aria-controls='productLike' aria-selected='false') 관심 품목
+    #myTabContent.tab-content
+        #home.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='home-tab') 
+          dl.row
+            dt.col-sm-3 Email
+            dd.col-sm-9
+              a(href=`mailto:${user.email}`)= user.email
+
+            dt.col-sm-3 Created At
+            dd.col-sm-9= user.createdAt
+
+            dt.col-sm-3 관리자 여부
+            dd.col-sm-9= user.isAdmin
+        #brandLike.tab-pane.fade(role='tabpanel' aria-labelledby='brandLike-tab')
+          dl.row
+            dt.col-sm-3 관심브랜드
+              if (!user.brandLike)
+                dd.col-sm-9 설정한 관심 브랜드가 없습니다.
+              else
+                dd.col-sm-9= user.brandLike
+        #categoryLike.tab-pane.fade(role='tabpanel' aria-labelledby='categoryLike-tab')
+          dl.row
+            dt.col-sm-3 관심카테고리
+              if (!user.categoryLike)
+                dd.col-sm-9 설정한 관심 카테고리가 없습니다.
+              else
+                dd.col-sm-9= user.categoryLike
+        
+        #productLike.tab-pane.fade(role='tabpanel' aria-labelledby='productLike-tab')
+          dl.row
+            dt.col-sm-3 관심품목
+              if (!user.productLike)
+                dd.col-sm-9 설정한 관심 품목이 없습니다.
+              else
+                dd.col-sm-9= user.productLike
+    hr
+    p
+      a.btn.btn-outline-primary(href=`/users/${user._id}/edit`) 회원정보 수정
+      | 
+      a.btn.btn-outline-danger(href=`/users/${user._id}?_method=DELETE`) 회원 탈퇴하기 

@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+  .content
+    .row
+      .col-md-3
+        block sidenav
+            include sidenav
+      .col-md-9
+        .input-box(style='width:35%; margin-left:auto; margin-right:auto;')
+            hr
+            h5 회원정보 수정
+            hr
+            form(action='http://localhost:3000/admin')
+            .form-group
+                label.control-label(for='Email')
+                    | * 이메일 주소 
+                input.form-control(type='text' placeholder='너의@이메일.com' readonly='')
+            
+            .form-group
+                label(for='exampleInputName2') * 이름(닉네임) 변경
+                input#exampleInputName2.form-control(type='text' placeholder='Enter name')
+            hr
+            .form-group
+                small#emailHelp.form-text.text-muted 비밀번호 변경시에만 입력
+                label(for='Email')
+                    | * 현재 비밀번호
+                input#exampleInputEmail2.form-control(type='email' placeholder='Now Password')
+            hr
+            .form-group
+                label(for='Email')
+                    | * 새 비밀번호
+                input#exampleInputEmail2.form-control(type='email' placeholder='New Password')
+            .form-group
+                label(for='Email')
+                    | * 새 비밀번호 확인
+                input#exampleInputEmail2.form-control(type='email' placeholder='New Password Check')
+            .row(style="margin-top: 15px;")
+                .col-md-6
+                button.btn.btn-primary.col-md-3(type='submit' onclick="location.href = '/member' ") &#xC218;&#xC815;
+                button.btn.btn-primary.col-md-3(type='submit' onclick="location.href = '/member' ") &#xB4A4;&#xB85C;

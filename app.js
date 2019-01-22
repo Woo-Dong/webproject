@@ -47,7 +47,7 @@ app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
 //   indentedSyntax: true, // true = .sass and false = .scss
 //   sourceMap: true
 // }));
-
+//asdadasdasd
 // session을 사용할 수 있도록.
 app.use(session({
   resave: true,

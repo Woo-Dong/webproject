@@ -1,0 +1,70 @@
+.list_cosmetic {
+    text-align: right;
+}
+
+.cosmetic_ranking {
+    width: 100%; height: 150px;
+    margin-top: 62px;
+    font-size: 30px;
+    padding-top: 40px; padding-bottom: 70px;
+}
+
+.list_cosmetic{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.list_cosmetic img{
+    width: 100px;
+    height: 100px;
+}
+
+.list_cosmetic .ranking_number {
+    padding-right: 25px;
+}
+
+.sale_filter {
+    float: left;
+    width: 30%; height: 360px;
+    text-align: center;
+    border: solid 1.5px gray;
+    margin-top: 45px;
+}
+
+.search_product {
+    margin-left: 230px;
+    margin-right: 230px;
+}
+
+.section_salelist {
+    float: left;
+    width: 70%; height: 720px;
+    list-style-type: none;
+}
+
+.section_salelist a {
+    text-decoration: none;
+    float: right;
+    color: black;
+    border: solid 1.5px;
+}
+
+.section_salelist .bundle_category{
+    width: 100%;
+    float: right;
+}
+
+.section_salelist .list_cosmetic .ranking_number{
+    display: inline-block;
+}
+
+.section_salelist .list_cosmetic .side_image {
+    display: inline-block;
+}
+
+.section_salelist .list_cosmetic h6 {
+    display: inline-block;
+    padding: 15px;
+}
+
+

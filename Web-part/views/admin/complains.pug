@@ -1,0 +1,50 @@
+extends index
+
+include ../includes/_paginate
+block maincontent
+
+    h1 신고
+    .container.formdiv.col-md-8
+        form.form-inline
+            input.form-control(type='search', name='seaerch', placeholder='신고 검색')
+            button.btn.btn-primary(type='submit') 검색
+        .dropdown.form-inline
+            button#dropdownMenu1.btn.btn-default.dropdown-toggle.btn-primary(type='button' data-toggle='dropdown' aria-expanded='true')
+                | 카테고리
+                span.caret
+            ul.dropdown-menu(role='menu' aria-labelledby='dropdownMenu1')
+                li(role='presentation')
+                a(role='menuitem' tabindex='-1' href='#') 페이지 신고
+                li(role='presentation')
+                a(role='menuitem' tabindex='-1' href='#') 화장품 신고
+                li(role='presentation')
+                a(role='menuitem' tabindex='-1' href='#') 세일 신고
+                li(role='presentation')
+                a(role='menuitem' tabindex='-1' href='#') 처리 유무
+
+    hr
+    .table-area
+        table.table.table-hover.text-center
+            thead
+            tr.bg-secondary
+                th N0.
+                th 카테고리
+                th 제목
+                th 화장품 명
+                th 신고자
+                th 처리
+            tbody
+            if complain.total > 0
+                each complain, index in complain.docs
+                    tr
+                        a(href='#')
+                            td(scope='row')
+                                h6= index+1
+                            td
+                                a(href=`/complain/${complain.id}`)=complain.category
+                            td= complain.title
+                            td= complain.cosmeticId.name
+                            td= complain.userId.name
+                            td= complain.checked
+    .pagination
+        +paginate(complain, '/admin/complain', query)

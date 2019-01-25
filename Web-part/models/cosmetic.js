@@ -5,17 +5,18 @@ var mongoose = require('mongoose'),
 
 var schema = new Schema({
   name: {type: String, required: true, trim: true},
-  category: {type: String, required: true, default: '기타'},
-  series: {type: String},
-  company: {type: String, required:true},
+  category: {type: String, default: '기타'},
+  
+  volume: {type: String},
+  brand: {type: String},
+  shop: {type: String},
+  price: {type: String, default: 0},
+  detail_descrpt: {type: String},
   latestSale: {type: String},
-  volume: {type: String, default: '없음'},
-  brand: {type: String, required:true},
-  shop: {type: String, required:true},
   pictName: {type: String},
-  price: {type: Number, required:true, default: 0},
-  minPrice: {type: Number, default: 0},
-  maxSalePer: {type: Number, default: 0}
+  
+  minPrice: {type: Number},
+  maxSalePer: {type: Number}
   
 }, {
   toJSON: { virtuals: true},

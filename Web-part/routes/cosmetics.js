@@ -9,4 +9,13 @@ router.get('/', (req, res, next) => {
 });
 
 
+router.get('/:id', (req, res, next) => {
+  Cosmetic.findById(req.params.id, function(err, cosmetic) {
+    if (err) {
+      return next(err);
+    }
+    res.render('cosmetics/show', {cosmetic: cosmetic});
+  });
+});
+
 module.exports = router;

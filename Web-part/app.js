@@ -19,8 +19,8 @@ var salelistsRouter = require('./routes/salelists');
 var app = express();
 
 mongoose.Promise = global.Promise;
-// const connStr = 'mongodb://user:user123@ds115350.mlab.com:15350/heeburndeuk';
-const connStr = 'mongodb://localhost/mydb1';
+const connStr = 'mongodb://user:user123@ds115350.mlab.com:15350/heeburndeuk';
+// const connStr = 'mongodb://localhost/mydb1';
 mongoose.connect(connStr, {useMongoClient: true });
 mongoose.connection.on('error', console.error);
 

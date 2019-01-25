@@ -21,7 +21,7 @@ function isAdmin(req, res, next) {
     next();
   } else {
     req.flash('danger', '관리자 권한이 없습니다!');
-    res.redirec('/');
+    res.redirect('/');
   }
 }
 // 관리자 아이디 확인 절차 필요

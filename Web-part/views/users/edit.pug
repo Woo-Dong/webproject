@@ -26,13 +26,13 @@ block content
             .form-group
                 label(for='name') 이름(닉네임) 
                 input.form-control(type='text', id='name', name='name', placeholder='Enter name', value=user.name)
-            if (currentUser.isAdmin)  
-                .form-group
-                    label(for='isAdmin') 회원등급
-                        input.form-control(type="radio" id='isAdmin' name='isAdmin', value='true') 
-                        | 관리자
-                        input.form-control(type="radio" id='isAdmin' name='isAdmin', value='false', checked)
-                        | 일반
+            //- if (currentUser.isAdmin)  
+            .form-group
+                label(for='isAdmin') 회원등급
+                    input.form-control(type="radio" id='isAdmin' name='isAdmin', value='true') 
+                    | 관리자
+                    input.form-control(typ e="radio" id='isAdmin' name='isAdmin', value='false', checked)
+                    | 일반
             button.btn.btn-primary(type='submit') 회원정보 수정
             a.btn.btn-default(href='javascript:window.history.back();') 돌아가기
         

@@ -1,0 +1,28 @@
+extends index
+
+block maincontent
+  
+    .container.formdiv.col-md-8
+        h1 화장품 추가
+    .input-box(style='width:35%; margin-left:auto; margin-right:auto;')
+        include ../includes/alert
+        form(action='/admin/cosmetics', method='POST')
+            .form-group
+                label(for='name', style='margin-bottom:4px;')  * 제품 이름
+                input.form-control(type='text', id='name', name='name', placeholder='Enter name', style='margin-top:5px;')
+            .form-group
+                label(for='company', style='margin-bottom:4px;')  * 제조사
+                input.form-control(type='text', id='company', name='company', placeholder='Enter company', style='margin-top:5px;')
+            .form-group
+                label(for='brand', style='margin-bottom:4px;')  * 브랜드
+                input.form-control(type='text', id='brand', name='brand', placeholder='Enter brand', style='margin-top:5px;')
+            .form-group
+                label(for='series', style='margin-bottom:4px;')  * 시리즈
+                input.form-control(type='text', id='series', name='series', placeholder='Enter series', style='margin-top:5px;')
+            .form-group
+                label(for='shop', style='margin-bottom:4px;')  * 판매점
+                input.form-control(type='text', id='shop', name='shop', placeholder='Enter shop', style='margin-top:5px;')
+            .form-group
+                label(for='price', style='margin-bottom:4px;')  * 가격
+                input.form-control(type='text', id='price', name='price', placeholder='Enter price', style='margin-top:5px;')
+            button.btn.btn-primary(type='submit') 화장품 추가

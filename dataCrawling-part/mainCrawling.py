@@ -1,4 +1,4 @@
-
+# 글로우픽 crwaling 
 from collections import OrderedDict
 import requests
 from bs4 import BeautifulSoup
@@ -48,7 +48,11 @@ def getEachCosmeticInfo(urlAddr, idNum):
     #화장품 상세설명
     cos_detail_descrpt = soup.find('div', attrs={'class': 'product-detail__description'})
 
-    cos_detail_descrpt = cos_detail_descrpt.contents[0]
+    resCosDetail = cos_detail_descrpt.contents[0]
+    if ( isinstance(resCosDetail, str) ):
+        pass
+    else:
+        resCosDetail = cos_detail_descrpt.contents[1]
     # cos_detail_descrpt = cos_detail_descrpt.text
    
     cos_data = OrderedDict()
@@ -60,6 +64,6 @@ def getEachCosmeticInfo(urlAddr, idNum):
     cos_data['brand'] = cos_brand
     cos_data['price'] = cos_price
     cos_data['volume'] = cos_volume
-    cos_data['detail_descrpt'] = cos_detail_descrpt
+    cos_data['detail_descrpt'] = resCosDetail
     #제품등록 요청 or 없는 제품일경우 0 리턴
     return cos_data

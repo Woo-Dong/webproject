@@ -1,15 +1,7 @@
-/* 가운데 contents*/
 
-.content {
-  margin-top: 100px;
-  width: 100%;
-  /* margin-left: 90px; */
-}
-
-/* 상위 topnav */
-.sstrong-sidebar{margin: 0!important;float: initial}
+.sstrong-sidebar{margin: 0!important;float: initial;}
 .sstrong-navbar{align-items: center;background-color: #343a40;}
-.sstrong-navbar > .wrap{position: relative;float: inherit;}
+.sstrong-navbar > .wrap{position: relative;float: inherit}
 
 .login-section{align-items: center!important;}
 .login-text{font-size:10px;color:#f8f9fa;text-decoration: none;margin-bottom: .3rem!important;margin-top: .2rem;}
@@ -31,7 +23,7 @@
 
 .Aligner{align-items: center;}
 
-/* <로고 시작> */
+/* 로고 */
 .logo-section{padding-right: 0;}
 .logo-text{position:absolute;top:0em;left:2em;z-index: 3;color: white}
 .logo-text-under{position: absolute;top:0em;left:4em;color:yellow;font-size: 1.2em;}
@@ -66,7 +58,6 @@
   from {transform: rotate(-20deg) scale(1)}
   to {transform: rotate(-20deg) scale(1.2)}
 }
-
 .chartjs-render-monitor {
   animation-name: chartjs-render-animation;
   animation-duration: 0.001s;
@@ -79,17 +70,15 @@
   }
 
 
-
-/* 좌측 사이드바  */
-.sstrong-sidebar {padding: 0;margin-right: 0;width: 125%;}
-/* .sstrong-sidebar > .wrap{position: relative; margin: 0px;} */
+.sstrong-sidebar {padding: 0;margin-right: 0;width: 12.5em;}
+.sstrong-sidebar > .wrap{position: relative;margin: 0px;}
 .sstrong-sidebar > .row{
-  height: 150%;
+  height: 30em;
   background-color: #F0F0F0;
   color: #333;
   padding-top: 2em;
   }
-.sidebar-subtitle.active{color: #ffc107;}
+/* .sidebar-subtitle.active{color: #ffc107;} */
 .sidebar-subtitle {display: block; text-decoration: none;font-size:21px;padding: .4em 0 .4em 1em;}
 .sidebar-w-95{width:100%;}
 .sidebar-section{width:100%}
@@ -98,4 +87,3 @@
 .sstrong-sidebar a {text-decoration: none;color:-webkit-link}
 .sstrong-sidebar a:hover {background-color: white}
 
-  /* <로고 끝> */

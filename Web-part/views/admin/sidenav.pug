@@ -1,12 +1,17 @@
-#sidebar.border.sidebar
-    ul.side
-        a.subt(href='/admin') Administrator Menu
-            svg.icon-category(xmlns='http://www.w3.org/2000/svg' width='24' height='18' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
-                polygon(points='12 2 2 7 12 12 22 7 12 2')
-                polyline(points='2 17 12 22 22 17')
-                polyline(points='2 12 12 17 22 12')
+.side.sstrong-sidebar
+    .row.wrap.sidebar-w-95.sidebar-border
+         .menu.sidebar-section
+            a.sidebar-subtitle(href='/admin') Administrator Menu
+                svg.icon-category(xmlns='http://www.w3.org/2000/svg' width='24' height='18' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                    polygon(points='12 2 2 7 12 12 22 7 12 2')
+                    polyline(points='2 17 12 22 22 17')
+                    polyline(points='2 12 12 17 22 12')
 
-        a(href='/admin/users') Users List
-        a(href='/admin/cosmetics') Cosmetics List
-        a(href='/admin/salelists') Sale List
-        a(href='/admin/complain') Complains
+            a.sidebar-subsub.sidebar-w-95(href='/admin/users')
+                | Users List
+            a.sidebar-subsub.sidebar-w-95(href='/admin/cosmetics') 
+                | Cosmetics List
+            a.sidebar-subsub.sidebar-w-95(href='/admin/salelists') 
+                | Sale List
+            a.sidebar-subsub.sidebar-w-95(href='/admin/salelists') 
+                | Complains

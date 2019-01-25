@@ -9,3 +9,4 @@ module.exports = function asyncErrorCatcher(fn) {
     promise.catch(err => next(err));
   };
 };
+

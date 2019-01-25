@@ -28,7 +28,7 @@ function isAdmin(req, res, next) {
 // 화장품 추가 함수
 function validateForm(form) {
   var name = form.name || "";
-  var company = form.company || "";
+  // var company = form.company || "";
   var brand = form.brand || "";
   var shop = form.shop || "";
   var series = form.series || "";
@@ -40,9 +40,9 @@ function validateForm(form) {
   if (!name) {
     return 'Name is required.';
   }
-  if (!company) {
-    return 'company is required.';
-  }
+  // if (!company) {
+  //   return 'company is required.';
+  // }
   if (!brand) {
     return 'brand is required.';
   }
@@ -86,7 +86,7 @@ router.get('/cosmetics', isAdmin, catchErrors(async (req,res, next) => {
   res.render('admin/cosmetics', {cosmetics : cosmetics, query: req.query});
 }));
 
-router.get('/cosmetics/add', (req, res, next) => {
+router.get('/cosmetics/add', isAdmin, (req, res, next) => {
   res.render('admin/cosmeticAdd', {messages: req.flash()});
 });
 
@@ -108,7 +108,7 @@ router.post('/cosmetics', isAdmin,(req, res, next) => {
     var newCosmetic = new Cosmetic({
       name: req.body.name,
       series: req.body.series,
-      company: req.body.company,
+      // company: req.body.company,
       latestSale: req.body.latestSale,
       volume: req.body.volume,
       brand: req.body.brand,
@@ -130,6 +130,25 @@ router.post('/cosmetics', isAdmin,(req, res, next) => {
   });
 });
 
+router.get('/cosmetics/:id', (req, res, next) => {
+  Cosmetic.findById(req.params.id, function(err, Cosmetic) {
+    if (err) {
+      return next(err);
+    }
+    res.render('admin/Cosmetics', {Cosmetic: Cosmetic});
+  });
+});
+
+router.delete('/cosmetics/:id', isAdmin, (req, res, next) => {
+  Cosmetic.findOneAndRemove({_id: req.params.id}, function(err) {
+    if (err) {
+      return next(err);
+    }
+    req.flash('success', '성공적으로 회원탈퇴 하였습니다.');
+    res.redirect('/admin/cosmetics');
+  });
+});
+
 router.put('/cosmetics/:id', isAdmin,(req, res, next) => {
   // var err = validateForm(req.body);
   // if (err) {
@@ -137,17 +156,17 @@ router.put('/cosmetics/:id', isAdmin,(req, res, next) => {
   //   return res.redirect('back');
   // }
 
-  Cosmetic.findById({_id: req.params.id}, function(err, user) {
+  Cosmetic.findById({_id: req.params.id}, function(err, Cosmetic) {
     if (err) {
       return next(err);
     }
-    if (!user) {
+    if (!Cosmetic) {
       req.flash('danger', '해당하는 화장품이 존재하지 않습니다..');
       return res.redirect('back');
     }
 
     Cosmetic.name = req.body.name;
-    Cosmetic.email = req.body.company;
+    // Cosmetic.company = req.body.company;
     Cosmetic.brand = req.body.brand;
     Cosmetic.series = req.body.series;
     Cosmetic.shop = req.body.shop;

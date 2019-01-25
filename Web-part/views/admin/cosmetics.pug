@@ -18,7 +18,7 @@ block maincontent
                 tr.bg-secondary
                     th N0.
                     th 화장품명
-                    th 회사
+                    th 브랜드
                     th 카테고리
                     th 판매처
                     th 관리
@@ -29,7 +29,7 @@ block maincontent
                             h6= index+1
                         td
                             a(href=`/cosmetics/${cosmetic.id}`)=cosmetic.name
-                        td= cosmetic.company
+                        td= cosmetic.brand
                         td= cosmetic.category
                         td= cosmetic.shop
                         td 

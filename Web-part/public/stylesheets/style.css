@@ -1,10 +1,15 @@
 /* 가운데 contents*/
 
-.content {
-  margin-top: 100px;
+.content{
+  margin-top: 50px;
   width: 100%;
-  /* margin-left: 90px; */
 }
+
+/* .content_container {
+  margin-top: 50px;
+  width: 65%; */
+  /* margin-left: 90px; }*/
+
 
 /* 상위 topnav */
 .sstrong-sidebar{margin: 0!important;float: initial}

@@ -1,0 +1,59 @@
+#body-content.content-container.col-md-9{
+    position: absolute!important;
+    left: 20%; top: 15%;width: 70%;
+    line-height: 1.2!important;
+}
+
+
+.error-section{margin-left: 80%; vertical-align: middle}
+.error-section-text{margin-top:10%;}
+.error-text{
+    display: block;
+    font-size:7px;color:#343a40;text-decoration: none;white-space: nowrap;margin:0;align-self: flex-end}
+.error-btn-text{
+    font-size: .5rem!important; color:#343a40; text-decoration: none;}
+.error-button{
+    color:#343a40;text-decoration: none;
+    padding: .2rem .3rem!important; border-color: #ffc107!important;
+    margin: 0 auto .35rem auto;transform: translate(90%);}
+.error-button:not(:disabled):not(.disabled){cursor:pointer;}
+
+
+.product-data *{margin: 1rem auto;}
+.product-info-subt{padding:0; padding-left:1.5em;font-size: .7em;}
+.product-info-cont{font-size: .7em;}
+
+/*오류 작성 페이지*/
+.error-input-section{ margin-top: 0;}
+.error-inline-block{display:inline;}
+.error-form-control{
+    display: block;
+    width: 100%;
+    font-size: .7rem;
+    line-height: 1.25;
+    color: #495057;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.error-submit-text{font-size: .5rem!important; color:#343a40;text-decoration: none;}
+.error-submit-btn{
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid;
+    padding: .3rem;
+    font-size: .8rem;
+    line-height: 1.25;
+    border-radius: .25rem;
+    width: 100%;
+    transition: all .15s ease-in-out;
+    text-transform: none;
+    overflow: visible;
+}

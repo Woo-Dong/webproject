@@ -1,21 +1,35 @@
-extends ./index
+extends cosLayout
 
 block maincontent
-    link(rel='stylesheet', href='/stylesheets/cosmetic.css')
-    #content.border.container
-        .row
-            .col-md-2
-                img(src='images/V.jpg' style='width:135px;height:203px')
-        
-            .col-md-10
-                h3.mb-0 화장품 이름:  #{cosmetic.name}
-                ul.border.data
-                    li.border 정가: #{cosmetic.price}
-                    li.border 판매처: #{cosmetic.shop}
-                     
-                    li.border 브랜드: #{cosmetic.brand}
-                    li.border 카테고리: #{cosmetic.category}
-                    li.border 세부정보:  
-                        span #{cosmetic.detail_descrpt}
-                    li.border 할인가: ???
+    link(rel='stylesheet', href='/stylesheets/product_sp.css')
+    #body-content.content-container.col-md-9.Aligner
+        .product-content-row
 
+            .error-section
+                span.error-text 잘못된 정보가 있나요??
+                a.error-button.d-lg-inline-block.mb-md-0.btn.error-btn-text(href=`/cosmetics/${cosmetic.id}/error`) 신고!
+
+            .product-section.row
+                .col-4.product-img.Aligner-item-high
+                    img(src='/images/V.jpg' style='width:90%; margin-left:0;')
+            
+                .col-7.product-info(style='margin-right:0;')
+                    .mb-0
+                        h4=cosmetic.name
+                    .product-data.row
+                        .product-info-subt.col-3
+                            .borde 카테고리 :
+                            .borde 정가 :  
+                            .borde 판매처 :  
+                            .borde 세부정보 :
+                            .borde 할인가 :   
+                            .borde 판매처 홈페이지 :
+
+                        .product-info-cont.col-9
+                            .borde  #{cosmetic.category}
+                            .borde #{cosmetic.price}
+                            .borde #{cosmetic.shop}
+                            .borde #{cosmetic.detail_descrpt}
+                            
+                            .borde (할인가)
+                            .borde  (판매처 홈페이지)

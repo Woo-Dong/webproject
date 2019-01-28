@@ -1,0 +1,46 @@
+extends cosLayout
+
+block maincontent
+
+    link(rel='stylesheet', href='/stylesheets/product_sp.css')
+    #body-content.content-container.col-md-9.Aligner.row
+        .product-section.error-inline-block.col-8
+            .row
+                
+                .col-4.product-img.Aligner-item-high
+                    img(src='/images/V.jpg' style='width:90%;')
+            
+                .col-7.product-info(style='margin-right:0;')
+                    h4.mb-0 화장품 이름
+                    .product-data.row
+                        .product-info-subt.col-3
+                            .borde 카테고리 :
+                            .borde 정가 :  
+                            .borde 판매처 :  
+                            .borde 세부정보 :
+                            .borde 할인가 :   
+                            .borde 판매처 홈페이지 :
+
+                        .product-info-cont.col-9
+                            .borde  #{cosmetic.category}
+                            .borde #{cosmetic.price}
+                            .borde #{cosmetic.shop}
+                            .borde #{cosmetic.detail_descrpt}
+                            
+                            .borde (할인가)
+                            .borde  (판매처 홈페이지)
+
+        .error-input-section.error-inline-block.col-3
+            label.error-section-text 정보 수정 요청
+            .product-data
+                div.product-info-re
+                    input#formGroupExampleInput2.error-form-control.borde(type='text' placeholder='화장품 이름')
+                    input#formGroupExampleInput2.error-form-control.borde(type='text' placeholder='정가')
+                    input#formGroupExampleInput2.error-form-control.borde(type='text' placeholder='할인가')
+                    input#formGroupExampleInput2.error-form-control.borde(type='text' placeholder='판매처')
+                    input#formGroupExampleInput2.error-form-control.borde(type='text' placeholder='판매처 홈페이지')
+                    textarea#exampleFormControlTextarea1.error-form-control.borde(rows='3' placeholder='세부정보')
+            .error-submit-section
+                label.error-submit-text 요청하신 사항은 관리자들의 검토 후 수정됩니다.
+                a.error-submit-btn.btn-primary(type='submit' href='/cosmetics/1') 저장
+                //제발 저장 누르면 다시 상품 페이지로 돌아가랏

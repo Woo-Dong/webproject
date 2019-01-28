@@ -1,10 +1,190 @@
-extends ../layout
+extends cosLayout
 
-block content
-    .content.container
-        .row
+block maincontent
+    link(rel='stylesheet', href='/stylesheets/product_CateList.css')
+    .category-title.row
+        .col-2
+        .col-8.row
+            .col-sm-2
             .col-md-2
-                block sidenav
-                    include ../includes/sidenav
-            .col-md-10
-                block maincontent
+            .col-md-4
+                h2.category-title-text 카테고리별
+            .col-md-2 
+            .col-md-2 
+        .col-2
+        
+    .category-category-buttons
+        .row
+            .col-2
+            .col-8
+                nav.nav.d-flex.justify-content-between.bg-secondary
+                    .btn-secondary.category-link-button 스킨케어
+                        .category-specific-menu
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                    .btn-secondary.category-link-button 클렌징
+                        .category-specific-menu
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                    .btn-secondary.category-link-button 베이스메이크업
+                        .category-specific-menu
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                    .btn-secondary.category-link-button 색조메이크업
+                        .category-specific-menu
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                    .btn-secondary.category-link-button 바디
+                        .category-specific-menu
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                    .btn-secondary.category-link-button 기타제품
+                        .category-specific-menu
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+                            a.specific-category-link(href='/cosmetics/1') dd
+            .col-2
+
+
+
+    .content-all-1.row
+        .col-1
+        .col-10.row
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/1')
+                        img.content-product-img(src='/images/V.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/#')
+                        img.content-product-img(src='/images/V.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/#')
+                        img.content-product-img(src='/images/V.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/#')
+                        img.content-product-img(src='/images/V.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+        .col-1
+
+
+    .content-all-2.row
+        .col-1
+        .col-10.row
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/1')
+                        img.content-product-img(src='../../images/V5.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/#')
+                        img.content-product-img(src='../../images/jj.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/#')
+                        img.content-product-img(src='../../images/jj.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/#')
+                        img.content-product-img(src='../../images/jj.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+        .col-1
+
+
+    .content-all-3.row
+        .col-1
+        .col-10.row
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/1')
+                        img.content-product-img(src='../../images/V5.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/#')
+                        img.content-product-img(src='../../images/jj.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/#')
+                        img.content-product-img(src='../../images/jj.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+            .col-md-3.content-product-info
+                .content-img-frame
+                    a(href='/cosmetics/#')
+                        img.content-product-img(src='../../images/jj.jpg')
+                .content-product-detail
+                    p.content-product-brand brand
+                    p.content-product-name name
+                    p.content-product-price price
+        .col-1

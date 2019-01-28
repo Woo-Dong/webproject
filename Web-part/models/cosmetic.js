@@ -2,7 +2,6 @@ var mongoose = require('mongoose'),
     mongoosePaginate = require('mongoose-paginate'),
     Schema = mongoose.Schema;
 
-
 var schema = new Schema({
   name: {type: String, required: true, trim: true},
   category: {type: String, default: '기타'},
@@ -22,7 +21,9 @@ var schema = new Schema({
   toJSON: { virtuals: true},
   toObject: {virtuals: true}
 });
+
 schema.plugin(mongoosePaginate);
+
 var Cosmetic = mongoose.model('Cosmetic', schema);
 
 module.exports = Cosmetic;

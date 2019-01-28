@@ -8,24 +8,25 @@ block maincontent
         include ../includes/alert
         form(action=`/admin/cosmetics/${Cosmetic._id}?_method=PUT`, method='POST')
             .form-group
-                label(for='name', style='margin-bottom:4px;')  * 제품 이름
-                input.form-control(type='text', id='name', name='name', placeholder='Enter name', value=Cosmetic.name)
-            //- .form-group
-            //-     label(for='company', style='margin-bottom:4px;')  * 제조사
-            //-     input.form-control(type='text', id='company', name='company', placeholder='Enter company',value=Cosmetic.company)
+                label(for='shop', style='margin-bottom:4px;')  * 판매처
+                input.form-control(type='text', id='shop', name='shop', value=Cosmetic.shop)
+            
             .form-group
                 label(for='brand', style='margin-bottom:4px;')  * 브랜드
-                input.form-control(type='text', id='brand', name='brand', placeholder='Enter brand', value=Cosmetic.brand)
-            .form-group
-                label(for='series', style='margin-bottom:4px;')  * 시리즈
-                input.form-control(type='text', id='series', name='series', placeholder='Enter series', value=Cosmetic.series)
-            .form-group
-                label(for='shop', style='margin-bottom:4px;')  * 판매사
-                input.form-control(type='text', id='shop', name='shop', placeholder='Enter shop', value=Cosmetic.shop)
+                input.form-control(type='text', id='brand', name='brand', value=Cosmetic.brand)
+            
             .form-group
                 label(for='price', style='margin-bottom:4px;')  * 가격
-                input.form-control(type='text', id='price', name='price', placeholder='Enter price', value=Cosmetic.price)
-
+                input.form-control(type='text', id='price', name='price', value=Cosmetic.price)
+            
+            .form-group
+                label(for='volume', style='margin-bottom:4px;')  * 용량
+                input.form-control(type='text', id='price', name='volume', value=Cosmetic.volume)
+            
+            .form-group
+                label(for='detail_descrpt', style='margin-bottom:4px;')  * 상세내용
+                textarea.form-control(id='detail_descrpt', name='detail_descrpt', rows='5')=Cosmetic.detail_descrpt
+            
             button.btn.btn-primary(type='submit') 화장품 정보 수정
             a.btn.btn-default(href='javascript:window.history.back();') 돌아가기
         

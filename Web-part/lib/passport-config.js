@@ -11,22 +11,20 @@ module.exports = function(passport) {
   });
 
   passport.use('local-signin', new LocalStrategy({
-    usernameField : 'idname',
+    usernameField : 'email',
     passwordField : 'password',
-    // session: true,
     passReqToCallback : true
-  }, async (req, idname, password, done) => {
+  }, async (req, email, password, done) => {
     try {
-      const user = await User.findOne({idname: idname});
-      if (user){
-        if(await user.validPassword(password)){
-          console.log("success local-signin");
-          return done(null, user, req.flash('success', '로그인 되었습니다.'));
-        } 
+      const user = await User.findOne({email: email});
+      if (user && await user.validatePassword(password)) {
+        return done(null, user, req.flash('success', '정상적으로 로그인되었습니다!'));
       }
-      return done(null, false, req.flash('danger', 'Invalid id or password'));
+      return done(null, false, req.flash('danger', '이메일 혹은 비밀번호가 일치하지 않습니다.'));
     } catch(err) {
       done(err);
     }
   }));
+
+
 };

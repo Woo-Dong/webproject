@@ -16,6 +16,10 @@
                 a.btn.login-button.d-lg-inline-block.mb-md-0.login-button-text(href='/signin') 로그인 / 회원가입
             else
                 p.login-text #{currentUser.name}님 반갑습니다.
+                button.btn.login-button.mypage-button.d-lg-inline-block.mb-md-0.login-button-text(type='button')
+                    | Messages 
+                    span.badge 4
+
                 if (currentUser.isAdmin)
                        a.btn.login-button.mypage-button.d-lg-inline-block.mb-md-0.login-button-text(href='/admin') 관리자 페이지 
                 a.btn.login-button.mypage-button.d-lg-inline-block.mb-md-0.login-button-text(href=`/users/${currentUser._id}`) 마이페이지

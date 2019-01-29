@@ -16,39 +16,37 @@ block content
                         button.btn.btn-outline-secondary.btn-lg(type='button')  세일상품 
                         button.btn.btn-outline-secondary.btn-lg(type='button')  원플러스원 / 증정품 
                     // 상품 브랜드별 분류
-                    .salecategory_button
-                        .btn-group(role='group', aria-label='Basic example')
-                            button.btn.btn-secondary(type='button') 전체 브랜드
-                            button.btn.btn-secondary(type='button') 이니스프리
-                            button.btn.btn-secondary(type='button') 네이처리퍼블릭
-                            button.btn.btn-secondary(type='button') 아리따움
-                            button.btn.btn-secondary(type='button') 스킨푸드
-                            button.btn.btn-secondary(type='button') 더페이스샵
-                        .btn-group(role='group', aria-label='Basic example')
-                            button.btn.btn-secondary(type='button') 애터미
-                            button.btn.btn-secondary(type='button') 헤라
-                            button.btn.btn-secondary(type='button') 디올
-                            button.btn.btn-secondary(type='button') 배불러
-                            button.btn.btn-secondary(type='button') 배고파
-                            button.btn.btn-secondary(type='button') 또뭐있지
-                        // 상품 종류별 분류
-                        //
-                            버튼이 글자크기에 따라 사이즈가 달라진다
-                            버튼 크기를 고정하든, 글자 간격을 조절하든 해야 한다.
-                        .btn-group(role='group', aria-label='Basic example')
-                            button.btn.btn-secondary(type='button') 전체 상품 종류
-                            button.btn.btn-secondary(type='button') 스킨로션
-                            button.btn.btn-secondary(type='button') 수분크림
-                            button.btn.btn-secondary(type='button') 마스크팩
-                            button.btn.btn-secondary(type='button') 미스트
-                            button.btn.btn-secondary(type='button') 향수
-                        .btn-group(role='group', aria-label='Basic example')
-                            button.btn.btn-secondary(type='button') 립밤
-                            button.btn.btn-secondary(type='button') 바디로션
-                            button.btn.btn-secondary(type='button') 클렌징
-                            button.btn.btn-secondary(type='button') 썬크림
-                            button.btn.btn-secondary(type='button') 베이비파우더
-                            button.btn.btn-secondary(type='button') 또뭐있지
+                    .salecategory_button.container
+                        .nav-scroller.py-1.mb-2
+                            nav.nav.d-flex.justify-content-between.bg-secondary
+                                button.btn.btn-secondary(type='button') 전체 브랜드
+                                button.btn.btn-secondary(type='button') 이니스프리
+                                button.btn.btn-secondary(type='button') 네이처리퍼블릭
+                                button.btn.btn-secondary(type='button') 아리따움
+                                button.btn.btn-secondary(type='button') 스킨푸드
+                                button.btn.btn-secondary(type='button') 더페이스샵
+                            nav.nav.d-flex.justify-content-between.bg-secondary
+                                button.btn.btn-secondary(type='button') 애터미
+                                button.btn.btn-secondary(type='button') 헤라
+                                button.btn.btn-secondary(type='button') 디올
+                                button.btn.btn-secondary(type='button') 배불러
+                                button.btn.btn-secondary(type='button') 배고파
+                                button.btn.btn-secondary(type='button') 또뭐있지
+                            nav.nav.d-flex.justify-content-between.bg-secondary
+                                button.btn.btn-secondary(type='button') 전체 상품 종류
+                                button.btn.btn-secondary(type='button') 스킨로션
+                                button.btn.btn-secondary(type='button') 수분크림
+                                button.btn.btn-secondary(type='button') 마스크팩
+                                button.btn.btn-secondary(type='button') 미스트
+                                button.btn.btn-secondary(type='button') 향수
+                            nav.nav.d-flex.justify-content-between.bg-secondary
+                                button.btn.btn-secondary(type='button') 립밤
+                                button.btn.btn-secondary(type='button') 바디로션
+                                button.btn.btn-secondary(type='button') 클렌징
+                                button.btn.btn-secondary(type='button') 썬크림
+                                button.btn.btn-secondary(type='button') 베이비파우더
+                                button.btn.btn-secondary(type='button') 또뭐있지
+
                 // Tabsconts on: 상품 분류방법 및 상품 디스플레이 총괄 클래스
                 .TabsConts_on
                     // class cate_info_tx 새로 지정해주어야 한다.
@@ -89,274 +87,131 @@ block content
                             // 리스트식, 관련 아이콘 필요
                             // 상품 전시
                     ul.cate_prd_list
-                        // 하나의 층 배열
                         li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    sapn.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
+                            a.info_salelist(href='#')
+                                // 상품 하나 덩어리 (여백포함)
+                                .prd_info
+                                    // 상품 하나 덩어리 (여백제외)
+                                    img(src='images/hero_header.jpg')
+                                    .prd_name
+                                        p.tx_brand 브랜드 이름
+                                        span.tx_name 상세 제품 이름
+                                    .prd_price
+                                        span.tx_org 정가
+                                        span.tx_sale &nbsp;세일가
+                                    .prd_hit
+                                        span.tx_hit 조회수
+                                    button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
                         li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
+                            a.info_salelist(href='#')
+                                // 상품 하나 덩어리 (여백포함)
+                                .prd_info
+                                    // 상품 하나 덩어리 (여백제외)
+                                    img(src='images/hero_header.jpg')
+                                    .prd_name
+                                        p.tx_brand 브랜드 이름
+                                        span.tx_name 상세 제품 이름
+                                    .prd_price
+                                        span.tx_org 정가
+                                        span.tx_sale &nbsp;세일가
+                                    .prd_hit
+                                        span.tx_hit 조회수
+                                    button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite    
                         li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
+                            a.info_salelist(href='#')
+                                // 상품 하나 덩어리 (여백포함)
+                                .prd_info
+                                    // 상품 하나 덩어리 (여백제외)
+                                    img(src='images/hero_header.jpg')
+                                    .prd_name
+                                        p.tx_brand 브랜드 이름
+                                        span.tx_name 상세 제품 이름
+                                    .prd_price
+                                        span.tx_org 정가
+                                        span.tx_sale &nbsp;세일가
+                                    .prd_hit
+                                        span.tx_hit 조회수
+                                    button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
                         li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
+                            a.info_salelist(href='#')
+                                // 상품 하나 덩어리 (여백포함)
+                                .prd_info
+                                    // 상품 하나 덩어리 (여백제외)
+                                    img(src='images/hero_header.jpg')
+                                    .prd_name
+                                        p.tx_brand 브랜드 이름
+                                        span.tx_name 상세 제품 이름
+                                    .prd_price
+                                        span.tx_org 정가
+                                        span.tx_sale &nbsp;세일가
+                                    .prd_hit
+                                        span.tx_hit 조회수
+                                    button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
                     ul.cate_prd_list
-                        // 하나의 층 배열
                         li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    sapn.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
+                            a.info_salelist(href='#')
+                                // 상품 하나 덩어리 (여백포함)
+                                .prd_info
+                                    // 상품 하나 덩어리 (여백제외)
+                                    img(src='images/hero_header.jpg')
+                                    .prd_name
+                                        p.tx_brand 브랜드 이름
+                                        span.tx_name 상세 제품 이름
+                                    .prd_price
+                                        span.tx_org 정가
+                                        span.tx_sale &nbsp;세일가
+                                    .prd_hit
+                                        span.tx_hit 조회수
+                                    button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
                         li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
+                            a.info_salelist(href='#')
+                                // 상품 하나 덩어리 (여백포함)
+                                .prd_info
+                                    // 상품 하나 덩어리 (여백제외)
+                                    img(src='images/hero_header.jpg')
+                                    .prd_name
+                                        p.tx_brand 브랜드 이름
+                                        span.tx_name 상세 제품 이름
+                                    .prd_price
+                                        span.tx_org 정가
+                                        span.tx_sale &nbsp;세일가
+                                    .prd_hit
+                                        span.tx_hit 조회수
+                                    button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite    
                         li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
+                            a.info_salelist(href='#')
+                                // 상품 하나 덩어리 (여백포함)
+                                .prd_info
+                                    // 상품 하나 덩어리 (여백제외)
+                                    img(src='images/hero_header.jpg')
+                                    .prd_name
+                                        p.tx_brand 브랜드 이름
+                                        span.tx_name 상세 제품 이름
+                                    .prd_price
+                                        span.tx_org 정가
+                                        span.tx_sale &nbsp;세일가
+                                    .prd_hit
+                                        span.tx_hit 조회수
+                                    button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
                         li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
-                    ul.cate_prd_list
-                        // 하나의 층 배열
-                        li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    sapn.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
-                        li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
-                        li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
-                        li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
-                    ul.cate_prd_list
-                        // 하나의 층 배열
-                        li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    sapn.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
-                        li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
-                        li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite
-                        li.flag
-                            // 상품 하나 덩어리 (여백포함)
-                            .prd_info
-                                // 상품 하나 덩어리 (여백제외)
-                                img(src='images/hero_header.jpg')
-                                .prd_name
-                                    p.tx_brand 브랜드 이름
-                                    span.tx_name 상세 제품 이름
-                                .prd_price
-                                    span.tx_org 정가
-                                    span.tx_sale &nbsp;세일가
-                                .prd_hit
-                                    span.tx_hit 조회수
-                                button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite    
+                            a.info_salelist(href='#')
+                                // 상품 하나 덩어리 (여백포함)
+                                .prd_info
+                                    // 상품 하나 덩어리 (여백제외)
+                                    img(src='images/hero_header.jpg')
+                                    .prd_name
+                                        p.tx_brand 브랜드 이름
+                                        span.tx_name 상세 제품 이름
+                                    .prd_price
+                                        span.tx_org 정가
+                                        span.tx_sale &nbsp;세일가
+                                    .prd_hit
+                                        span.tx_hit 조회수
+                                    button.material-icons(style='position: absolute; top: 100px; left: 125px;') favorite    
+
     // 화면 오른쪽 밑에 맨위로, 장바구니, 관심상품 으로 가는 버튼 추가하면 좋을듯
     // js 추가해서 화면크기에 따라 다르게 속성 수정
     .btn-group-vertical
         button.btn.btn-secondary(type='button')  맨 위로
         button.btn.btn-secondary(type='button')  장바구니
         button.btn.btn-secondary(type='button')  관심리스트
-
-    // pageing
-    nav(aria-label='...')
-        ul.pagination.pagination-lg
-            li.page-item.disabled
-                a.page-link(href='#', tabindex='-1', aria-disabled='true') Previous
-            li.page-item.active(aria-current='page')
-                a.page-link(href='#') 1
-                    span.sr-only (current)
-            li.page-item
-                a.page-link(href='#') 2
-            li.page-item
-                a.page-link(href='#') 3
-            li.page-item
-                a.page-link(href='#') 4
-            li.page-item
-                a.page-link(href='#') 5
-            li.page-item
-                a.page-link(href='#') 6
-            li.page-item
-                a.page-link(href='#') 7
-            li.page-item
-                a.page-link(href='#') 8
-            li.page-item
-                a.page-link(href='#') 9
-            li.page-item
-                a.page-link(href='#') 10
-            li.page-item
-                a.page-link(href='#') Next
-
-
-
-
-                        

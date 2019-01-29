@@ -1,7 +1,3 @@
-
-  
-
-
 .align_sort {
   display: inline-block;
   padding-top: 10px;
@@ -118,8 +114,9 @@
   }
 
 .salecategory_button {
-  text-align: center;
+  /* text-align: center; */
   margin: 20px;
+  width: 100%;
 }
 
 .TabsConts_on {
@@ -135,6 +132,9 @@
   display: inline-block;
 }
 
+.TabsConts_on .cate_prd_list .info_salelist a{
+  text-decoration: none;
+}
 
 .TabsConts_on .cate_align_box .type_sort {
   display: inline-block;
@@ -148,6 +148,3 @@
   width: 165px;
   height: 130px;
 }
-
-
-

@@ -7,7 +7,7 @@ if ( __name__ == "__main__"):
 
 basicUrl = 'https://www.glowpick.com/product/' 
 
-for m in range(0, 40):
+for m in range(0, 2):
     startNum = 1 + m*1000
     endNum = 1000 + m*1000
 

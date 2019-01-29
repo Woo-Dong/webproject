@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+    .content.container
+        block sidenav
+            include ad_sidenav
+        block maincontent
+            //-
+                이름, 이메일, 비밀번호, 즐찾(브랜드, 카테고리, 품목), 가입일
+            ul#myTab.nav.nav-tabs(role='tablist')
+                li.nav-item
+                    a#home-tab.nav-link.active(data-toggle='tab' href='#home' role='tab' aria-controls='home' aria-selected='true') 기본 사항
+                li.nav-item
+                    a#brandLike-tab.nav-link(data-toggle='tab' href='#brandLike' role='tab' aria-controls='brandLike' aria-selected='false') 관심 브랜드
+                li.nav-item
+                    a#categoryLike-tab.nav-link(data-toggle='tab' href='#categoryLike' role='tab' aria-controls='categoryLike' aria-selected='false') 관심 카테고리
+                li.nav-item
+                    a#productLike-tab.nav-link(data-toggle='tab' href='#productLike' role='tab' aria-controls='productLike' aria-selected='false') 관심 품목
+            #myTabContent.tab-content
+                #home.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='home-tab') 
+                    dl.row
+                        dt.col-md-3.h3 email
+                        dd.col-md-9 ex@example.com
+                        dt.col-md-3.h3 이름(닉네임)
+                        dd.col-md-9 이뭐뭐
+                        dt.col-md-3.h3 가입일
+                        dd.col-md-9 2000.00.00
+                #brandLike.tab-pane.fade(role='tabpanel' aria-labelledby='brandLike-tab') 2
+                #categoryLike.tab-pane.fade(role='tabpanel' aria-labelledby='categoryLike-tab') 3
+                #productLike.tab-pane.fade(role='tabpanel' aria-labelledby='productLike-tab') 4
+
+
+

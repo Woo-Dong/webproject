@@ -5,7 +5,7 @@ import json
 if ( __name__ == "__main__"):
     startC=input("크롤링 시작 페이지 : ")
     endC=input("크롤링 마지막 페이지 : ")
-    categoryList=mkCategoryList('oliveCate.xlsx','category') # 경로 : C:\main\WebProject\webproject
+    categoryList=mkCategoryList('./oliveCate.xlsx','category') # 경로 : C:\main\WebProject\webproject
     # print(categoryList)
     jsonFileName = "saleInfo_" + str(startC) + "_" + str(endC) + ".json"
     with open(jsonFileName, 'a', encoding="utf-8") as make_file:

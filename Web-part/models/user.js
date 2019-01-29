@@ -1,6 +1,6 @@
-var mongoose = require('mongoose'),
-    mongoosePaginate = require('mongoose-paginate'),
-    Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const  mongoosePaginate = require('mongoose-paginate');
+const Schema = mongoose.Schema;
 const crypto = require("crypto");
 
 
@@ -21,16 +21,24 @@ var schema = new Schema({
 });
 schema.plugin(mongoosePaginate);
 
-schema.methods.validPassword = function(password) {
-  let inputPassword = password;
-  let hashPassword = crypto.createHash("sha512").update(inputPassword + this.salt).digest("hex");
-  if(hashPassword == this.password){
-    return true;
-  }
-  else{
+
+schema.methods.validatePassword = function(password) {
+  if( password != this.password)
     return false;
-  }
-}
+  return true;
+};
+
+
+// schema.methods.validPassword = function(password) {
+//   let inputPassword = password;
+//   let hashPassword = crypto.createHash("sha512").update(inputPassword + this.salt).digest("hex");
+//   if(hashPassword == this.password){
+//     return true;
+//   }
+//   else{
+//     return false;
+//   }
+// }
 var User = mongoose.model('User', schema);
 
 module.exports = User;

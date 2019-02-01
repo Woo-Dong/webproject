@@ -2,189 +2,307 @@ extends cosLayout
 
 block maincontent
     link(rel='stylesheet', href='/stylesheets/product_CateList.css')
-    .category-title.row
-        .col-2
-        .col-8.row
-            .col-sm-2
-            .col-md-2
-            .col-md-4
-                h2.category-title-text 카테고리별
-            .col-md-2 
-            .col-md-2 
-        .col-2
-        
-    .category-category-buttons
-        .row
+    main(role='main')
+        .category-title.row
+
             .col-2
-            .col-8
-                nav.nav.d-flex.justify-content-between.bg-secondary
-                    .btn-secondary.category-link-button 스킨케어
-                        .category-specific-menu
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                    .btn-secondary.category-link-button 클렌징
-                        .category-specific-menu
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                    .btn-secondary.category-link-button 베이스메이크업
-                        .category-specific-menu
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                    .btn-secondary.category-link-button 색조메이크업
-                        .category-specific-menu
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                    .btn-secondary.category-link-button 바디
-                        .category-specific-menu
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                    .btn-secondary.category-link-button 기타제품
-                        .category-specific-menu
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
-                            a.specific-category-link(href='/cosmetics/1') dd
+            .col-8.row
+                .col-sm-2
+                .col-md-2
+                .col-md-4
+                    h2.category-title-text 카테고리별
+                .col-md-2 
+                .col-md-2 
             .col-2
 
+            
+
+        form.category-category-menubar(action='/cosmetics', method='POST')
+            .category-category-buttons
+
+                .btn-secondary.category-link-button 스킨케어
+                    .category-specific-menu
+                        input.specific-category-choice(type='checkbox' name='category-sp' id='skin_all')
+                        label.specific-category-choice-text 전체 선택
+                        input.specific-category-choice(type='checkbox' name ='스킨' class='category-sp-skin')
+                        label.specific-category-choice-text 스킨
+                        input.specific-category-choice(type='checkbox' name ='로션' class='category-sp-skin')
+                        label.specific-category-choice-text 로션
+                        input.specific-category-choice(type='checkbox' name ='에센스' class='category-sp-skin')
+                        label.specific-category-choice-text 에센스
+                        input.specific-category-choice(type='checkbox' name ='크림' class='category-sp-skin')
+                        label.specific-category-choice-text 크림
+                        input.specific-category-choice(type='checkbox' name ='미스트' class='category-sp-skin')
+                        label.specific-category-choice-text 미스트
+                        input.specific-category-choice(type='checkbox' name ='오일' class='category-sp-skin')
+                        label.specific-category-choice-text 오일
+                        input.specific-category-choice(type='checkbox' name ='' class='category-sp-skin')
+                        label.specific-category-choice-text 기능성(케어)
+                        input.specific-category-choice(type='checkbox' name ='' class='category-sp-skin')
+                        label.specific-category-choice-text 마스크/팩
+                script.
+                    $("#skin_all").click(function(){
+                        if($("#skin_all").is(":checked")){
+                            $(".category-sp-skin").prop("checked", true);
+                        }
+                        else{$(".category-sp-skin").prop("checked", false);}
+                    });
+
+                .btn-secondary.category-link-button 클렌징
+                    .category-specific-menu
+                        input.specific-category-choice(type='checkbox' name='category-sp' id="clean-all")
+                        label.specific-category-choice-text 전체 선택
+                        input.specific-category-choice(type='checkbox' name ='클렌징폼' class='category-sp-clean')
+                        label.specific-category-choice-text 클렌징폼
+                        input.specific-category-choice(type='checkbox' name ='클렌징오일' class='category-sp-clean')
+                        label.specific-category-choice-text 클렌징오일
+                        input.specific-category-choice(type='checkbox' name ='클렌징워터' class='category-sp-clean')
+                        label.specific-category-choice-text 클렌징워터
+                        input.specific-category-choice(type='checkbox' name ='필링/스크럽' class='category-sp-clean')
+                        label.specific-category-choice-text 필링/스크럽
+                        input.specific-category-choice(type='checkbox' name ='클렌징티슈' class='category-sp-clean')
+                        label.specific-category-choice-text 클렌징티슈
+                        input.specific-category-choice(type='checkbox' name ='리무버' class='category-sp-clean')
+                        label.specific-category-choice-text 리무버
+                script.
+                    $("#clean-all").click(function(){
+                        if($("#clean-all").is(":checked")){
+                            $(".category-sp-clean").prop("checked", true);
+                        }
+                        else{$(".category-sp-clean").prop("checked", false);}
+                    });
+                        
 
 
-    .content-all-1.row
-        .col-1
-        .col-10.row
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/1')
-                        img.content-product-img(src='/images/V.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/#')
-                        img.content-product-img(src='/images/V.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/#')
-                        img.content-product-img(src='/images/V.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/#')
-                        img.content-product-img(src='/images/V.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-        .col-1
+                .btn-secondary.category-link-button 베이스메이크업
+                    .category-specific-menu
+                        input.specific-category-choice(type='checkbox' name='category-sp' id='base-all')
+                        label.specific-category-choice-text 전체 선택
+                        input.specific-category-choice(type='checkbox' name ='메이크업베이스' class='category-sp-base')
+                        label.specific-category-choice-text 메이크업 베이스
+                        input.specific-category-choice(type='checkbox' name ='톤업크림' class='category-sp-base')
+                        label.specific-category-choice-text 톤업크림
+                        input.specific-category-choice(type='checkbox' name ='프라이머' class='category-sp-base')
+                        label.specific-category-choice-text 프라이머
+                        input.specific-category-choice(type='checkbox' name ='파운데이션' class='category-sp-base')
+                        label.specific-category-choice-text 파운데이션
+                        input.specific-category-choice(type='checkbox' name ='비비크림' class='category-sp-base')
+                        label.specific-category-choice-text 비비크림
+                        input.specific-category-choice(type='checkbox' name ='씨씨크림' class='category-sp-base')
+                        label.specific-category-choice-text 씨씨크림
+                        input.specific-category-choice(type='checkbox' name ='쿠션' class='category-sp-base')
+                        label.specific-category-choice-text 쿠션
+                        input.specific-category-choice(type='checkbox' name ='컨실러' class='category-sp-base')
+                        label.specific-category-choice-text 컨실러
+                        input.specific-category-choice(type='checkbox' name ='팩트' class='category-sp-base')
+                        label.specific-category-choice-text 팩트
+                        input.specific-category-choice(type='checkbox' name ='파우더' class='category-sp-base')
+                        label.specific-category-choice-text 파우더
+                script.
+                    $("#base-all").click(function(){
+                        if($("#base-all").is(":checked")){
+                            $(".category-sp-base").prop("checked", true);
+                        }
+                        else{$(".category-sp-base").prop("checked", false);}
+                    });
+                        
 
 
-    .content-all-2.row
-        .col-1
-        .col-10.row
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/1')
-                        img.content-product-img(src='../../images/V5.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/#')
-                        img.content-product-img(src='../../images/jj.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/#')
-                        img.content-product-img(src='../../images/jj.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/#')
-                        img.content-product-img(src='../../images/jj.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-        .col-1
+                .btn-secondary.category-link-button 색조메이크업
+                    .category-specific-menu
+                        input.specific-category-choice(type='checkbox' name='category-sp' id='color-all')
+                        label.specific-category-choice-text 전체 선택
+                        input.specific-category-choice(type='checkbox' name ='립' class='category-sp-color')
+                        label.specific-category-choice-text 립
+                        input.specific-category-choice(type='checkbox' name ='아이라이너' class='category-sp-color')
+                        label.specific-category-choice-text 아이라이너
+                        input.specific-category-choice(type='checkbox' name ='마스카라' class='category-sp-color')
+                        label.specific-category-choice-text 마스카라
+                        input.specific-category-choice(type='checkbox' name ='픽서' class='category-sp-color')
+                        label.specific-category-choice-text 픽서
+                        input.specific-category-choice(type='checkbox' name ='아이섀도우' class='category-sp-color')
+                        label.specific-category-choice-text 아이섀도우
+                        input.specific-category-choice(type='checkbox' name ='아이브로우' class='category-sp-color')
+                        label.specific-category-choice-text 아이브로우
+                        input.specific-category-choice(type='checkbox' name ='하이라이터' class='category-sp-color')
+                        label.specific-category-choice-text 하이라이터
+                        input.specific-category-choice(type='checkbox' name ='쉐딩' class='category-sp-color')
+                        label.specific-category-choice-text 쉐딩
+                        input.specific-category-choice(type='checkbox' name ='블러셔' class='category-sp-color')
+                        label.specific-category-choice-text 블러셔
+                        
+                script.
+                    $("#color-all").click(function(){
+                        if($("#color-all").is(":checked")){
+                            $(".category-sp-color").prop("checked", true);
+                        }
+                        else{$(".category-sp-color").prop("checked", false);}
+                    });
+
+                .btn-secondary.category-link-button 바디
+                    .category-specific-menu
+                        input.specific-category-choice(type='checkbox' name='category-sp' id='body-all')
+                        label.specific-category-choice-text 전체 선택
+                        input.specific-category-choice(type='checkbox' name ='선케어' class='category-sp-body')
+                        label.specific-category-choice-text 선케어
+                        input.specific-category-choice(type='checkbox' name ='바디워시' class='category-sp-body')
+                        label.specific-category-choice-text 바디워시
+                        input.specific-category-choice(type='checkbox' name ='바디로션' class='category-sp-body')
+                        label.specific-category-choice-text 바디로션
+                        input.specific-category-choice(type='checkbox' name ='핸드케어' class='category-sp-body')
+                        label.specific-category-choice-text 핸드케어
+                        input.specific-category-choice(type='checkbox' name ='풋케어' class='category-sp-body')
+                        label.specific-category-choice-text 풋케어
+                        input.specific-category-choice(type='checkbox' name ='립케어' class='category-sp-body')
+                        label.specific-category-choice-text 립케어
+                        input.specific-category-choice(type='checkbox' name ='헤어' class='category-sp-body')
+                        label.specific-category-choice-text 헤어
+                        input.specific-category-choice(type='checkbox' name ='네일' class='category-sp-body')
+                        label.specific-category-choice-text 네일
+                        
+                script.
+                    $("#body-all").click(function(){
+                        if($("#body-all").is(":checked")){
+                            $(".category-sp-body").prop("checked", true);
+                        }
+                        else{$(".category-sp-body").prop("checked", false);}
+                    });
+
+                .btn-secondary.category-link-button 기타제품
+                    .category-specific-menu
+                        input.specific-category-choice(type='checkbox' name='category-sp' id='etc-all')
+                        label.specific-category-choice-text 전체 선택
+                        input.specific-category-choice(type='checkbox' name ='브러시' class='category-sp-etc')
+                        label.specific-category-choice-text 브러시
+                        input.specific-category-choice(type='checkbox' name ='퍼프/스펀지' class='category-sp-etc')
+                        label.specific-category-choice-text 퍼프/스펀지
+                        input.specific-category-choice(type='checkbox' name ='뷰러' class='category-sp-etc')
+                        label.specific-category-choice-text 뷰러
+                        input.specific-category-choice(type='checkbox' name ='소도구' class='category-sp-etc')
+                        label.specific-category-choice-text 소도구
+                        
+                script.
+                    $("#etc-all").click(function(){
+                        if($("#etc-all").is(":checked")){
+                            $(".category-sp-etc").prop("checked", true);
+                        }
+                        else{$(".category-sp-etc").prop("checked", false);}
+                    });
+                .choice-submit-area
+                    button.choice-submit-button(type='submit') 선택 적용
+            
+                
 
 
-    .content-all-3.row
-        .col-1
-        .col-10.row
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/1')
-                        img.content-product-img(src='../../images/V5.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/#')
-                        img.content-product-img(src='../../images/jj.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/#')
-                        img.content-product-img(src='../../images/jj.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-            .col-md-3.content-product-info
-                .content-img-frame
-                    a(href='/cosmetics/#')
-                        img.content-product-img(src='../../images/jj.jpg')
-                .content-product-detail
-                    p.content-product-brand brand
-                    p.content-product-name name
-                    p.content-product-price price
-        .col-1
+        .content-all-1.row
+            .col-1
+            .col-10.row
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/1')
+                            img.content-product-img(src='../../images/V5.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+            .col-1
+
+
+        .content-all-2.row
+            .col-1
+            .col-10.row
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/1')
+                            img.content-product-img(src='../../images/V5.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+            .col-1
+
+
+        .content-all-3.row
+            .col-1
+            .col-10.row
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/1')
+                            img.content-product-img(src='../../images/V5.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+            .col-1

@@ -40,6 +40,10 @@ router.get('/', catchErrors(async (req, res, next) => {
 
 }));
 
+router.get('/1', (req, res, next) => {
+  
+  res.render('cosmetics/product_sp');
+});
 
 router.get('/:id', (req, res, next) => {
   Cosmetic.findById(req.params.id, function(err, cosmetic) {
@@ -58,5 +62,17 @@ router.get('/:id/error', (req, res, next) => {
     res.render('cosmetics/error', {cosmetic: cosmetic});
   });
 });
+
+// router.post('/', (req, req, next)=> {
+//   const termCategoryList = req.body;
+//   var  = await User.findOne({email: req.body.email});
+//   if (err) {
+//     return next(err);
+//   }
+//   if (user) {
+//     req.flash('danger', 'Email address already exists.');
+//     return res.redirect('back');
+//   }
+  
 
 module.exports = router;

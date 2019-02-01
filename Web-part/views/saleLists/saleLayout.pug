@@ -1,0 +1,10 @@
+extends ../layout
+include ../includes/_paginate
+block content
+    .content.container
+        .row
+            .col-md-2
+                block sidenav
+                    include ../includes/sidenav
+            .col-md-10
+                block maincontent

@@ -7,16 +7,6 @@ const router = express.Router();
 
 // var Sale = require('../models/sale');
 
-
-function subCategory(selector, apply){
-    $("#this.selector").click(function(){
-        if($("#this.selector").is(":checked")){
-            $(".this.apply").prop("checked", true);
-        }
-        else{$(".this.apply").prop("checked", false);}
-    });
-  }
-
 router.get('/', catchErrors(async (req, res, next) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;

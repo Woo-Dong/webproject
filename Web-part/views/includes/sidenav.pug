@@ -1,18 +1,18 @@
 .side.sstrong-sidebar
     .row.wrap.sidebar-w-95.sidebar-border
         .category-section.sidebar-section
-            a.sidebar-subtitle(href='#') 카테고리
+            a.sidebar-subtitle(href='/cosmetics') 카테고리
                 svg.icon-category(xmlns='http://www.w3.org/2000/svg' width='24' height='18' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
                     polygon(points='12 2 2 7 12 12 22 7 12 2')
                     polyline(points='2 17 12 22 22 17')
                     polyline(points='2 12 12 17 22 12')
 
-            a.sidebar-subsub(href='/cosmetics') 스킨케어
-            a.sidebar-subsub(href='#') 클렌징
-            a.sidebar-subsub(href='#') 베이스메이크업
-            a.sidebar-subsub(href='#') 색조메이크업
-            a.sidebar-subsub(href='#') 바디
-            a.sidebar-subsub(href='#') 소도구                             
+            a.sidebar-subsub#category-sp-skin(href='/cosmetics' onclick='function_name2(this.id);') 스킨케어
+            a.sidebar-subsub#category-sp-clean(href='#') 클렌징
+            a.sidebar-subsub#category-sp-base(href='#') 베이스메이크업
+            a.sidebar-subsub#category-sp-color(href='#') 색조메이크업
+            a.sidebar-subsub#category-sp-body(href='#') 바디
+            a.sidebar-subsub#category-sp-etc(href='#') 소도구                             
 
         .brand-section.sidebar-section
             a.sidebar-subtitle(href='#') 브랜드
@@ -30,3 +30,5 @@
                     polygon(points='12 2 2 7 12 12 22 7 12 2')
                     polyline(points='2 17 12 22 22 17')
                     polyline(points='2 12 12 17 22 12')
+
+

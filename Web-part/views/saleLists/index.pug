@@ -207,13 +207,14 @@ block maincontent
     .ongoing_sale 진행중 세일
  
     .event_sale_list
-        a.event_sale_link(href='salelists/1')
-            .event_sale_img
-                img(src='https://images.innisfree.co.kr/upload/event/799_0.jpg')
-            .event_sale_info
-                span.brand 이니스프리<br>
-                span.title 설/맞/이 설 선물세트<br>
-                span.period 2019.01.21 ~ 2019.02.12
+        .event_sale_link
+            a(href='/saleLists/1')
+                .event_sale_img
+                    img(src='https://images.innisfree.co.kr/upload/event/799_0.jpg')
+                .event_sale_info
+                    span.brand 이니스프리<br>
+                    span.title 설/맞/이 설 선물세트<br>
+                    span.period 2019.01.21 ~ 2019.02.12
 
 
     // 화면 오른쪽 밑에 맨위로, 장바구니, 관심상품 으로 가는 버튼 추가하면 좋을듯

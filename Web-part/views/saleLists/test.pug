@@ -1,0 +1,20 @@
+extends saleLayout
+
+
+block maincontent
+    link(rel='stylesheet', href='/stylesheets/salelist.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons') 
+    link(rel='stylesheet', href='/stylesheets/saleprdlist.css')
+
+    .sale_content
+        .sale_prd_list 대상 품목
+        .box_wrap
+            .sale_name 설/맞/이 설선물세트
+            li.box01
+                img(src='http://img.theqoo.net/img/zcBBi.jpg')            
+                // img.img-fluid(src='http://s3-amazon/asdasdasdasdasdasda/zcBBi.jpg')
+                // img.img-fluid(src='$')
+                p.prd_name 이니스프리 제품1
+                span.origin_price 정가
+                span.sale_price -> 세일가
+                button.buylink 사러가기

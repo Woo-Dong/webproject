@@ -50,7 +50,7 @@ router.get('/', catchErrors(async (req, res, next) => {
 }));
 
 router.get('/1', (req, res, next) => {
-  
+
   res.render('cosmetics/product_sp');
 });
 

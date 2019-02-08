@@ -1,6 +1,11 @@
+/* salelist ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 .align_sort {
   display: inline-block;
   padding-top: 10px;
+}
+
+.bowwrap {
+  border: solid black 1px;
 }
 
 .btn-group {
@@ -98,9 +103,11 @@
   float: left; 
 }
 
+/*
 .event_sale_list_ .event_sale_link a:hover {
  
 }
+*/
 
 .event_sale_list {
   width: 180px;
@@ -194,3 +201,6 @@
   width: 165px;
   height: 130px;
 }
+
+/* test.pug ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
+

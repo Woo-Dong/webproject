@@ -1,0 +1,53 @@
+/*body {
+  background-color:rgb(255, 204, 153);
+}*/
+
+.sale_content .box_wrap {
+  border: solid 1px gray;
+  width: 80%; 
+  margin-left: auto; 
+  margin-right: auto; 
+  background-color: white;
+  margin-top: 15px;
+  }
+
+.box_wrap .box01 {
+  border-right:solid 0.5px gray; 
+  width:23%;
+}
+
+.box_wrap .box01 {
+  text-align: center;
+}
+
+.box_wrap .box01 img {
+  width:80%;
+}
+
+.box_wrap .box01 .origin_price {
+  text-decoration: line-through
+}
+
+.box_wrap .box01 .buylink {
+  display: block; 
+  margin-left:auto; 
+  margin-right: auto;
+}
+
+.box_wrap li {
+  list-style-type: none;
+}
+
+.sale_prd_list {
+  text-align: center; 
+  font-size: 50px; 
+  text-decoration: underline;
+}
+
+.sale_name {
+  text-align: center; 
+  font-size: 25px;
+}
+
+
+

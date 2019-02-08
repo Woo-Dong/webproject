@@ -1,14 +1,13 @@
 /* 가운데 contents*/
 
 .content {
-  margin-top: 100px;
   width: 100%;
   /* margin-left: 90px; */
 }
 
 /* 상위 topnav */
 .sstrong-sidebar{margin: 0!important;float: initial}
-.sstrong-navbar{align-items: center;background-color: #343a40;}
+.sstrong-navbar{align-items: center;background-color: #343a40;margin-bottom: 3em; min-height: 80px;vertical-align: middle;}
 .sstrong-navbar > .wrap{position: relative;float: inherit;}
 
 .login-section{align-items: center!important;}
@@ -24,17 +23,17 @@
 .mypage-button {padding-left: 1rem; padding: .3rem .4rem;border-color: #ffc107;margin-top: 0!important;margin-bottom: .35rem!important;}
 
 .search-section {padding-left: 0;}
-.search-section .search-bar {width:94%;background-color: F0F0F0;border-width: 0; padding: 2.5px 2px;padding-left:.6em;border-radius: 9px;}
-.search-icon-button{border-radius: 9px;border-width: 0;padding: 2.5px 7.5px;margin-left: .3rem;width: 5%;}
+.search-section .search-bar {width:90%;background-color: #F0F0F0;border-width: 0; padding: 2.5px 2px;padding-left:.6em;border-radius: 9px;}
+.search-icon-button{border-radius: 9px;border-width: 0;padding: 2.5px 7.5px;margin-left: .3rem;width: 4%;}
 .search-section-form {vertical-align: middle!important;}
 .search-bar-search-icon{padding-bottom: .34em;}
 
-.Aligner{align-items: center;}
+.Aligner{align-items: center;margin: 0!important; padding-top: 12px;}
 
 /* <로고 시작> */
 .logo-section{padding-right: 0;}
 .logo-text{position:absolute;top:0em;left:2em;z-index: 3;color: white}
-.logo-text-under{position: absolute;top:0em;left:4em;color:yellow;font-size: 1.2em;}
+.logo-text-under{position: absolute;top:0em;left:4em;color:orange;font-size: 1.2em;}
 #burst-12 {
     background: orange;
     width: 1.6em;
@@ -81,20 +80,20 @@
 
 
 /* 좌측 사이드바  */
-.sstrong-sidebar {padding: 0;margin-right: 0;width: 125%;}
+.sstrong-sidebar {margin-right: 0;width: 100%;}
+.sidebar-border{margin-left: 0;}
 /* .sstrong-sidebar > .wrap{position: relative; margin: 0px;} */
 .sstrong-sidebar > .row{
-  height: 150%;
+  padding-top: 1em; padding-bottom: 1em;
   background-color: #F0F0F0;
   color: #333;
-  padding-top: 2em;
   }
 .sidebar-subtitle.active{color: #ffc107;}
 .sidebar-subtitle {display: block; text-decoration: none;font-size:21px;padding: .4em 0 .4em 1em;}
 .sidebar-w-95{width:100%;}
 .sidebar-section{width:100%}
 .side-icon-sub{margin-right: .4em;}
-.sidebar-subsub{display: inline-block;padding: .4em 1em;font-size: 13px;text-decoration: none;vertical-align: middle;}
+.sidebar-subsub{display: inline-block;padding: 0 0 0 3em;font-size: 13px;text-decoration: none;vertical-align: middle;width: 100%;line-height: 3em;}
 .sstrong-sidebar a {text-decoration: none;color:-webkit-link}
 .sstrong-sidebar a:hover {background-color: white}
 

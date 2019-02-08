@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../models/user');
 const Cosmetic = require('../models/cosmetic');
 const SaleList = require('../models/sale');
+const Complain = require('../models/complain');
 const catchErrors = require('../lib/async-error');  //async 함수에 대한 catch 대비
 
 module.exports = io => {
@@ -16,14 +17,15 @@ module.exports = io => {
   }
 
   function isAdmin(req, res, next) {
-    const user = req.user;
-    console.log(user.name);
-    if(user.isAdmin){
-      next();
-    } else {
-      req.flash('danger', '관리자 권한이 없습니다!');
-      res.redirect('/');
-    }
+    next();
+    // const user = req.user;
+    // console.log(user.name);
+    // if(user.isAdmin){
+    //   next();
+    // } else {
+    //   req.flash('danger', '관리자 권한이 없습니다!');
+    //   res.redirect('/');
+    // }
   }
 
   // 화장품 추가 함수
@@ -143,18 +145,12 @@ module.exports = io => {
       if (err) {
         return next(err);
       }
-      req.flash('success', '성공적으로 회원탈퇴 하였습니다.');
+      req.flash('success', '화장품 정보 삭제');
       res.redirect('/admin/cosmetics');
     });
   });
 
   router.put('/cosmetics/:id', isAdmin,(req, res, next) => {
-    // var err = validateForm(req.body);
-    // if (err) {
-    //   req.flash('danger', err);
-    //   return res.redirect('back');
-    // }
-
     Cosmetic.findById({_id: req.params.id}, function(err, Cosmetic) {
       if (err) {
         return next(err);
@@ -204,20 +200,130 @@ module.exports = io => {
     res.render('admin/saleLists', {saleLists : saleLists, query: req.query});
   }));
 
+  
+  router.get('/salelists/add', isAdmin, (req, res, next) => {
+    res.render('admin/salelistsAdd', {messages: req.flash()});
+  });
 
-  // router.get('/complain', isAdmin, catchErrors(async (req,res, next) => {
+  router.post('/salelists', isAdmin,(req, res, next) => {
+    var err = validateForm(req.body);
+    if (err) {
+      req.flash('danger', err);
+      return res.redirect('admin/salelists');
+    }
+    Cosmetic.findOne({name: req.body. cosName}, function(err, cosmetic) {
+      if (err) {
+        return next(err);
+      }
+      if (!cosmetic) {
+        req.flash('danger', '데이터베이스에 없는 화장품입니다.');
+      }
+      req.flash('saving');
 
-  //   const page = parseInt(req.query.page) || 1;
-  //   const limit = parseInt(req.query.limit) || 10;
-  //   var query = {};
+      // salePer = (req.body.price-req.body.salePrice)/req.body.price*100;
+      var newSaleList = new SaleList({
+        cosName: req.body.cosName,
+        title: req.body.title,
+        cosCategory: req.body.cosCategory,
+        category: req.body.category,
+        // condiction: req.body.condiction,
+        salePer: salePer,
+        start: req.body.start,
+        end: req.body.end,
+        // onOff: req.body.onOff
+      });
 
-  //   const complain = await SaleList.paginate(query, {
-  //     sort: {createdAt: -1},  
-  //     page: page, limit: limit
-  //   });
+      newSaleList.save(function(err) {
+        if (err) {
+          return next(err);
+        } else {
+          req.flash('success', 'Registered successfully.');
+          res.redirect('back');
+        }
+      });
+    });
+  });
 
-  //   res.render('admin/complain', {complain : complain, query: req.query});
-  // }));
+
+  router.get('/complains', isAdmin, catchErrors(async (req,res, next) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    var query = {};
+    
+    // Join 방법
+    // var complains = await Complain.find({}).populate('cosmeticId').populate('userId');
+    // console.log(complains)
+    
+    complains = await Complain.paginate(query, {
+      sort: {createdAt: -1},  
+      page: page, limit: limit
+    });
+    res.render('admin/complain', {complains : complains, query: req.query});
+  }));
+
+  router.get('/complains/:id', isAdmin, (req, res, next) => {
+    Complain.findById(req.params.id, function(err, Complain) {
+      // var complains = await Complain.find({}).populate('cosmeticId').populate('userId');
+      if (err) {
+        return next(err);
+      }
+
+      res.render('admin/complainShow', {complain: Complain, cosmetic: Complain.cosmeticId});
+    }).populate('cosmeticId').populate('userId');
+  });
+
+
+  router.put('/complains/:id', isAdmin,(req, res, next) => {
+    Complain.findById({_id: req.params.id}, function(err, Complain) {
+      if (err) {
+        return next(err);
+      }
+
+      Complain.cosmeticName = req.body.name;
+      Complain.checked = req.body.checked;
+      Complain.latestUpdate = new Date();
+
+      Cosmetic.findById(Complain.cosmeticId, function(err, Cosmetic) {
+        if (err) {
+          return next(err);
+        }
+        Cosmetic.name = req.body.name;
+        Cosmetic.brand = req.body.brand;
+        Cosmetic.price = req.body.price;
+        Cosmetic.salePrice = req.body.salePrice;
+        Cosmetic.shop = req.body.shop;
+        Cosmetic.shopURL = req.body.shopURL;
+
+        Cosmetic.save(function(err) {
+          if (err) {
+            return next(err);
+          }
+        });
+      });
+      
+      Complain.save(function(err) {
+        if (err) {
+          return next(err);
+        }
+        req.flash('success', '성공적으로 정보가 수정되었습니다.');
+        res.redirect('/admin/complains');
+      });
+    }).populate('cosmeticId').populate('userId');
+  });
+
+
+
+  router.delete('/complains/:id', isAdmin, (req, res, next) => {
+    Complain.findOneAndRemove({_id: req.params.id}, function(err) {
+      if (err) {
+        return next(err);
+      }
+      req.flash('success', '신고 내용 삭제');
+      res.redirect('back');
+    });
+  });
+
+
 
   return router;
 }

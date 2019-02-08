@@ -12,7 +12,7 @@ var schema = new Schema({
   price: {type: String, default: 0},
   detail_descrpt: {type: String},
   latestSale: {type: String},
-  pictName: {type: String},
+  img: {type: String},
   
   minPrice: {type: Number},
   maxSalePer: {type: Number}

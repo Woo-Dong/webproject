@@ -1,0 +1,65 @@
+extends index
+
+block maincontent
+
+    link(rel='stylesheet', href='/stylesheets/product_sp.css')
+    .content-container.col-md-12.Aligner.row
+        .col-2.product-img.Aligner-item-high
+            img(src='/images/V.jpg' style='width:90%;' ) 
+        .col-5.product-info(style='margin-right:0;')
+            label.h4.error-section-text 신고 사항
+            label(for='id' type="hidden")
+                .error-form-control.borde(type="hidden" id='id' name='id' value=complain.id) 
+            dl.dl-horizontal
+                dt * 화장품 이름
+                dd=complain.name
+                dt * 브랜드
+                dd=complain.brand
+                dt * 가격
+                dd=complain.price
+                dt * 판매처
+                dd=complain.shop
+                dt * 판매처 홈페이지 링크
+                dd=complain.shopURL
+                dt * 세부정보
+                dd=complain.detail_descrpt
+                dt * 코맨트
+                dd=complain.comment      
+        .error-input-section.error-inline-block.col-5      
+            .product-info(style='margin-right:0;')
+                label.h4.error-section-text 화장품 정보 수정
+                .error-submit-section
+                    label.error-submit-text 잘못된 정보를 수정해주세요.
+                form(action=`/admin/complains/${complain._id}?_method=PUT`, method='POST')
+                    .form-group
+                        label(for='name')  * 화장품 이름
+                        input.error-form-control.borde(type='text' id='name' name='name' value=cosmetic.name)
+                    
+                    .form-group
+                        label(for='brand')  * 브랜드
+                        input.error-form-control.borde(type='text' id='brand' name='brand' value=cosmetic.brand)
+                    
+                    .form-group
+                        label(for='price')  * 가격
+                        input.error-form-control.borde(type='text' id='price' name='price' value=cosmetic.price)
+                    
+                    .form-group
+                        label(for='shop', style='margin-bottom:4px;')  * 판매처
+                        input.error-form-control.borde(type='text' id='shop' name='shop' value=cosmetic.shop)
+                    
+                    .form-group
+                        label(for='shopURL', style='margin-bottom:4px;')  * 판매처 홈페이지 링크
+                        input.error-form-control.borde(type='text' id='shopURL' name='shopURL' value=cosmetic.shopURL)
+
+                    .form-group
+                        label(for='detail_descrpt', style='margin-bottom:4px;')  * 세부정보
+                        textarea.error-form-control.borde(rows='5' id='detail_descrpt' name='detail_descrpt' )=cosmetic.detail_descrpt
+                    .form-group
+                        label(for='checked') 신고 접수 
+                            input.form-control(type="radio" id='checked' name='checked', value='true', checked) 
+                            | 완료
+                            input.form-control(type="radio" id='checked' name='checked', value='false')
+                            | 미완료
+                    .error-submit-section
+                        button.btn.btn-primary(type='submit') 접수 완료
+                        button.btn.btn-primary(href='javascript:window.history.back();') 담에 하자

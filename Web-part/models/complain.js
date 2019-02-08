@@ -3,11 +3,19 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var schema = new Schema( {
-    title: {type: String, required: true, trim: true},
+    name: {type: String, trim: true},
+    brand: {type: String, trim: true},
+    price: {type: String, trim: true},
+    salePrice: {type: String, trim: true},
+    shop: {type: String, trim: true},
+    shopURL: {type: String, trim: true},
+    detail_descrpt: {type: String},
+    comment: {type: String},
 
-    wrongContent: {type: String},
-    correctContet: {type: String, required: true},
-    category:{type: String, default:'기타'},
+    userName: {type: String, trim: true},
+    cosmeticName: {type: String, trim: true},
+
+    category:{type: String, default:'??'},
     createAt: {type: Date, default: Date.now},
     checked: {type: Boolean, default: false},
     latestUpdate: {type: Date, default: Date.now},

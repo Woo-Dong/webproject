@@ -1,6 +1,9 @@
+@import "compass/css3";
+
 #body-content.content-container.col-md-9{
     position: absolute!important;
-    left: 20%; top: 15%;width: 70%;
+    left: 5%;
+    /* left: 20%; top: 15%;width: 70%; */
     line-height: 1.2!important;
 }
 
@@ -22,6 +25,64 @@
 .product-data *{margin: 1rem auto;}
 .product-info-subt{padding:0; padding-left:1.5em;font-size: .7em;}
 .product-info-cont{font-size: .7em;}
+
+/* 즐찾 버튼*/
+.likebutton-in-image{
+    position: absolute!important;
+    bottom: 10%; right: 10%;
+    font-size: 1.2em;
+    padding: 1px 2px;
+    /* border: solid orange; */
+    /* background: orange; */
+    color: white;
+    transform:translate(-50%,-50%);
+    text-align:center; 
+}
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+/*   float: left; */
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > label{ 
+    color: #ddd; 
+    float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label {
+  color: #FFD700;  
+} /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating 누른 상태에서 hover 시 */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label{
+  color: #FFED85;  
+} 
+
+.fa{
+    color: black;
+    font-size: 2em;
+}
 
 /*오류 작성 페이지*/
 .error-input-section{ margin-top: 0;}

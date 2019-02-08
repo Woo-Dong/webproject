@@ -17,8 +17,7 @@ block content
         #home.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='home-tab') 
           dl.row
             dt.col-sm-3 Email
-            dd.col-sm-9
-              a(href=`mailto:${user.email}`)= user.email
+            dd.col-sm-9= user.email
 
             dt.col-sm-3 Created At
             dd.col-sm-9= user.createdAt
@@ -35,10 +34,10 @@ block content
         #categoryLike.tab-pane.fade(role='tabpanel' aria-labelledby='categoryLike-tab')
           dl.row
             dt.col-sm-3 관심카테고리
-              if (!user.categoryLike)
-                dd.col-sm-9 설정한 관심 카테고리가 없습니다.
-              else
-                dd.col-sm-9= user.categoryLike
+            if (!user.categoryLike)
+              dd.col-sm-9 설정한 관심 카테고리가 없습니다.
+            else
+              dd.col-sm-9= user.categoryLike
         
         #productLike.tab-pane.fade(role='tabpanel' aria-labelledby='productLike-tab')
           dl.row

@@ -3,12 +3,10 @@ extends index
 block maincontent
   
     .container.formdiv.col-md-8
-        h1 화장품 추가
-
-    form(action='/admin/cosmetics', method='POST')
+        h1 세일 품목 추가
+    form(action='/admin/salelists', method='POST')
         .form-group
             label(for='category', style='margin-bottom:4px;')  * 제품 카테고리
-
             ul#myTab.nav.nav-tabs(role='tablist')
                 li.nav-item
                     a#skinCare-tab.nav-link.active(data-toggle='tab' href='#skinCare' role='tab' aria-controls='skinCare' aria-selected='true' name='options1') 스킨케어
@@ -190,42 +188,51 @@ block maincontent
                             input#option4(type='radio' name='options2' autocomplete='off')
                             |  소도구
 
-
         .form-group
-            label(for='name', style='margin-bottom:4px;')  * 제품 이름
-            input.form-control(type='text', id='name', name='name', placeholder='Enter name', style='margin-top:5px;')
+            label(for='cosName', style='margin-bottom:4px;')  * 제품 이름
+            input.form-control.col-4(type='text', id='cosName', name='cosName', placeholder='Enter cosName', style='margin-top:5px;')
             
         .form-group
-            label(for='shop', style='margin-bottom:4px;')  * 판매처
-            input.form-control(type='text', id='shop', name='shop', placeholder='Enter shop', style='margin-top:5px;')
+            label(for='title', style='margin-bottom:4px;')  * 세일 타이틀
+            input.form-control.col-4(type='text', id='title', name='title', placeholder='Enter title', style='margin-top:5px;')
 
         
         .form-group
-            label(for='brand', style='margin-bottom:4px;')  * 브랜드
-            input.form-control(type='text', id='brand', name='brand', placeholder='Enter brand', style='margin-top:5px;')
+            label(for='category', style='margin-bottom:4px;')  * 세일 종류
+            input.form-control.col-4(type='text', id='category', name='category', placeholder='Enter category', style='margin-top:5px;')
         
         .form-group
-            label(for='price', style='margin-bottom:4px;' )  * 가격
-            
-            .form-group(style='margin-top:5px;')
-                .input-group
-                    input#exampleInputAmount.form-control(type='text'  placeholder='Enter price' name='price')
-                    .input-group-addon 원
-        
+            label(for='price', style='margin-bottom:4px;')  * 가격
+            .input-group
+                input.form-control.col-3(type='text', id='price', name='price', placeholder='정가')
+                .input-group-addon 원
         .form-group
-            label(for='volume', style='margin-bottom:4px;')   * 용량
+            .input-group
+                input.form-control.col-3(type='text', id='salePrice', name='salePrice', placeholder='세일가')
+                .input-group-addon 원
 
-            .form-group(style='margin-top:5px;')
-                .input-group
-                    input#exampleInputAmount.form-control(type='text'  placeholder='Enter volume' name='volume')
-                    .input-group-addon ml
 
         .form-group
-            label(for='volume', style='margin-bottom:4px;')  * 사진 링크
-            input.form-control(type='text', id='price', name='volume', placeholder='Enter URL', style=' margin-top:5px;')
-        
+            label(for='date', style='margin-bottom:4px;' )  * 세일 기간
+            .input-group
+                input#exampleInputAmount.form-control.col-2(type='text'  placeholder='YYYY-MM-DD' name='start')
+                .input-group-addon ~
+                input#exampleInputAmount.form-control.col-2(type='text'  placeholder='YYYY-MM-DD' name='end')
+
+                
         .form-group
-            label(for='detail_descrpt', style='margin-bottom:4px;')  * 세부정보
-            textarea.form-control(rows='5' id='detail_descrpt' name='detail_descrpt')
-            
-        button.btn.btn-primary(type='submit') 화장품 추가
+            .btn-group(data-toggle='buttons')
+                    label.btn.btn-primary
+                        input#option1(type='radio' name='onOff' autocomplete='off')
+                        |  온라인
+                    label.btn.btn-primary
+                        input#option2(type='radio' name='onOff' autocomplete='off')
+                        |  오프라인
+
+        .form-group
+            label(for='pictName', style='margin-bottom:4px;')  * 세일 사진 주소
+            input.form-control.col-6(type='text', id='pictName', name='pictName', placeholder='Enter URL', style='margin-top:5px;')
+
+
+
+        button.btn.btn-primary(type='submit') 세일 정보 추가

@@ -20,7 +20,7 @@
     width: 130px;
     font-size: 18px;
     white-space: nowrap;
-    margin-bottom: 2rem;
+    margin-bottom: .5rem;
 }
 
 .category-specific-menu {
@@ -63,8 +63,17 @@
     top: 1.3em; left: 1em;
     transform: scale(1.5);
 }
-.choice-submit-area{display: inline-block;}
-.choice-submit-button{font-size: .6em;}
+
+.choice-submit-area{
+    align-items: flex-end
+}
+.choice-submit-button{
+    position: relative;
+    min-width: 6em;
+    right: 0;
+    font-size: .6em;
+    margin-bottom: 1rem;
+    }
 
 .content-product-info{margin-bottom: 2rem;}
 .content-product-img{height:8rem;}

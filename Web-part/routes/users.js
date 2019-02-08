@@ -1,9 +1,10 @@
 const express = require('express');
-const  User = require('../models/user');
+const User = require('../models/user');
 const catchErrors = require('../lib/async-error');
 
 module.exports = io => {
   const router = express.Router();
+  
   function needAuth(req, res, next) {
       if (req.isAuthenticated() ) {
         next();
@@ -41,6 +42,8 @@ module.exports = io => {
 
     return null;
   }
+
+
 
   router.get('/', needAuth, catchErrors(async (req, res, next) => {
     User.find({}, function(err, users) {

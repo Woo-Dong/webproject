@@ -1,6 +1,6 @@
 const express = require('express'); 
-const User = require('../models/user');
 const Cosmetic = require('../models/cosmetic');
+const User = require('../models/user');
 const catchErrors = require('../lib/async-error');
 
 const router = express.Router();
@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get('/', catchErrors(async (req, res, next) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
+  const limit = parseInt(req.query.limit) || 12;
 
   var query = {};
   const termTotal = req.query.termTotal;
@@ -39,10 +39,7 @@ router.get('/', catchErrors(async (req, res, next) => {
 
 }));
 
-router.get('/1', (req, res, next) => {
-  
-  res.render('cosmetics/product_sp');
-});
+
 
 router.get('/:id', (req, res, next) => {
   Cosmetic.findById(req.params.id, function(err, cosmetic) {
@@ -53,25 +50,27 @@ router.get('/:id', (req, res, next) => {
   });
 });
 
-router.get('/:id/error', (req, res, next) => {
+router.get('/:id/error', catchErrors(async (req, res, next) => {
   Cosmetic.findById(req.params.id, function(err, cosmetic) {
     if (err) {
       return next(err);
     }
     res.render('cosmetics/error', {cosmetic: cosmetic});
   });
-});
+}));
 
-// router.post('/', (req, req, next)=> {
-//   const termCategoryList = req.body;
-//   var  = await User.findOne({email: req.body.email});
-//   if (err) {
-//     return next(err);
-//   }
-//   if (user) {
-//     req.flash('danger', 'Email address already exists.');
-//     return res.redirect('back');
-//   }
-  
+// 똥 싸놓은 부분
+router.post('/:id/like', catchErrors (async (req, res, next) => {
+ const user = await User.findById({_id: req.user.id});
+ if (!(req.params.id in user.productLike)){
+   var newProductLike = user.productLike;
+   newProductLike.push(req.params.id);
+   user.productLike = newProductLike;
+ } 
+ await user.save();
+ req.flash('success', '성공적으로 당신의 취향이 저장되었다.');
+ res.redirect('back');
+}));
+
 
 module.exports = router;

@@ -79,6 +79,8 @@
 .content-product-img{height:8rem;}
 .content-product-detail{text-align: center;}
 .content-product-detail p{margin:0; font-size: .8rem;}
+
+.content-product-name > a{text-decoration: none; font-size: 1.2em; color: orange;}
  
 .content-img-frame{display:relative;height:70%;width: 100%;align-items: center;}
 .content-img-frame img{display:absolute; top:0; left:50%; bottom: 0; right: 0}

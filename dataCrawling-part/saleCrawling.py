@@ -64,7 +64,7 @@ def getPageInfor(sebooURL,page,categoryList=None):
         salePrice=int(salePrice.replace(",", ""))
         price=int(price.replace(",", ""))
         salePer= (price-salePrice)*100//price
-        print("판매가:",price,"세일가:",salePrice,"할인률: %s %%"%salePer)
+        print("판매가:",price,"세일가:",salePrice,"할인률: %s"%salePer)
 
     period=soup.select('div.prd_info > strong')
     if period:

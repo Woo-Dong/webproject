@@ -6,8 +6,8 @@ module.exports = io => {
   const router = express.Router();
   function needAuth(req, res, next) {
       if (req.isAuthenticated() ) {
-        next();
- ki8     } else {
+        next();     
+      } else {
         req.flash('danger', '다시 로그인해 주세요.');
         res.redirect('/signin');
       }

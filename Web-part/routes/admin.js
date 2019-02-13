@@ -109,6 +109,7 @@ module.exports = io => {
         return res.redirect('back');
       }
       req.flash('saving');
+
       var newCosmetic = new Cosmetic({
         name: req.body.name,
         // series: req.body.series,
@@ -117,7 +118,8 @@ module.exports = io => {
         shop: req.body.shop,
         volume: req.body.volume,
         price: req.body.price,
-        detail_descrpt: req.body.detail_descrpt
+        detail_descrpt: req.body.detail_descrpt,
+        img: req.body.img
       });
 
       newCosmetic.save(function(err) {
@@ -159,7 +161,6 @@ module.exports = io => {
         req.flash('danger', '해당하는 화장품이 존재하지 않습니다..');
         return res.redirect('back');
       }
-
       Cosmetic.name = req.body.name;
       Cosmetic.category = req.body.category;
       Cosmetic.brand = req.body.brand;
@@ -167,6 +168,7 @@ module.exports = io => {
       Cosmetic.volume = req.body.volume;
       Cosmetic.price = req.body.price;
       Cosmetic.detail_descrpt = req.body.detail_descrpt;
+      Cosmetic.img = req.body.img;
 
       Cosmetic.save(function(err) {
         if (err) {
@@ -230,6 +232,7 @@ module.exports = io => {
         salePer: salePer,
         start: req.body.start,
         end: req.body.end,
+        img: req.body.img
         // onOff: req.body.onOff
       });
 

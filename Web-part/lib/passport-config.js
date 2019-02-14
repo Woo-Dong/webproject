@@ -32,9 +32,9 @@ module.exports = function(passport) {
   }));
 
   passport.use(new NaverStrategy({
-    clientID: 'OtLRDyKlBgPysJGsIJzs',
-    clientSecret: 'CnKw6mh7Hj',
-    callbackURL: 'http://127.0.0.1:3000/auth/naver/callback'
+    clientID: '45a3VlIZkF7VifHlC6KG',
+    clientSecret: 'moGk6fZa2N',
+    callbackURL: 'https://heeburndeuk.herokuapp.com//auth/naver/callback'
   }, async (token, refreshToken, profile, done) => {
     console.log('Naver', profile);
     try {
@@ -67,7 +67,7 @@ module.exports = function(passport) {
   passport.use(new KakaoStrategy({
     clientID: '84642e397324624c13023c0b133d7264',
     clientSecret: '831bcfbb9dcec678a26953db1c15df70',
-    callbackURL: 'http://127.0.0.1:3000/auth/kakao/callback'
+    callbackURL: 'https://heeburndeuk.herokuapp.com/auth/kakao/callback'
   }, async (token, refreshToken, profile, done) => {
     console.log('Kakao', profile);
     try {
@@ -100,7 +100,7 @@ module.exports = function(passport) {
   passport.use(new GoogleStrategy({
     clientID: '207585647134-ph1s3pg9b7u34eusag71rn96vqp11h59.apps.googleusercontent.com',
     clientSecret: 'HV2zxj2LGs1lxoKvKUoCWuvB',
-    callbackURL: 'http://127.0.0.1:3000/auth/google/callback'
+    callbackURL: 'https://heeburndeuk.herokuapp.com/auth/google/callback'
   }, async (token, refreshToken, profile, done) => {
     console.log('google', profile);
     try {

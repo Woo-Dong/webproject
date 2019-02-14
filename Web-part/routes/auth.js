@@ -1,6 +1,6 @@
 module.exports = (app, passport) => {
     app.get('/signin', (req, res, next) => {
-        res.render('signin');
+        res.render('signIn');
     });
 
     app.post('/signin', passport.authenticate('local-signin', {

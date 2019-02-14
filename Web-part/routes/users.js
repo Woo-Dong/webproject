@@ -57,6 +57,7 @@ module.exports = io => {
 
   router.get('/:id/edit', needAuth, catchErrors(async (req, res, next) => {
     const user = await User.findById(req.params.id);
+    console.log(user);
     res.render('users/edit', {user: user});
   }));
 
@@ -114,16 +115,16 @@ module.exports = io => {
       return next(err);
     }
     if (user) {
-      req.flash('danger', 'Email address already exists.');
+      req.flash('danger', '이미 동일한 이메일이 존재합니다.');
       return res.redirect('back');
     }
     user = new User({
       name: req.body.name,
       email: req.body.email,
     });
-  user.password = req.body.password;
+  user.password = await user.generateHash(req.body.password);
     await user.save();
-    req.flash('success', 'Registered successfully. Please sign in.');
+    req.flash('success', '성공적으로 등록되었습니다. 다시 로그인 해주세요.');
     res.redirect('/signin');
   }));
   return router;

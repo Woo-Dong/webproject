@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  script(src='//developers.kakao.com/sdk/js/kakao.min.js')
+
   h5 로그인 화면
   
   .form-signin
@@ -18,13 +20,16 @@ block content
       hr
       a(href='/auth/kakao')
           p.otherway.login-kakao(style="color:black") kakao 아이디로 로그인
-      
+     
       a(href='/auth/naver')
           p.otherway.login-naver naver 아이디로 로그인
 
-      a(href='/auth/gmail')
+      a(href='/auth/google')
           p.otherway.login-google google 아이디로 로그인
-
+      
+      //- a(href='/auth/facebook')
+      //-     p.otherway.login-google facebook 아이디로 로그인
+        
   link(rel='stylesheet', href="stylesheets/login.css")
 
 

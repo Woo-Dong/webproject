@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const  mongoosePaginate = require('mongoose-paginate');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 
 var schema = new Schema({
@@ -27,11 +28,11 @@ schema.plugin(mongoosePaginate);
 
 
 schema.methods.validatePassword = function(password) {
-  bcrypt.compare(password, this.password);
+  return bcrypt.compare(password, this.password);
 };
 
 schema.methods.generateHash = function(password){
-  return bcrypt.hash.toString(password, 10);
+  return bcrypt.hash(password, 10);
 };
 
 var User = mongoose.model('User', schema);

@@ -86,7 +86,7 @@ module.exports = io => {
     user.isAdmin = req.body.isAdmin;
 
     if (req.body.password) {
-      user.password = req.body.password;
+      user.password = await user.generateHash(req.body.password);
     }
     await user.save();
     req.flash('success', '성공적으로 회원정보가 수정되었습니다.');
@@ -122,7 +122,8 @@ module.exports = io => {
       name: req.body.name,
       email: req.body.email,
     });
-  user.password = await user.generateHash(req.body.password);
+    user.password = await user.generateHash(req.body.password);
+    console.log('password:', user.password);
     await user.save();
     req.flash('success', '성공적으로 등록되었습니다. 다시 로그인 해주세요.');
     res.redirect('/signin');

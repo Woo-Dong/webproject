@@ -15,13 +15,10 @@ block maincontent
                 .col-md-2 
             .col-2
 
-        // 오른쪽 정렬하기!
         .formdiv
             form.form-inline 
                 input.form-control(type='search', name='seaerch', placeholder='화장품 검색')
                 button.btn.btn-primary(type='submit') 검색
-
-            
 
         form.category-category-menubar(action='/cosmetics', method='POST')
             .category-category-buttons
@@ -46,13 +43,7 @@ block maincontent
                         label.specific-category-choice-text 기능성(케어)
                         input.specific-category-choice(type='checkbox' name ='' class='category-sp-skin')
                         label.specific-category-choice-text 마스크/팩
-                //- script.
-                //-     $("#skin-all").click(function(){
-                //-         if($("#skin-all").is(":checked")){
-                //-             $(".category-sp-skin").prop("checked", true);
-                //-         }
-                //-         else{$(".category-sp-skin").prop("checked", false);}
-                //-     });
+
                 .btn-secondary.category-link-button 클렌징
                     .category-specific-menu
                         input.specific-category-choice(type='checkbox' name='category-sp' class='category-sp-clean' id='clean-all' onclick='function_name(this.id, "category-sp-clean");')
@@ -69,15 +60,6 @@ block maincontent
                         label.specific-category-choice-text 클렌징티슈
                         input.specific-category-choice(type='checkbox' name ='리무버' class='category-sp-clean')
                         label.specific-category-choice-text 리무버
-                script.
-                    $("#clean-all").click(function(){
-                        if($("#clean-all").is(":checked")){
-                            $(".category-sp-clean").prop("checked", true);
-                        }
-                        else{$(".category-sp-clean").prop("checked", false);}
-                    });
-                        
-
 
                 .btn-secondary.category-link-button 베이스메이크업
                     .category-specific-menu
@@ -103,13 +85,6 @@ block maincontent
                         label.specific-category-choice-text 팩트
                         input.specific-category-choice(type='checkbox' name ='파우더' class='category-sp-base')
                         label.specific-category-choice-text 파우더
-                //- script.
-                //-     $("#base-all").click(function(){
-                //-         if($("#base-all").is(":checked")){
-                //-             $(".category-sp-base").prop("checked", true);
-                //-         }
-                //-         else{$(".category-sp-base").prop("checked", false);}
-                //-     });
                         
                 .btn-secondary.category-link-button 색조메이크업
                     .category-specific-menu
@@ -133,18 +108,10 @@ block maincontent
                         label.specific-category-choice-text 쉐딩
                         input.specific-category-choice(type='checkbox' name ='블러셔' class='category-sp-color')
                         label.specific-category-choice-text 블러셔
-                        
-                //- script.
-                //-     $("#color-all").click(function(){
-                //-         if($("#color-all").is(":checked")){
-                //-             $(".category-sp-color").prop("checked", true);
-                //-         }
-                //-         else{$(".category-sp-color").prop("checked", false);}
-                //-     });
+
                 .btn-secondary.category-link-button 바디
                     .category-specific-menu
                         input.specific-category-choice(type='checkbox' name='category-sp' class='category-sp-body' id='body-all' onclick='function_name(this.id, "category-sp-body");')
-                        //- onclick = 'function_name(this.id, this.className);'; )
                         label.specific-category-choice-text 전체 선택
                         input.specific-category-choice(type='checkbox' name ='선케어' class='category-sp-body')
                         label.specific-category-choice-text 선케어
@@ -163,7 +130,6 @@ block maincontent
                         input.specific-category-choice(type='checkbox' name ='네일' class='category-sp-body')
                         label.specific-category-choice-text 네일
                        
-
                 .btn-secondary.category-link-button 기타제품
                     .category-specific-menu
                         input.specific-category-choice(type='checkbox' name='category-sp' class='category-sp-etc' id='etc-all' onclick='function_name(this.id, "category-sp-etc");')
@@ -177,20 +143,11 @@ block maincontent
                         input.specific-category-choice(type='checkbox' name ='소도구' class='category-sp-etc')
                         label.specific-category-choice-text 소도구
                         
-                //- script.
-                //-     $("#etc-all").click(function(){
-                //-         if($("#etc-all").is(":checked")){
-                //-             $(".category-sp-etc").prop("checked", true);
-                //-         }
-                //-         else{$(".category-sp-etc").prop("checked", false);}
-                //-     });
                 .choice-submit-area.row
                     .col-11
                     .col-1
                         button.choice-submit-button(type='submit') 선택 적용
             
-                
-
         hr
         if cosmetics.total > 0
             .content-all-1.row
@@ -200,7 +157,7 @@ block maincontent
                     .col-md-3.content-product-info
                         .content-img-frame
                             a(href=`/cosmetics/${cosmetic.id}`)
-                                img.content-product-img(src='../../images/V5.jpg')
+                                img.content-product-img(src='/images/V.jpg')
                         .content-product-detail
                             p.content-product-brand
                                 td= cosmetic.brand
@@ -209,11 +166,9 @@ block maincontent
                             p.content-product-price
                                 td= cosmetic.price + '원'
                 .col-1
-
-
     
     .pagination
-        +paginate(cosmetics, '/admin/cosmetics', query)
+        +paginate(cosmetics, '/cosmetics', query)
     script.
         function function_name(id, className) {
             if($("#"+id).is(":checked")){

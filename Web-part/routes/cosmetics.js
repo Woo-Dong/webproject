@@ -6,7 +6,6 @@ const catchErrors = require('../lib/async-error');
 
 const router = express.Router();
 
-// var Sale = require('../models/sale');
 function needAuth(req, res, next) {
   if (req.isAuthenticated() ) {
     next();
@@ -16,13 +15,10 @@ function needAuth(req, res, next) {
   }
 }
 
-
 router.get('/', catchErrors(async (req, res, next) => {
-  console.log(req.body);
-  console.log(params);
-  console.log(User);
+
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
+  const limit = parseInt(req.query.limit) || 12;
 
   var query = {};
   const termTotal = req.query.termTotal;
@@ -35,7 +31,6 @@ router.get('/', catchErrors(async (req, res, next) => {
       {detail_descrpt: {'$regex': termTotal, '$options': 'i'}}
     ]};
   }
-
 
   const termCategory = req.query.termCategory;
   if(termCategory) {
@@ -52,7 +47,6 @@ router.get('/', catchErrors(async (req, res, next) => {
   res.render('cosmetics/index', {cosmetics: cosmetics, query: req.query});
 
 }));
-
 
 router.get('/:id', (req, res, next) => {
   Cosmetic.findById(req.params.id, function(err, cosmetic) {
@@ -85,9 +79,9 @@ router.post('/', needAuth, (req, res, next) => {
     }
 
     req.flash('신고 접수 중');
-
     
     var newComplain = new Complain({
+      category : req.body.errorCate,
       name: req.body.nameC,
       brand: req.body.brand,
       price: req.body.price,
@@ -111,7 +105,40 @@ router.post('/', needAuth, (req, res, next) => {
   });
 });
 
-
-
+router.post('/:id/like', catchErrors (async (req, res, next) => {
+  const cosmetic = await Cosmetic.findById(req.params.id);
+  if (!cosmetic) {
+    return next({status: 404, msg: 'Not exist product!'});
+  }
+  const user = await User.findById(req.user._id);
+  var bool =true;
+  if(user.productLike){
+    if(Array.isArray(user.productLike) ){
+      
+      for(var prd in user.productLike){
+        if (cosmetic.id == prd){
+          bool = false;
+        }
+      }
+      if(bool){
+        var newProductLike = user.productlike;
+        newProductLike.push(cosmetic.id);
+        user.productLike = newProductLike;
+      }
+    }
+    else{
+      var productArr = new Array();
+      productArr[0] = user.productLike;
+      productArr.push(cosmetic.id);
+      user.productLike = productArr;
+    }
+  }
+  else{
+    user.productLike = cosmetic.id;
+  }
+  // user.productLike = cosmetic.name;
+  await user.save();
+  return res.json(user);
+}));
 
 module.exports = router;

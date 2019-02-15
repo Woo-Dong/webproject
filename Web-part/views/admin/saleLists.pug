@@ -19,9 +19,9 @@ block maincontent
                 tr.bg-secondary
                     th N0.
                     th 제목
-                    th 카테고리
+                    th saleCategory
+                    th 화장품
                     th 행사기간
-                    th 등록일자
                     th 관리
                 tbody       
                 each sale, index in saleLists.docs
@@ -31,10 +31,10 @@ block maincontent
                         td
                             a(href=`/saleLists/${sale.id}`)=sale.title
                         td= sale.category
-                        td #{moment(sale.start).format('MM-DD')} ~ #{moment(sale.end).format('MM-DD')}
-                        td #{moment(sale.createdAt).format('YYYY-MM-DD')}
+                        td= sale.cosName
+                        td #{moment(sale.start).format('YYYY-MM-DD')} ~ #{moment(sale.end).format('YYYY-MM-DD')}
                         td 
-                            a.btn.btn-outline-primary.btn-sm(href=`/saleLists/${sale._id}/edit`)  수정
-                            a.btn.btn-outline-danger.btn-sm.delete-btn(href=`/saleLists/${sale._id}?_method=DELETE`) 삭제
-    .pagination
-        +paginate(saleLists, '/admin/saleLists', query)
+                            a.btn.btn-outline-primary.btn-sm(href=`/admin/saleLists/${sale._id}/edit`)  수정
+                            a.btn.btn-outline-danger.btn-sm.delete-btn(href=`/admin/saleLists/${sale._id}?_method=DELETE`) 삭제
+        .pagination
+            +paginate(saleLists, '/admin/saleLists', query)

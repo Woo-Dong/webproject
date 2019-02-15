@@ -9,7 +9,12 @@ block maincontent
         form(action=`/admin/cosmetics/${Cosmetic._id}?_method=PUT`, method='POST')
 
             .form-group
-                label(for='name', style='margin-bottom:4px;')  * name
+                label(for='category', style='margin-bottom:4px;')  * 제품 카테고리
+
+                include category
+
+            .form-group
+                label(for='name', style='margin-bottom:4px;')  * 화장품명
                 input.form-control(type='text', id='name', name='name', value=Cosmetic.name)
 
             .form-group
@@ -66,5 +71,4 @@ block maincontent
                 });  
             button.btn.btn-primary(type='submit') 화장품 정보 수정
             a.btn.btn-default(href='javascript:window.history.back();') 돌아가기
-    
     

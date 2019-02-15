@@ -48,9 +48,9 @@ block maincontent
             .form-group
                 label(for='date', style='margin-bottom:4px;' )  * 세일 기간
                 .input-group
-                    input#exampleInputAmount.form-control(type='text'  name='start' value=SaleList.start)
+                    input#exampleInputAmount.form-control(type='date'  name='start' value=moment(SaleList.start).format('YYYY-MM-DD'))
                     .input-group-addon ~
-                    input#exampleInputAmount.form-control(type='text' name='end' value=SaleList.end)
+                    input#exampleInputAmount.form-control(type='date' name='end' value=moment(SaleList.end).format('YYYY-MM-DD'))
 
             .form-group
                 label(for='onOffBefore', style='margin-bottom:4px;')  * 온/오프 라인

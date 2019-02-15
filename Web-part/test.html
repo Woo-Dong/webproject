@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div class="main_search">
+
+            <div class="option option_keyword">
+                <label for="ipt_keyword_recruit" class="placeholder">검색어 입력</label>
+                <input id="ipt_keyword_recruit" type="text" class="key" maxlength="30" placeholder="검색어 입력" autocomplete="off">
+            </div>
+
+            <div class="option option_area" data-active="on">
+                <label for="ipt_area_recruit" class="placeholder hide">지역 선택</label>
+                <button id="ipt_area_recruit" type="button" class="key">
+                    <span class="filter_selected"></span>
+                </button>
+                <div id="panel_area" class="panel panel_area">
+                    <p class="blind">지역 선택</p>
+                    <div class="quick">
+                        <div class="direct">
+                            <span class="ipt_keyword">
+                                <input type="text" name="" id="area_ipt_keyword" placeholder="지역명 입력" autocomplete="off">
+                                <button type="button" class="btn_reset">삭제</button>
+                            </span>
+                            <div class="suggestion" style="display: none;">
+                                <div class="wrap_scroll">
+                                    <div class="scrollbar disable" style="height: 0px;">
+                                        <div class="track" style="height: 0px;">
+                                            <div class="thumb">
+                                                <div class="end"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="viewport">
+                                        <div class="overview" style="top: 0px;">
+                                            <ul class="list_check">
+                                            </ul>
+                                        <p class="empty">검색 결과가 없습니다</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="util_search">
+                                    <button type="button" class="btn_close">닫기</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lately">
+                        </div>
+                    </div>
+                <!-- 카테고리 depth -->
+                    <div class="details">
+                        <div class="wrap_scroll categories">
+                            <div class="scrollbar " style="height: 231px;"><div class="track" style="height: 231px;"><div class="thumb" style="top: 0px; height: 91.2154px;"><div class="end"></div></div></div></div>
+                            <div class="viewport">
+                                <div class="overview" style="top: 0px;">
+                                    <ul><li data-value="101000" class="selected show"><button type="button"><span>서울</span> (29,625)</button></li><li data-value="102000"><button type="button"><span>경기</span> (20,092)</button></li><li data-value="108000"><button type="button"><span>인천</span> (3,405)</button></li><li data-value="106000"><button type="button"><span>부산</span> (5,899)</button></li><li data-value="104000"><button type="button"><span>대구</span> (3,924)</button></li><li data-value="103000"><button type="button"><span>광주</span> (1,185)</button></li><li data-value="105000"><button type="button"><span>대전</span> (2,420)</button></li><li data-value="107000"><button type="button"><span>울산</span> (1,108)</button></li><li data-value="118000"><button type="button"><span>세종</span> (516)</button></li><li data-value="109000"><button type="button"><span>강원</span> (794)</button></li><li data-value="110000"><button type="button"><span>경남</span> (3,219)</button></li><li data-value="111000"><button type="button"><span>경북</span> (2,224)</button></li><li data-value="112000"><button type="button"><span>전남</span> (775)</button></li><li data-value="113000"><button type="button"><span>전북</span> (1,131)</button></li><li data-value="115000"><button type="button"><span>충남</span> (2,798)</button></li><li data-value="114000"><button type="button"><span>충북</span> (2,218)</button></li><li data-value="116000"><button type="button"><span>제주</span> (686)</button></li><li data-value="117000"><button type="button"><span>전국</span> (311)</button></li></ul>
+                                    <ul><li data-value="220200"><button type="button"><span>미국</span> (23)</button></li><li data-value="211200"><button type="button"><span>일본</span> (58)</button></li><li data-value="211300"><button type="button"><span>중국·홍콩</span> (120)</button></li><li data-value="210000"><button type="button"><span>아시아·중동</span> (390)</button></li><li data-value="220000"><button type="button"><span>북·중미</span> (43)</button></li><li data-value="230000"><button type="button"><span>남미</span> (3)</button></li><li data-value="240000"><button type="button"><span>유럽</span> (47)</button></li><li data-value="250000"><button type="button"><span>오세아니아</span> (7)</button></li><li data-value="260000"><button type="button"><span>아프리카</span> (7)</button></li><li data-value="270000"><button type="button"><span>남극대륙</span> (0)</button></li><li data-value="280000"><button type="button"><span>기타해외</span> (1)</button></li></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrap_scroll filters">
+                            <div class="scrollbar " style="height: 231px;"><div class="track" style="height: 231px;"><div class="thumb" style="top: 0px; height: 143.444px;"><div class="end"></div></div></div></div>
+                            <div class="viewport">
+                                <div class="overview" style="top: 0px;">
+                                    <div class="helper">
+                                        <button type="button" class="btn_expand">지역 펼쳐보기</button>
+                                        <button type="button" class="btn_reset">지역 초기화</button>
+                                    </div>
+                                    <ul class="list_check" style="display: block;"><li class="select_all"><input type="checkbox" id="c_a_101000" data-value="101000"><label for="c_a_101000"><span>서울전체</span></label></li><li><input type="checkbox" id="c_a_101010" data-value="101010"><label for="c_a_101010"><span>강남구</span> (8,158)</label></li><li><input type="checkbox" id="c_a_101020" data-value="101020"><label for="c_a_101020"><span>강동구</span> (724)</label></li><li><input type="checkbox" id="c_a_101030" data-value="101030"><label for="c_a_101030"><span>강북구</span> (266)</label></li><li><input type="checkbox" id="c_a_101040" data-value="101040"><label for="c_a_101040"><span>강서구</span> (1,198)</label></li><li><input type="checkbox" id="c_a_101050" data-value="101050"><label for="c_a_101050"><span>관악구</span> (636)</label></li><li><input type="checkbox" id="c_a_101060" data-value="101060"><label for="c_a_101060"><span>광진구</span> (771)</label></li><li><input type="checkbox" id="c_a_101070" data-value="101070"><label for="c_a_101070"><span>구로구</span> (1,726)</label></li><li><input type="checkbox" id="c_a_101080" data-value="101080"><label for="c_a_101080"><span>금천구</span> (2,133)</label></li><li><input type="checkbox" id="c_a_101090" data-value="101090"><label for="c_a_101090"><span>노원구</span> (392)</label></li><li><input type="checkbox" id="c_a_101100" data-value="101100"><label for="c_a_101100"><span>도봉구</span> (206)</label></li><li><input type="checkbox" id="c_a_101110" data-value="101110"><label for="c_a_101110"><span>동대문구</span> (620)</label></li><li><input type="checkbox" id="c_a_101120" data-value="101120"><label for="c_a_101120"><span>동작구</span> (472)</label></li><li><input type="checkbox" id="c_a_101130" data-value="101130"><label for="c_a_101130"><span>마포구</span> (2,106)</label></li><li><input type="checkbox" id="c_a_101140" data-value="101140"><label for="c_a_101140"><span>서대문구</span> (548)</label></li><li><input type="checkbox" id="c_a_101150" data-value="101150"><label for="c_a_101150"><span>서초구</span> (3,185)</label></li><li><input type="checkbox" id="c_a_101160" data-value="101160"><label for="c_a_101160"><span>성동구</span> (1,297)</label></li><li><input type="checkbox" id="c_a_101170" data-value="101170"><label for="c_a_101170"><span>성북구</span> (324)</label></li><li><input type="checkbox" id="c_a_101180" data-value="101180"><label for="c_a_101180"><span>송파구</span> (2,272)</label></li><li><input type="checkbox" id="c_a_101190" data-value="101190"><label for="c_a_101190"><span>양천구</span> (592)</label></li><li><input type="checkbox" id="c_a_101200" data-value="101200"><label for="c_a_101200"><span>영등포구</span> (2,297)</label></li><li><input type="checkbox" id="c_a_101210" data-value="101210"><label for="c_a_101210"><span>용산구</span> (834)</label></li><li><input type="checkbox" id="c_a_101220" data-value="101220"><label for="c_a_101220"><span>은평구</span> (349)</label></li><li><input type="checkbox" id="c_a_101230" data-value="101230"><label for="c_a_101230"><span>종로구</span> (990)</label></li><li><input type="checkbox" id="c_a_101240" data-value="101240"><label for="c_a_101240"><span>중구</span> (1,606)</label></li><li><input type="checkbox" id="c_a_101250" data-value="101250"><label for="c_a_101250"><span>중랑구</span> (268)</label></li></ul>
+                                    <p class="text_idle" style="display: none;">← 지역을 선택해주세요</p><!-- 지역 선택전에 보여줄 부분 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="option option_category" data-active="on">
+                <label for="ipt_category_recruit" class="placeholder">직업 선택</label>
+                <button id="ipt_category_recruit" type="button" class="key">
+                    <span class="filter_selected"></span>
+                </button>
+                <div id="panel_category" class="panel panel_category">
+                    <p class="blind">지역 선택</p>
+                    <div class="quick">
+                        <div class="direct">
+                            <span class="ipt_keyword">
+                                <input type="text" name="" id="category_ipt_keyword" placeholder="직업(직종)명 입력" autocomplete="off">
+                                <button type="button" class="btn_reset">삭제</button>
+                            </span>
+                            <div class="suggestion">
+                                <div class="wrap_scroll">
+                                    <div class="scrollbar disable" style="height: 0px;">
+                                        <div class="track" style="height: 0px;">
+                                            <div class="thumb">
+                                                <div class="end">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="viewport">
+                                        <div class="overview" style="top: 0px;">
+                                            <ul class="list_check">
+                                            </ul>
+                                            <p class="empty">검색 결과가 없습니다</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="util_search">
+                                    <button type="button" class="btn_close">닫기</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lately">
+                        </div>
+                    </div>
+                    <!-- 카테고리 depth -->
+                    <div class="details">
+                        <div class="wrap_scroll categories">
+                            <div class="scrollbar " style="height: 231px;"><div class="track" style="height: 231px;"><div class="thumb" style="top: 0px; height: 108.9px;"><div class="end"></div></div></div></div>
+                            <div class="viewport">
+                                <ul class="overview" style="top: 0px;"><li data-value="1" class="show"><button type="button"><span>경영·사무</span> (21,588)</button></li><li data-value="2"><button type="button"><span>영업·고객상담</span> (21,302)</button></li><li data-value="4"><button type="button"><span>IT·인터넷</span> (16,274)</button></li><li data-value="12"><button type="button"><span>디자인</span> (5,475)</button></li><li data-value="11"><button type="button"><span>서비스</span> (10,861)</button></li><li data-value="5"><button type="button"><span>전문직</span> (4,920)</button></li><li data-value="13"><button type="button"><span>의료</span> (10,196)</button></li><li data-value="3"><button type="button"><span>생산·제조</span> (19,794)</button></li><li data-value="9"><button type="button"><span>건설</span> (9,075)</button></li><li data-value="10"><button type="button"><span>유통·무역</span> (9,952)</button></li><li data-value="7"><button type="button"><span>미디어</span> (2,604)</button></li><li data-value="6"><button type="button"><span>교육</span> (9,839)</button></li><li data-value="8"><button type="button"><span>특수계층·공공</span> (560)</button></li></ul>
+                            </div>
+                        </div>
+                        <div class="wrap_scroll categories">
+                            <div class="scrollbar " style="height: 231px;"><div class="track" style="height: 231px;"><div class="thumb" style="top: 0px; height: 139.688px;"><div class="end"></div></div></div></div>
+                            <div class="viewport">
+                                <ul class="overview" style="top: 0px;"><li data-value="101"><button type="button"><span>기획·전략·경영</span> (1,690)</button></li><li data-value="119"><button type="button"><span>마케팅·광고·분석</span> (3,646)</button></li><li data-value="104"><button type="button"><span>홍보·PR·사보</span> (1,159)</button></li><li data-value="103"><button type="button"><span>경리·출납·결산</span> (3,309)</button></li><li data-value="114"><button type="button"><span>회계·재무·세무·IR</span> (2,571)</button></li><li data-value="102"><button type="button"><span>총무·법무·사무</span> (3,339)</button></li><li data-value="107"><button type="button"><span>비서·안내·수행원</span> (611)</button></li><li data-value="113"><button type="button"><span>인사·교육·노무</span> (1,078)</button></li><li data-value="108"><button type="button"><span>사무보조·문서작성</span> (3,868)</button></li><li data-value="120"><button type="button"><span>전시·컨벤션·세미나</span> (317)</button></li></ul>
+                            </div>
+                        </div>
+                        <div class="wrap_scroll filters">
+                            <div class="scrollbar disable" style="height: 231px;"><div class="track" style="height: 231px;"><div class="thumb" style="top: 0px; height: 231px;"><div class="end"></div></div></div></div>
+                            <div class="viewport">
+                                <div class="overview" style="top: 0px;">
+                                    <ul class="list_check" style="display: none;">
+                                    </ul>
+                                    <div class="helper">
+                                        <button type="button" class="btn_expand">직업 펼쳐보기</button>
+                                        <button type="button" class="btn_reset">직업 초기화</button>
+                                    </div>
+                                    <p class="text_idle" style="display: block;">← 직업을 선택해주세요</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" id="btn_search_recruit" class="btn_search">
+                <span>검색</span></button>
+            <button type="button" id="search_close_recruit" class="btn_close">
+                <span>닫기</span>
+            </button>
+        </div>
+    </form>
+</body>
+</html>

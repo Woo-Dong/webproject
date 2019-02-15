@@ -4,11 +4,12 @@ include ../includes/_paginate
 block maincontent
 
     h1 화장품관리
-    .container.formdiv.col-md-8
-        form.form-inline
-            input.form-control(type='search', name='seaerch', placeholder='화장품 검색')
-            button.btn.btn-primary(type='submit') 검색
-        a.btn.btn-outline-primary.btn-md(href='/admin/cosmetics/add')  추가하기
+        .container.formdiv.col-md-8
+            form.form-inline
+                input.form-control(type='search', name='seaerch', placeholder='제품 검색')
+                button.btn.btn-primary(type='submit') 검색
+        .container.formdiv.col-md-2
+            a.btn.btn-outline-primary.btn-md(href='/admin/cosmetics/add') 추가
     hr
     if cosmetics.total > 0
         .table-area

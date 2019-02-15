@@ -2,6 +2,7 @@ extends cosLayout
 
 block maincontent
     link(rel='stylesheet', href='/stylesheets/product_sp.css')
+
     #body-content.content-container.col-md-9.Aligner
         .product-content-row
 
@@ -11,7 +12,34 @@ block maincontent
 
             .product-section.row
                 .col-4.product-img.Aligner-item-high
-                    img(src='/images/V.jpg' style='width:90%; margin-left:0;')
+                    img.specific-product-img(src='/images/V.jpg' style='width:90%; margin-left:0;')
+
+                    fieldset.rating
+                        form(action = '/:id/like', method='POST')
+                            input#Like(type='radio' name='like' value='1')
+                            label(for='Like' title='쪼아욧!')
+                        script.
+                            var grd = function(){
+                                $("input[type='radio']").click(function() {
+                                    var previousValue = $(this).attr('previousValue');
+                                    var name = $(this).attr('name');
+
+                                    if (previousValue == 'checked') {
+                                        //- $(this).removeAttr('checked');
+                                        //- $(this).attr('previousValue', false);
+                                        $("input[name="+name+"]:radio").attr('previousValue', 'checked');
+                                        $(this).attr('previousValue', 'unchecked');
+                                    } else {
+                                        $("input[name="+name+"]:radio").attr('previousValue', false);
+                                        $(this).attr('previousValue', 'checked');
+
+                                    }
+                                });
+                            };
+
+                            grd('1');
+
+
             
                 .col-7.product-info(style='margin-right:0;')
                     .mb-0
@@ -27,9 +55,9 @@ block maincontent
 
                         .product-info-cont.col-9
                             .borde  #{cosmetic.category}
-                            .borde #{cosmetic.price}
+                            .borde #{cosmetic.price}원
                             .borde #{cosmetic.shop}
                             .borde #{cosmetic.detail_descrpt}
                             
                             .borde (할인가)
-                            .borde (판매처 홈페이지)
+                            .borde  (판매처 홈페이지)

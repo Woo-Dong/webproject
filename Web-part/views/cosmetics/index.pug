@@ -15,6 +15,12 @@ block maincontent
                 .col-md-2 
             .col-2
 
+        // 오른쪽 정렬하기!
+        .formdiv
+            form.form-inline 
+                input.form-control(type='search', name='seaerch', placeholder='화장품 검색')
+                button.btn.btn-primary(type='submit') 검색
+
             
 
         form.category-category-menubar(action='/cosmetics', method='POST')
@@ -47,7 +53,6 @@ block maincontent
                 //-         }
                 //-         else{$(".category-sp-skin").prop("checked", false);}
                 //-     });
-
                 .btn-secondary.category-link-button 클렌징
                     .category-specific-menu
                         input.specific-category-choice(type='checkbox' name='category-sp' class='category-sp-clean' id='clean-all' onclick='function_name(this.id, "category-sp-clean");')
@@ -73,6 +78,42 @@ block maincontent
                     });
                         
 
+        .content-all-3.row
+            .col-1
+            .col-10.row
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/1')
+                            img.content-product-img(src='../../images/V5.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+                .col-md-3.content-product-info
+                    .content-img-frame
+                        a(href='/cosmetics/#')
+                            img.content-product-img(src='../../images/jj.jpg')
+                    .content-product-detail
+                        p.content-product-brand brand
+                        p.content-product-name name
+                        p.content-product-price price
+            .col-1
 
                 .btn-secondary.category-link-button 베이스메이크업
                     .category-specific-menu
@@ -106,8 +147,6 @@ block maincontent
                 //-         else{$(".category-sp-base").prop("checked", false);}
                 //-     });
                         
-
-
                 .btn-secondary.category-link-button 색조메이크업
                     .category-specific-menu
                         input.specific-category-choice(type='checkbox' name='category-sp' id='color-all' onclick='function_name(this.id, "category-sp-color");')
@@ -138,7 +177,6 @@ block maincontent
                 //-         }
                 //-         else{$(".category-sp-color").prop("checked", false);}
                 //-     });
-
                 .btn-secondary.category-link-button 바디
                     .category-specific-menu
                         input.specific-category-choice(type='checkbox' name='category-sp' class='category-sp-body' id='body-all' onclick='function_name(this.id, "category-sp-body");')
@@ -189,120 +227,29 @@ block maincontent
             
                 
 
-
-        .content-all-1.row
-            .col-1
-            .col-10.row
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/1')
-                            img.content-product-img(src='../../images/V5.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/#')
-                            img.content-product-img(src='../../images/jj.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/#')
-                            img.content-product-img(src='../../images/jj.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/#')
-                            img.content-product-img(src='../../images/jj.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-            .col-1
+        hr
+        if cosmetics.total > 0
+            .content-all-1.row
+                .col-1
+                .col-10.row
+                each cosmetic, index in cosmetics.docs
+                    .col-md-3.content-product-info
+                        .content-img-frame
+                            a(href=`/cosmetics/${cosmetic.id}`)
+                                img.content-product-img(src='../../images/V5.jpg')
+                        .content-product-detail
+                            p.content-product-brand
+                                td= cosmetic.brand
+                            p.content-product-name 
+                                a(href=`/cosmetics/${cosmetic.id}`)=cosmetic.name
+                            p.content-product-price
+                                td= cosmetic.price + '원'
+                .col-1
 
 
-        .content-all-2.row
-            .col-1
-            .col-10.row
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/1')
-                            img.content-product-img(src='../../images/V5.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/#')
-                            img.content-product-img(src='../../images/jj.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/#')
-                            img.content-product-img(src='../../images/jj.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/#')
-                            img.content-product-img(src='../../images/jj.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-            .col-1
-
-
-        .content-all-3.row
-            .col-1
-            .col-10.row
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/1')
-                            img.content-product-img(src='../../images/V5.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/#')
-                            img.content-product-img(src='../../images/jj.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/#')
-                            img.content-product-img(src='../../images/jj.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-                .col-md-3.content-product-info
-                    .content-img-frame
-                        a(href='/cosmetics/#')
-                            img.content-product-img(src='../../images/jj.jpg')
-                    .content-product-detail
-                        p.content-product-brand brand
-                        p.content-product-name name
-                        p.content-product-price price
-            .col-1
-
+    
+    .pagination
+        +paginate(cosmetics, '/admin/cosmetics', query)
     script.
         function function_name(id, className) {
             if($("#"+id).is(":checked")){

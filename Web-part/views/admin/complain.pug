@@ -3,7 +3,7 @@ extends index
 include ../includes/_paginate
 block maincontent
 
-    h1 신고
+    h1 신고 접수
     .container.formdiv.col-md-8
         form.form-inline
             input.form-control(type='search', name='seaerch', placeholder='신고 검색')
@@ -23,28 +23,33 @@ block maincontent
                 a(role='menuitem' tabindex='-1' href='#') 처리 유무
 
     hr
-    .table-area
-        table.table.table-hover.text-center
-            thead
-            tr.bg-secondary
-                th N0.
-                th 카테고리
-                th 제목
-                th 화장품 명
-                th 신고자
-                th 처리
-            tbody
-            if complain.total > 0
-                each complain, index in complain.docs
+    if complains.total > 0
+        .table-area
+            table.table.table-hover.text-center
+                thead
+                tr.bg-secondary
+                    th NO.
+                    th 화장품 명
+                    th 브랜드
+                    th 신고자
+                    th 카테고리
+                    th 마지막 처리 날짜
+                    th 처리
+                    th 관리
+                tbody
+                each complain, index in complains.docs
                     tr
-                        a(href='#')
-                            td(scope='row')
-                                h6= index+1
-                            td
-                                a(href=`/complain/${complain.id}`)=complain.category
-                            td= complain.title
-                            td= complain.cosmeticId.name
-                            td= complain.userId.name
-                            td= complain.checked
+                        td(scope='row')
+                            h6= index+1
+                        td
+                            a(href=`/cosmetics/${complain.cosmeticId}`)=complain.cosmeticName
+                        td= complain.brand
+                        td= complain.userName
+                        td= complain.category
+                        td #{moment(complain.latestUpdate).format('YYYY-MM-DD')} 
+                        td= complain.checked
+                        td
+                            a.btn.btn-outline-primary.btn-sm(href=`/admin/complains/${complain._id}`)  접수
+                            a.btn.btn-outline-danger.btn-sm.delete-btn(href=`/admin/complains/${complain._id}?_method=DELETE`) 삭제
     .pagination
-        +paginate(complain, '/admin/complain', query)
+        +paginate(complains, '/admin/complains', query)

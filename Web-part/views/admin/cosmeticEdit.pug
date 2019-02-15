@@ -6,7 +6,12 @@ block maincontent
         h1 화장품 수정
     .input-box(style='width:35%; margin-left:auto; margin-right:auto;')
         include ../includes/alert
-        form(action=`/admin/cosmetics/${Cosmetic._id}?_method=PUT`, method='POST')
+        form(action=`/admin/cosmetics/${Cosmetic._id}?_method=PUT`, method='POST', enctype="multipart/form-data")
+
+            .form-group
+                label(for='name', style='margin-bottom:4px;')  * name
+                input.form-control(type='text', id='name', name='name', value=Cosmetic.name)
+
             .form-group
                 label(for='shop', style='margin-bottom:4px;')  * 판매처
                 input.form-control(type='text', id='shop', name='shop', value=Cosmetic.shop)
@@ -21,12 +26,47 @@ block maincontent
             
             .form-group
                 label(for='volume', style='margin-bottom:4px;')  * 용량
-                input.form-control(type='text', id='price', name='volume', value=Cosmetic.volume)
+                input.form-control(type='text', id='volume', name='volume', value=Cosmetic.volume)
             
             .form-group
                 label(for='detail_descrpt', style='margin-bottom:4px;')  * 상세내용
                 textarea.form-control(id='detail_descrpt', name='detail_descrpt', rows='5')=Cosmetic.detail_descrpt
+
+            .form-group
+                label(for='img')  * 이미지
+                input#file.form.control(type="file")
+                input#url.form-control(type="text", readonly= "readonly", name='img', value="")
+                img#preview.img-fluid(src="https://dummyimage.com/200x200/ccc/fff")
+            
+            script.
+                var sel_file;
+
+                $(document).ready(function() {
+                    $("#file").on("change", handleImgFileSelect);
+                });
+
+                function handleImgFileSelect(e) {
+                    var files = e.target.files;
+                    var filesArr = Array.prototype.slice.call(files);
+
+                    filesArr.forEach(function(f) {
+                        sel_file = f;
+
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $("#preview").attr("src", e.target.result);
+                        }
+                        reader.readAsDataURL(f);
+                    });
+                }
+
+                function() {
+                    $("")
+                }
+
+
             
             button.btn.btn-primary(type='submit') 화장품 정보 수정
             a.btn.btn-default(href='javascript:window.history.back();') 돌아가기
-        
+    
+    

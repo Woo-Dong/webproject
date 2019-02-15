@@ -3,11 +3,13 @@ extends index
 include ../includes/_paginate
 block maincontent
 
-    h1 세일리스트관리
+    h1 세일 관리
     .container.formdiv.col-md-8
         form.form-inline
             input.form-control(type='search', name='seaerch', placeholder='세일 검색')
             button.btn.btn-primary(type='submit') 검색
+    .container.formdiv.col-md-2
+        a.btn.btn-outline-primary.btn-md(href='/admin/salelists/add') 추가
         
     hr
     if saleLists.total > 0

@@ -56,7 +56,6 @@ module.exports = io => {
   }
 
 
-
   // 관리자 아이디 확인 절차 필요
   router.get('/', needAuth, isAdmin, (req, res, next) => {
       res.render('admin/index');
@@ -113,7 +112,7 @@ module.exports = io => {
       var newCosmetic = new Cosmetic({
         name: req.body.name,
         // series: req.body.series,
-        category: req.body.category,
+        category: req.body.options2,
         brand: req.body.brand,
         shop: req.body.shop,
         volume: req.body.volume,
@@ -162,7 +161,7 @@ module.exports = io => {
         return res.redirect('back');
       }
       Cosmetic.name = req.body.name;
-      Cosmetic.category = req.body.category;
+      Cosmetic.category = req.body.options2;
       Cosmetic.brand = req.body.brand;
       Cosmetic.shop = req.body.shop;
       Cosmetic.volume = req.body.volume;
@@ -189,6 +188,7 @@ module.exports = io => {
     });
   });
 
+
   router.get('/salelists', isAdmin, catchErrors(async (req,res, next) => {
 
     const page = parseInt(req.query.page) || 1;
@@ -208,44 +208,94 @@ module.exports = io => {
   });
 
   router.post('/salelists', isAdmin,(req, res, next) => {
-    var err = validateForm(req.body);
-    if (err) {
-      req.flash('danger', err);
-      return res.redirect('admin/salelists');
-    }
-    Cosmetic.findOne({name: req.body. cosName}, function(err, cosmetic) {
+    // var err = validateForm(req.body);
+    // if (err) {
+    //   req.flash('danger', err);
+    //   return res.redirect('admin/salelists');
+    // }
+    req.flash('saving');
+    salePer = (req.body.price-req.body.salePrice)/req.body.price*100;
+    
+    var newSaleList = new SaleList({
+      cosName: req.body.cosName,
+      price: req.body.price,
+      salePrice: req.body.salePrice,
+      salePer: salePer,
+      start: req.body.start,
+      end: req.body.end,
+      cosCategory: req.body.options2,
+      condiction: req.body.condiction,
+      title: req.body.title,
+      category: req.body.category,
+      onOff: req.body.onOff
+    });
+
+    newSaleList.save(function(err) {
+      if (err) {
+        return next(err);
+      } else {
+        req.flash('success', 'Registered successfully.');
+        res.redirect('back');
+      }
+    });
+  });
+
+  router.put('/salelists/:id', isAdmin,(req, res, next) => {
+    SaleList.findById({_id: req.params.id}, function(err, SaleList) {
       if (err) {
         return next(err);
       }
-      if (!cosmetic) {
-        req.flash('danger', '데이터베이스에 없는 화장품입니다.');
+      if (!SaleList) {
+        req.flash('danger', '해당하는 화장품이 존재하지 않습니다..');
+        return res.redirect('back');
       }
-      req.flash('saving');
+      salePer = (req.body.price-req.body.salePrice)/req.body.price*100;
+      SaleList.price = req.body.price,
+      SaleList.salePrice = req.body.salePrice,
+      SaleList.salePer = salePer,
+      SaleList.condiction = req.body.condiction,
+      SaleList.category = req.body.category,
+      SaleList.onOff = req.body.onOff
+      SaleList.cosName = req.body.cosName;
+      SaleList.title = req.body.title;
+      SaleList.start = req.body.start;
+      SaleList.end = req.body.end;
+      SaleList.cosCategory = req.body.options2;
 
-      // salePer = (req.body.price-req.body.salePrice)/req.body.price*100;
-      var newSaleList = new SaleList({
-        cosName: req.body.cosName,
-        title: req.body.title,
-        cosCategory: req.body.cosCategory,
-        category: req.body.category,
-        // condiction: req.body.condiction,
-        salePer: salePer,
-        start: req.body.start,
-        end: req.body.end,
-        img: req.body.img
-        // onOff: req.body.onOff
-      });
-
-      newSaleList.save(function(err) {
+      SaleList.save(function(err) {
         if (err) {
           return next(err);
-        } else {
-          req.flash('success', 'Registered successfully.');
-          res.redirect('back');
         }
+        req.flash('success', '성공적으로 정보가 수정되었습니다.');
+        res.redirect('back');
       });
     });
   });
+
+
+  router.delete('/salelists/:id', isAdmin, (req, res, next) => {
+    SaleList.findOneAndRemove({_id: req.params.id}, function(err) {
+      if (err) {
+        return next(err);
+      }
+      req.flash('success', '세일 삭제');
+      res.redirect('back');
+    });
+  });
+
+  router.get('/salelists/:id/edit', isAdmin, (req, res, next) => {
+    SaleList.findById(req.params.id, function(err, SaleList) {
+      if (err) {
+        return next(err);
+      }
+
+      res.render('admin/salelistEdit', {SaleList: SaleList});
+    });
+  });
+
+
+
+
 
 
   router.get('/complains', isAdmin, catchErrors(async (req,res, next) => {

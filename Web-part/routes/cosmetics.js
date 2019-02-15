@@ -86,8 +86,8 @@ router.post('/', needAuth, (req, res, next) => {
 
     req.flash('신고 접수 중');
 
-    
     var newComplain = new Complain({
+      category : req.body.errorCate,
       name: req.body.nameC,
       brand: req.body.brand,
       price: req.body.price,

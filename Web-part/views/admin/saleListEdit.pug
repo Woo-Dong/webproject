@@ -1,0 +1,71 @@
+extends index
+
+block maincontent
+  
+    .container.formdiv.col-md-8
+        h1 세일 정보 수정
+    .input-box(style=' margin-left:auto; margin-right:auto;')
+        include ../includes/alert
+        form(action=`/admin/salelists/${SaleList._id}?_method=PUT`, method='POST')
+            //- .form-group
+            //-     label(for='cosCategory', style='margin-bottom:4px;')  * 제품 카테고리
+
+            //-     include category
+
+            .form-group
+                label(for='cosName', style='margin-bottom:4px;')  * 제품명
+                input.form-control(type='text', id='cosName', name='cosName', value=SaleList.cosName)
+
+        
+            .form-group
+                label(for='title', style='margin-bottom:4px;')  * 타이틀
+                input.form-control(type='text', id='title', name='title', value=SaleList.title)
+
+            .form-group
+                label(for='category', style='margin-bottom:4px;')  * 카테고리
+                input.form-control(type='text', id='category', name='category', value=SaleList.category)
+
+            .form-group
+                label(for='condiction', style='margin-bottom:4px;')  * 세일 조건
+                input.form-control.col-4(type='text', id='condiction', name='condiction', value=SaleList.condiction )
+
+            .form-group
+                label(for='price', style='margin-bottom:4px;')  * 가격(필수)
+                .input-group
+                    input.form-control.col-3(type='text', id='price', name='price', value=SaleList.price)
+                    .input-group-addon 원
+
+            .form-group
+                .input-group
+                    input.form-control.col-3(type='text', id='salePrice', name='salePrice', value=SaleList.salePrice)
+                    .input-group-addon 원
+
+            .form-group
+                label(for='salePer', style='margin-bottom:4px;')  * 세일 퍼센트
+                input.form-control(type='text', id='salePer', name='salePer', value=SaleList.salePer disabled)
+            
+
+            .form-group
+                label(for='date', style='margin-bottom:4px;' )  * 세일 기간
+                .input-group
+                    input#exampleInputAmount.form-control(type='text'  name='start' value=SaleList.start)
+                    .input-group-addon ~
+                    input#exampleInputAmount.form-control(type='text' name='end' value=SaleList.end)
+
+            .form-group
+                label(for='onOffBefore', style='margin-bottom:4px;')  * 온/오프 라인
+                input.form-control(type='text', id='onOffBefore', name='onOffBefore', value=SaleList.onOff disabled)
+
+            .form-group
+                .btn-group(data-toggle='buttons')
+                    label.btn.btn-primary
+                        input#option1(type='radio' name='onOff' autocomplete='off' value='on')
+                        |  온라인
+                    label.btn.btn-primary
+                        input#option2(type='radio' name='onOff' autocomplete='off' value='off')
+                        |  오프라인
+
+            button.btn.btn-primary(type='submit') 세일 정보 수정
+            a.btn.btn-default(href='javascript:window.history.back();') 돌아가기
+    
+    

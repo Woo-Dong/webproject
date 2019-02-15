@@ -6,21 +6,23 @@ block maincontent
     h1 신고 접수
     .container.formdiv.col-md-8
         form.form-inline
-            input.form-control(type='search', name='seaerch', placeholder='신고 검색')
-            button.btn.btn-primary(type='submit') 검색
-        .dropdown.form-inline
-            button#dropdownMenu1.btn.btn-default.dropdown-toggle.btn-primary(type='button' data-toggle='dropdown' aria-expanded='true')
-                | 카테고리
-                span.caret
-            ul.dropdown-menu(role='menu' aria-labelledby='dropdownMenu1')
-                li(role='presentation')
-                a(role='menuitem' tabindex='-1' href='#') 페이지 신고
-                li(role='presentation')
-                a(role='menuitem' tabindex='-1' href='#') 화장품 신고
-                li(role='presentation')
-                a(role='menuitem' tabindex='-1' href='#') 세일 신고
-                li(role='presentation')
-                a(role='menuitem' tabindex='-1' href='#') 처리 유무
+            .col-md-7
+                input.form-control(type='search', name='seaerch', placeholder='신고 검색')
+                button.btn.btn-primary(type='submit') 검색
+            .col-md-4
+                .btn-group(data-toggle='buttons')
+                    label.btn.btn-primary.active
+                        input#option1(type='radio' name='errorCate' autocomplete='off' checked='' value='전체')
+                        |  전체
+                    label.btn.btn-primary
+                        input#option2(type='radio' name='errorCate' autocomplete='off' value='화장품')
+                        |  화장품
+                    label.btn.btn-primary
+                        input#option3(type='radio' name='errorCate' autocomplete='off' value='세일')
+                        |  세일
+                    label.btn.btn-primary
+                        input#option3(type='radio' name='errorCate' autocomplete='off' value='기타')
+                        |  기타
 
     hr
     if complains.total > 0

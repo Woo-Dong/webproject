@@ -1,13 +1,9 @@
-/*body {
-  background-color:rgb(255, 204, 153);
-}*/
-
 .sale_content .box_wrap {
-  border: solid 1px gray;
-  width: 80%; 
+  border: solid 2px gray;
+  width: 90%; 
   margin-left: auto; 
   margin-right: auto; 
-  background-color: white;
+  background-image: url('../images/ricepaper_v3.png');
   margin-top: 15px;
   }
 
@@ -36,6 +32,15 @@
 
 .box_wrap li {
   list-style-type: none;
+}
+
+.box_wrap .prd_category {
+  margin-top: 16px;
+}
+
+.buylink {
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
 
 .sale_prd_list {

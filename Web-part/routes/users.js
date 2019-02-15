@@ -5,9 +5,9 @@ const catchErrors = require('../lib/async-error');
 module.exports = io => {
   const router = express.Router();
   function needAuth(req, res, next) {
-      if (req.isAuthenticated() ) {
-        next();
- ki8     } else {
+      if ( req.isAuthenticated() ) {
+        next();     
+      } else {
         req.flash('danger', '다시 로그인해 주세요.');
         res.redirect('/signin');
       }
@@ -66,7 +66,6 @@ module.exports = io => {
     //   req.flash('danger', err);
     //   return res.redirect('back');
     // }
-
     const user = await User.findById({_id: req.params.id});
     if (!user) {
       req.flash('danger', '해당하는 회원이 존재하지 않습니다..');
@@ -77,16 +76,11 @@ module.exports = io => {
         req.flash('danger', '비밀번호가 다릅니다.');
         return res.redirect('back');
       }
-      user.password = req.body.password;
+      user.password = await user.generateHash(req.body.password);
     }
-
     user.name = req.body.name;
     user.email = req.body.email;
     user.isAdmin = req.body.isAdmin;
-
-    if (req.body.password) {
-      user.password = req.body.password;
-    }
     await user.save();
     req.flash('success', '성공적으로 회원정보가 수정되었습니다.');
     res.redirect('back');
@@ -114,16 +108,16 @@ module.exports = io => {
       return next(err);
     }
     if (user) {
-      req.flash('danger', 'Email address already exists.');
+      req.flash('danger', '이미 동일한 이메일이 존재합니다.');
       return res.redirect('back');
     }
     user = new User({
       name: req.body.name,
       email: req.body.email,
     });
-  user.password = req.body.password;
+    user.password = await user.generateHash(req.body.password);
     await user.save();
-    req.flash('success', 'Registered successfully. Please sign in.');
+    req.flash('success', '성공적으로 등록되었습니다. 다시 로그인 해주세요.');
     res.redirect('/signin');
   }));
   return router;

@@ -9,13 +9,11 @@ var session = require('express-session');
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
 var mongoose   = require('mongoose');
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 var cosmeticsRouter = require('./routes/cosmetics');
 var salelistsRouter = require('./routes/salelists');
-
 var passportSocketIo = require('passport.socketio');
 var passport = require('passport');
 var passportConfig = require('./lib/passport-config');
@@ -63,7 +61,6 @@ module.exports = (app, io) => {
   const sessionId = 'heeburndeuk.sid';
   const sessionSecret =  'I like U';
 
-  // session을 사용할 수 있도록.
   app.use(session({
     name: sessionId,
     resave: true,
@@ -72,11 +69,9 @@ module.exports = (app, io) => {
     secret: sessionSecret
   }));
 
-  app.use(flash()); // flash message를 사용할 수 있도록
+  app.use(flash()); 
 
-  // public 디렉토리에 있는 내용은 static하게 service하도록.
   app.use(express.static(path.join(__dirname, 'public')));
-
 
   //=======================================================
   // Passport 초기화

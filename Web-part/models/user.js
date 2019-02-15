@@ -1,13 +1,18 @@
 const mongoose = require('mongoose');
 const  mongoosePaginate = require('mongoose-paginate');
 const Schema = mongoose.Schema;
-const crypto = require("crypto");
+const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 
 var schema = new Schema({
   name: {type: String, required: true, trim: true},
   email: {type: String, required: true, index: true, unique: true, trim: true},
-  password: {type: String, required: true},
+  password: {type: String},
+  naver: {id: String, token:String},
+  kakao: {id: String, token:String},
+  google: {id: String, token:String},
+  // facebook: {id: String, token:String},
   brandLike: {type: String},
   categoryLike: {type: String},
   productLike: {type: String},
@@ -23,22 +28,13 @@ schema.plugin(mongoosePaginate);
 
 
 schema.methods.validatePassword = function(password) {
-  if( password != this.password)
-    return false;
-  return true;
+  return bcrypt.compare(password, this.password);
 };
 
+schema.methods.generateHash = function(password){
+  return bcrypt.hash(password, 10);
+};
 
-// schema.methods.validPassword = function(password) {
-//   let inputPassword = password;
-//   let hashPassword = crypto.createHash("sha512").update(inputPassword + this.salt).digest("hex");
-//   if(hashPassword == this.password){
-//     return true;
-//   }
-//   else{
-//     return false;
-//   }
-// }
 var User = mongoose.model('User', schema);
 
 module.exports = User;

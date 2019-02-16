@@ -45,7 +45,26 @@ block content
               if (!user.productLike)
                 dd.col-sm-9 설정한 관심 품목이 없습니다.
               else
-                dd.col-sm-9= user.productLike
+                dd.col-sm-9
+                  .content-all-1.row
+                      .col-1
+                      .col-10.row
+                      each cosmetic in cosmetics
+                          .col-md-3.content-product-info
+                              .content-img-frame
+                                  a(href=`/cosmetics/${cosmetic.id}`)
+                                      img.content-product-img.img-responsive.center-block(src=cosmetic.img style='width:70%; margin-left:0;')
+                              .content-product-detail
+                                  p.content-product-brand
+                                      td= cosmetic.brand
+                                  
+                                  p.content-product-name 
+                                      a(href=`/cosmetics/${cosmetic.id}`)=cosmetic.name
+                                  p.content-product-price
+                                      td= cosmetic.price + '원'
+                                  p.content-product-price
+                                      td= cosmetic.category
+
     hr
     p
       a.btn.btn-outline-primary(href=`/users/${user._id}/edit`) 회원정보 수정

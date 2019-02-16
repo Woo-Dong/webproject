@@ -20,7 +20,7 @@ router.get('/', catchErrors(async (req, res, next) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 12;
 
-  var query = {};
+  var query;
   const termTotal = req.query.termTotal;
   if (termTotal) {
     query = {$or: [
@@ -30,27 +30,60 @@ router.get('/', catchErrors(async (req, res, next) => {
       {brand: {'$regex': termTotal, '$options': 'i'}},
       {detail_descrpt: {'$regex': termTotal, '$options': 'i'}}
     ]};
+    cosmetics = await Cosmetic.paginate(query, {
+      sort: {name: -1}, 
+      page: page, limit: limit
+    });
   }
 
   const termCategory = req.query.termCategory;
   if(termCategory) {
-    query = {category: {'$regex': termCategory, '$options': 'i'}};
+    query = {category: {$in:termCategory} };
+    cosmetics = await Cosmetic.paginate(query, {
+      sort: {category: -1}, 
+      page: page, limit: limit
+    });
+    var strQuery = "";
+    if( (typeof termCategory) != "string"){
+      for(let i=0; i<termCategory.length; i++){
+        strQuery += termCategory[i] + ", ";
+      }
+      strQuery = strQuery.slice(0, -2);
+    }
+    else{
+      strQuery = termCategory;
+    }
   }
   const termBrand = req.query.termBrand;
   if(termBrand) {
-    query = {brand: {'$regex': termBrand, '$options': 'i'}};
+    query = {brand: {$in:termBrand}};
+    cosmetics = await Cosmetic.paginate(query, {
+      sort: {brand: -1}, 
+      page: page, limit: limit
+    });
   }
-  const cosmetics = await Cosmetic.paginate(query, {
-    sort: {name: -1}, 
-    page: page, limit: limit
-  });
-  res.render('cosmetics/index', {cosmetics: cosmetics, query: req.query});
+  const termShop = req.query.termShop;
+  if(termShop) {
+    query = {shop: {$in:termShop}};
+    cosmetics = await Cosmetic.paginate(query, {
+      sort: {shop: -1}, 
+      page: page, limit: limit
+    });
+  }
+  if(!query){
+    query = {};
+    var cosmetics = await Cosmetic.paginate(query, {
+      sort: {name: -1}, 
+      page: page, limit: limit
+    });
+  }
+  
+  res.render('cosmetics/index', {cosmetics: cosmetics, query: req.query, strQuery: strQuery});
 
 }));
 
 router.get('/:id', (req, res, next) => {
   Cosmetic.findById(req.params.id, function(err, cosmetic) {
-
     if (err) {
       return next(err);
     }
@@ -113,10 +146,13 @@ router.post('/:id/like', catchErrors (async (req, res, next) => {
   const user = await User.findById(req.user._id);
   var bool =true;
   if(user.productLike){
-    if(Array.isArray(user.productLike) ){
-      
-      for(var prd in user.productLike){
-        if (cosmetic.id == prd){
+    console.log(typeof user.productLike);
+    var str = user.productLike;
+    console.log(str.lastIndexOf(","));
+    if(!str.lastIndexOf(",")){
+      var productArr = user.productLike.split(",");
+      for(let i=0; i<productArr.length; i++){  //user.productLike = string type => array type으로 바꿔줘야 함
+        if (cosmetic.id == productArr[i]){
           bool = false;
         }
       }
@@ -136,7 +172,6 @@ router.post('/:id/like', catchErrors (async (req, res, next) => {
   else{
     user.productLike = cosmetic.id;
   }
-  // user.productLike = cosmetic.name;
   await user.save();
   return res.json(user);
 }));

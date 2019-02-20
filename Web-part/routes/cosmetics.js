@@ -17,11 +17,73 @@ function needAuth(req, res, next) {
 
 router.get('/', catchErrors(async (req, res, next) => {
 
+  var termTotal = "";
+  var termCategory;
+  var termBrand = "";
+  var termName = "";
+
+  var cosmetics;
+  var cosmetics_cate;
+  var cosmetics_brand;
+  var cosmetics_name;
+  
+  if(req.query.selectForm){
+
+    if(!req.query.term){
+      req.query.term = "";
+    }
+
+    termSelectArr = req.query.selectForm;
+
+    if(typeof(termSelectArr) == "object"){
+      for(let i=0; i<termSelectArr.length; i++){
+        var termSelect = termSelectArr[i];
+        if(termSelect == "total"){
+          termCategory = req.query.term;
+          termBrand = req.query.term;
+          termName = req.query.term;
+        }
+        else if(termSelect == "category"){
+          termCategory = req.query.term;
+        }
+        else if(termSelect == "brand"){
+          termBrand = req.query.term;
+        }
+        else if(termSelect == "name"){
+          termName = req.query.term;
+        }
+      }
+    }
+
+
+    else if(typeof(termSelectArr) == "string"){
+      if(termSelectArr == "total"){
+        termCategory = req.query.term;
+        termBrand = req.query.term;
+        termName = req.query.term;
+      }
+      else if(termSelectArr == "category"){
+        termCategory = req.query.term;
+      }
+      else if(termSelectArr == "brand"){
+        termBrand = req.query.term;
+      }
+      else if(termSelectArr == "name"){
+        termName = req.query.term;
+      }
+    }
+  }
+
+  if(req.query.termCategory){
+    termCategory = req.query.termCategory;
+  }
+
+  
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 12;
 
   var query;
-  const termTotal = req.query.termTotal;
+  // const termTotal = req.query.termTotal;
   if (termTotal) {
     query = {$or: [
       {name: {'$regex': termTotal, '$options': 'i'}},
@@ -34,51 +96,61 @@ router.get('/', catchErrors(async (req, res, next) => {
       sort: {name: -1}, 
       page: page, limit: limit
     });
+    var strQuery = termTotal;
   }
 
-  const termCategory = req.query.termCategory;
+  // const termCategory = req.query.termCategory;
   if(termCategory) {
     query = {category: {$in:termCategory} };
-    cosmetics = await Cosmetic.paginate(query, {
+    cosmetics_cate = await Cosmetic.paginate(query, {
       sort: {category: -1}, 
       page: page, limit: limit
     });
-    var strQuery = "";
-    if( (typeof termCategory) != "string"){
+    var strQuery_cate = "";
+    if( (typeof termCategory) != "object"){
       for(let i=0; i<termCategory.length; i++){
-        strQuery += termCategory[i] + ", ";
+        strQuery_cate += termCategory[i] + ", ";
       }
-      strQuery = strQuery.slice(0, -2);
+      strQuery_cate = strQuery_cate.slice(0, -2);
     }
     else{
-      strQuery = termCategory;
+      strQuery_cate = termCategory;
     }
   }
-  const termBrand = req.query.termBrand;
+  // const termBrand = req.query.termBrand;
   if(termBrand) {
-    query = {brand: {$in:termBrand}};
-    cosmetics = await Cosmetic.paginate(query, {
+    query = {brand: {'$regex': termBrand, '$options': 'i'} };
+    var strQuery_brand = termBrand;
+    cosmetics_brand = await Cosmetic.paginate(query, {
       sort: {brand: -1}, 
       page: page, limit: limit
     });
   }
-  const termShop = req.query.termShop;
-  if(termShop) {
-    query = {shop: {$in:termShop}};
-    cosmetics = await Cosmetic.paginate(query, {
-      sort: {shop: -1}, 
-      page: page, limit: limit
-    });
-  }
-  if(!query){
-    query = {};
-    var cosmetics = await Cosmetic.paginate(query, {
+
+  if(termName) {
+    query = {name: {'$regex': termName, '$options': 'i'} };
+    var strQuery_name = query;
+    cosmetics_name = await Cosmetic.paginate(query, {
       sort: {name: -1}, 
       page: page, limit: limit
     });
+
+    var strQuery_name = termName;
+  }
+
+  if(!query){
+    query = {};
+    var strQuery = query;
+    cosmetics = await Cosmetic.paginate(query, {
+    sort: {name: -1}, 
+    page: page, limit: limit
+    });
   }
   
-  res.render('cosmetics/index', {cosmetics: cosmetics, query: req.query, strQuery: strQuery});
+  res.render('cosmetics/index', 
+    {cosmetics: cosmetics, cosmetics_cate: cosmetics_cate, 
+      cosmetics_brand: cosmetics_brand, cosmetics_name: cosmetics_name, 
+      query: req.query, strQuery: strQuery, strQuery_cate: strQuery_cate,strQuery_brand: strQuery_brand, strQuery_name: strQuery_name});
 
 }));
 
@@ -146,27 +218,22 @@ router.post('/:id/like', catchErrors (async (req, res, next) => {
   const user = await User.findById(req.user._id);
   var bool =true;
   if(user.productLike){
-    console.log(typeof user.productLike);
-    var str = user.productLike;
-    console.log(str.lastIndexOf(","));
-    if(!str.lastIndexOf(",")){
-      var productArr = user.productLike.split(",");
-      for(let i=0; i<productArr.length; i++){  //user.productLike = string type => array type으로 바꿔줘야 함
-        if (cosmetic.id == productArr[i]){
-          bool = false;
-        }
+    var temp = new Array(); // 
+    temp = user.productLike.split(",");
+    var challenger = cosmetic.id;
+
+    temp.forEach(function(ggon){
+      if (challenger==ggon){
+        bool = false;
       }
-      if(bool){
-        var newProductLike = user.productlike;
-        newProductLike.push(cosmetic.id);
-        user.productLike = newProductLike;
-      }
+    })
+    if(bool){
+      temp.push(cosmetic.id);
+      user.productLike = temp;
     }
     else{
-      var productArr = new Array();
-      productArr[0] = user.productLike;
-      productArr.push(cosmetic.id);
-      user.productLike = productArr;
+      temp.remove(challenger);
+      user.productLike = temp;
     }
   }
   else{

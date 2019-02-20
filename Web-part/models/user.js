@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 
-
 var schema = new Schema({
   name: {type: String, required: true, trim: true},
   email: {type: String, required: true, index: true, unique: true, trim: true},

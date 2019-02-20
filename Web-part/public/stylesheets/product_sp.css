@@ -96,6 +96,7 @@
     border-top-right-radius: 75px;
     opacity: 1;
 }
+.product-like-btn > .txt {text-transform: uppercase;}
 /*오류 작성 페이지*/
 .error-input-section{ margin-top: 0;}
 .error-inline-block{display:inline;}

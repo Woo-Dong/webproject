@@ -211,22 +211,34 @@ router.post('/', needAuth, (req, res, next) => {
 });
 
 router.post('/:id/like', catchErrors (async (req, res, next) => {
+
+  Array.prototype.remove = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+  };
+  
   const cosmetic = await Cosmetic.findById(req.params.id);
   if (!cosmetic) {
     return next({status: 404, msg: 'Not exist product!'});
   }
   const user = await User.findById(req.user._id);
-  var bool =true;
+  var bool = true;
   if(user.productLike){
-    var temp = new Array(); // 
+    var temp = new Array(); 
     temp = user.productLike.split(",");
     var challenger = cosmetic.id;
 
-    temp.forEach(function(ggon){
+    temp.forEach(function(ggon) {
       if (challenger==ggon){
         bool = false;
       }
-    })
+    }) 
     if(bool){
       temp.push(cosmetic.id);
       user.productLike = temp;
@@ -239,6 +251,7 @@ router.post('/:id/like', catchErrors (async (req, res, next) => {
   else{
     user.productLike = cosmetic.id;
   }
+
   await user.save();
   return res.json(user);
 }));

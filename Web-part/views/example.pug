@@ -1,0 +1,188 @@
+doctype html
+// saved from url=(0052)https://getbootstrap.com/docs/4.3/examples/carousel/
+html(lang='en')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='Mark Otto, Jacob Thornton, and Bootstrap contributors')
+    meta(name='generator', content='Jekyll v3.8.5')
+    title Carousel Template · Bootstrap
+    link(rel='canonical', href='https://getbootstrap.com/docs/4.3/examples/carousel/')
+    // Bootstrap core CSS
+    link(href='./index_files/bootstrap.min.css', rel='stylesheet', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    style.
+      .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      }
+      @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+      }
+      }
+    // Custom styles for this template
+    link(href='./index_files/carousel.css', rel='stylesheet')
+  body
+    header
+      nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+        a.navbar-brand(href='https://getbootstrap.com/docs/4.3/examples/carousel/#') Carousel
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarCollapse', aria-controls='navbarCollapse', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarCollapse.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item.active
+              a.nav-link(href='https://getbootstrap.com/docs/4.3/examples/carousel/#')
+                | Home 
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='https://getbootstrap.com/docs/4.3/examples/carousel/#') Link
+            li.nav-item
+              a.nav-link.disabled(href='https://getbootstrap.com/docs/4.3/examples/carousel/#') Disabled
+          form.form-inline.mt-2.mt-md-0
+            input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search')
+            button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+    main(role='main')
+      #myCarousel.carousel.slide(data-ride='carousel')
+        ol.carousel-indicators
+          li(data-target='#myCarousel', data-slide-to='0')
+          li.active(data-target='#myCarousel', data-slide-to='1')
+          li(data-target='#myCarousel', data-slide-to='2')
+        .carousel-inner
+          .carousel-item
+            svg.bd-placeholder-img(width='100%', height='100%', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img')
+              rect(width='100%', height='100%', fill='#777')
+            .container
+              .carousel-caption.text-left
+                h1 Example headline.
+                p
+                  | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                p
+                  a.btn.btn-lg.btn-primary(href='https://getbootstrap.com/docs/4.3/examples/carousel/#', role='button') Sign up today
+          .carousel-item.active
+            svg.bd-placeholder-img(width='100%', height='100%', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img')
+              rect(width='100%', height='100%', fill='#777')
+            .container
+              .carousel-caption
+                h1 Another example headline.
+                p
+                  | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                p
+                  a.btn.btn-lg.btn-primary(href='https://getbootstrap.com/docs/4.3/examples/carousel/#', role='button') Learn more
+          .carousel-item
+            svg.bd-placeholder-img(width='100%', height='100%', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img')
+              rect(width='100%', height='100%', fill='#777')
+            .container
+              .carousel-caption.text-right
+                h1 One more for good measure.
+                p
+                  | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                p
+                  a.btn.btn-lg.btn-primary(href='https://getbootstrap.com/docs/4.3/examples/carousel/#', role='button') Browse gallery
+        a.carousel-control-prev(href='https://getbootstrap.com/docs/4.3/examples/carousel/#myCarousel', role='button', data-slide='prev')
+          span.carousel-control-prev-icon(aria-hidden='true')
+          span.sr-only Previous
+        a.carousel-control-next(href='https://getbootstrap.com/docs/4.3/examples/carousel/#myCarousel', role='button', data-slide='next')
+          span.carousel-control-next-icon(aria-hidden='true')
+          span.sr-only Next
+      //
+        Marketing messaging and featurettes
+        ==================================================
+      // Wrap the rest of the page in another container to center all the content.
+      .container.marketing
+        // Three columns of text below the carousel
+        .row
+          .col-lg-4
+            svg.bd-placeholder-img.rounded-circle(width='140', height='140', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 140x140')
+              title Placeholder
+              rect(width='100%', height='100%', fill='#777')
+              text(x='50%', y='50%', fill='#777', dy='.3em') 140x140
+            h2 Heading
+            p
+              | Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
+            p
+              a.btn.btn-secondary(href='https://getbootstrap.com/docs/4.3/examples/carousel/#', role='button') View details »
+          // /.col-lg-4
+          .col-lg-4
+            svg.bd-placeholder-img.rounded-circle(width='140', height='140', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 140x140')
+              title Placeholder
+              rect(width='100%', height='100%', fill='#777')
+              text(x='50%', y='50%', fill='#777', dy='.3em') 140x140
+            h2 Heading
+            p
+              | Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
+            p
+              a.btn.btn-secondary(href='https://getbootstrap.com/docs/4.3/examples/carousel/#', role='button') View details »
+          // /.col-lg-4
+          .col-lg-4
+            svg.bd-placeholder-img.rounded-circle(width='140', height='140', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 140x140')
+              title Placeholder
+              rect(width='100%', height='100%', fill='#777')
+              text(x='50%', y='50%', fill='#777', dy='.3em') 140x140
+            h2 Heading
+            p
+              | Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+            p
+              a.btn.btn-secondary(href='https://getbootstrap.com/docs/4.3/examples/carousel/#', role='button') View details »
+          // /.col-lg-4
+          // /.row
+          // START THE FEATURETTES
+          hr.featurette-divider
+          .row.featurette
+            .col-md-7
+              h2.featurette-heading
+                | First featurette heading. 
+                span.text-muted It’ll blow your mind.
+              p.lead
+                | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+            .col-md-5
+              svg.bd-placeholder-img.bd-placeholder-img-lg.featurette-image.img-fluid.mx-auto(width='500', height='500', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 500x500')
+                title Placeholder
+                rect(width='100%', height='100%', fill='#eee')
+                text(x='50%', y='50%', fill='#aaa', dy='.3em') 500x500
+          hr.featurette-divider
+          .row.featurette
+            .col-md-7.order-md-2
+              h2.featurette-heading
+                | Oh yeah, it’s that good. 
+                span.text-muted See for yourself.
+              p.lead
+                | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+            .col-md-5.order-md-1
+              svg.bd-placeholder-img.bd-placeholder-img-lg.featurette-image.img-fluid.mx-auto(width='500', height='500', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 500x500')
+                title Placeholder
+                rect(width='100%', height='100%', fill='#eee')
+                text(x='50%', y='50%', fill='#aaa', dy='.3em') 500x500
+          hr.featurette-divider
+          .row.featurette
+            .col-md-7
+              h2.featurette-heading
+                | And lastly, this one. 
+                span.text-muted Checkmate.
+              p.lead
+                | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+            .col-md-5
+              svg.bd-placeholder-img.bd-placeholder-img-lg.featurette-image.img-fluid.mx-auto(width='500', height='500', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img', aria-label='Placeholder: 500x500')
+                title Placeholder
+                rect(width='100%', height='100%', fill='#eee')
+                text(x='50%', y='50%', fill='#aaa', dy='.3em') 500x500
+          hr.featurette-divider
+          // /END THE FEATURETTES
+          // /.container
+          // FOOTER
+          footer.container
+            p.float-right
+              a(href='https://getbootstrap.com/docs/4.3/examples/carousel/#') Back to top
+            p
+              | © 2017-2019 Company, Inc. · 
+              a(href='https://getbootstrap.com/docs/4.3/examples/carousel/#') Privacy
+              |  · 
+              a(href='https://getbootstrap.com/docs/4.3/examples/carousel/#') Terms
+    script(src='./index_files/jquery-3.3.1.slim.min.js.다운로드', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script.
+      window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\\/script>')
+    script(src='./index_files/bootstrap.bundle.min.js.다운로드', integrity='sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o', crossorigin='anonymous')

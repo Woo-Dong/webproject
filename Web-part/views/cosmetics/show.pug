@@ -15,7 +15,7 @@ block maincontent
 
             .product-section.row
                 .col-4.product-img.Aligner-item-high
-                    img.specific-product-img.img-responsive.center-block(src=cosmetic.img style='width:90%; margin-left:0;')
+                    img.specific-product-img.img-responsive.center-block(src=cosmetic.img style='width:50%; height:50%; margin-left:0;')
                     
                     if (currentUser)
                         if ( currentUser.productLike.split(",").indexOf(cosmetic.id) >= 0 )

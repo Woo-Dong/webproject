@@ -1,105 +1,136 @@
 extends layout
+include includes/_paginate
 
 block content
-  .container
-    .row
-      .col-2
-        block sidenav
-          include ./includes/sidenav
+    .container
+        .row
+            .col-2
+                block sidenav
+                    include ./includes/sidenav
 
-      .col-10
-        block maincontent
-          include ./includes/alert
-          
-          .topslide
-            #myCarousel.carousel.slide.pointer-event(data-ride='carousel')
-                ol.carousel-indicators
-                    li(data-target='#myCarousel', data-slide-to='0')
-                    li.active(data-target='#myCarousel', data-slide-to='1')
-                    li(data-target='#myCarousel', data-slide-to='2')
-                .carousel-inner
-                    svg.bd-placeholder-img(width='100%', height='200%', xmlns='http://www.w3.org/2000/svg', preserveAspectRatio='xMidYMid slice', focusable='false', role='img')
-                        rect(fill='#777', width='100%', height='100%')
-                    .carousel-item
-                        .container
-                            .carousel-caption.text-left
-                                h1 마 이게 제목이다
-                                p
-                                | 마 이게 제목이다 1
-                    .carousel-item.active
-                        img.second-slide(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', alt='Second slide')
-                        .container
-                            .carousel-caption
-                                h1 Another example headline.
-                                p
-                                | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                    .carousel-item
-                        img.third-slide(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', alt='Third slide')
-                        .container
-                            .carousel-caption.text-right
-                                h1 One more for good measure.
-                                p
-                                | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                a.carousel-control-prev(href='#myCarousel', role='button', data-slide='prev')
-                    span.carousel-control-prev-icon(aria-hidden='true')
-                    span.sr-only Previous
-                a.carousel-control-next(href='#myCarousel', role='button', data-slide='next')
-                    span.carousel-control-next-icon(aria-hidden='true')
-                    span.sr-only Next
+            .col-10
+                block maincontent
+                    include ./includes/alert
+            
+                    .topslide
+                        #slide.carousel.slide(data-ride='carousel')
+                            ol.carousel-indicators
+                                li(data-target='#slide', data-slide-to='0')
+                                li.active(data-target='#slide', data-slide-to='1')
+                                li(data-target='#slide', data-slide-to='2')
+                            .carousel-inner
+                                .carousel-item.container
+                                    .row
+                                        .col-8
+                                            a(href=`salelists/${eventMain[0].id}`)
+                                                img(src=eventMain[0].img, width='100%', height='80%')
+                                        .col-4
+                                            .carousel-caption.text-left
+                                                h3=eventMain[0].title
+                                                p 이벤트 기간: #{eventMain[0].start} ~ #{eventMain[0].end}
+                                .carousel-item.container.active
+                                    .row
+                                        .col-8
+                                            a(href=`salelists/${eventMain[1].id}`)
+                                                img(src=eventMain[1].img, width='100%', height='80%')
+                                        .col-4
+                                            .carousel-caption.text-left
+                                                h3=eventMain[1].title
+                                                p 이벤트 기간: #{eventMain[1].start} ~ #{eventMain[1].end}
+                                
+                                .carousel-item.container
+                                    .row
+                                        .col-8
+                                            a(href=`salelists/${eventMain[2].id}`)
+                                                img(src=eventMain[2].img, width='100%', height='80%')
+                                        .col-4
+                                            .carousel-caption.text-left
+                                                h3=eventMain[2].title
+                                                p 이벤트 기간: #{eventMain[2].start} ~ #{eventMain[2].end}
+                                
+                            a.carousel-control-prev(href='#slide', role='button', data-slide='prev')
+                                span.carousel-control-prev-icon(aria-hidden='true')
+                                span.sr-only Previous
+                            a.carousel-control-next(href='#slide', role='button', data-slide='next')
+                                span.carousel-control-next-icon(aria-hidden='true')
+                                span.sr-only Next
 
-        .container.marketing
-            .row
-                .col-lg-4
-                    img.rounded-circle(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', alt='Generic placeholder image', width='140', height='140')
-                    h2 마 이게 제목이다
-                    p
-                    | Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
-                    p
-                    a.btn.btn-secondary(href='http://localhost:3000/#', role='button') View details »
-                .col-lg-4
-                    img.rounded-circle(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', alt='Generic placeholder image', width='140', height='140')
-                    h2 Heading
-                    p
-                    | Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
-                    p
-                    a.btn.btn-secondary(href='http://localhost:3000/#', role='button') View details »
-                .col-lg-4
-                    img.rounded-circle(src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==', alt='Generic placeholder image', width='140', height='140')
-                    h2 Heading
-                    p
-                    | Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-                    p
-                    a.btn.btn-secondary(href='http://localhost:3000/#', role='button') View details »
-            hr.featurette-divider
-            .row.featurette
-                .col-md-7
-                h2.featurette-heading
-                    | First featurette heading. 
-                    span.text-muted It'll blow your mind.
-                p.lead
-                    | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
-                .col-md-5
-                img.featurette-image.img-fluid.mx-auto(data-src='holder.js/500x500/auto', alt='500x500', style='width: 500px; height: 500px;', src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1684b4dca22%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1684b4dca22%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.1171875%22%20y%3D%22261.1984375%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E', data-holder-rendered='true')
-            hr.featurette-divider
-            .row.featurette
-                .col-md-7.order-md-2
-                h2.featurette-heading
-                    | Oh yeah, it's that good. 
-                    span.text-muted See for yourself.
-                p.lead
-                    | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
-                .col-md-5.order-md-1
-                img.featurette-image.img-fluid.mx-auto(data-src='holder.js/500x500/auto', alt='500x500', src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1684b4dca28%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1684b4dca28%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.1171875%22%20y%3D%22261.1984375%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E', data-holder-rendered='true', style='width: 500px; height: 500px;')
-            hr.featurette-divider
-            .row.featurette
-                .col-md-7
-                h2.featurette-heading
-                    | And lastly, this one. 
-                    span.text-muted Checkmate.
-                p.lead
-                    | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
-                .col-md-5
-                img.featurette-image.img-fluid.mx-auto(data-src='holder.js/500x500/auto', alt='500x500', src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1684b4dca2a%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1684b4dca2a%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.1171875%22%20y%3D%22261.1984375%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E', data-holder-rendered='true', style='width: 500px; height: 500px;')
-            hr.featurette-divider
+
+                    hr
+                    .container
+                        ul#myTab.nav.nav-tabs(role='tablist')
+                            li.nav-item
+                                a#prd-tab.nav-link.active(data-toggle='tab' href='#prd' role='tab' aria-controls='prd' aria-selected='true') 진행중 세일 품목
+                            li.nav-item
+                                a#event-tab.nav-link(data-toggle='tab' href='#event' role='tab' aria-controls='event' aria-selected='false') 진행중 세일 이벤트
+                
+                        #myTabContent.tab-content
+                            #prd.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='prd-tab') 
+                                .ongoing_sale 
+                                    if sales.total > 0
+                                        .content-all-1.row
+                                            .col-1
+                                            .col-10.row
+                                            each sale in sales.docs
+                                                .col-md-3.event_sale_list
+                                                    .event_sale_img
+                                                        a(href=sale.link)
+                                                            if(sale.img)
+                                                                img(src=sale.img style='width:90%; height:90%; margin-left:0;')
+                                                            else
+                                                                img(src='images/default_icon.JPG' style='width:90%; height:90%; margin-left:0;')
+                                                            br
+                                                            span.name #{sale.name}
+                                                    .event_sale_info
+                                                        br
+                                                        span.brand 브랜드: #{sale.shop} 
+                                                        br
+                                                        a(href=sale.eventLink)
+                                                            span.saleTitle 이벤트명: #{sale.saleTitle}
+                                                        br
+                                                        span.price
+                                                            del=sale.price 
+                                                            p #{sale.salePrice}
+                                                        span.salePer #{sale.salePer} 할인
+                                                        br
+                                                        span.period #{sale.start} ~ #{sale.end}
+                                            .col-1
+                                        hr
+                                        .pagination
+                                            +paginate(sales, '/salelists', query)
+                                    else
+                                        span 일치하는 결과가 없습니다. 
+
+
+                            #event.tab-pane.fade(role='tabpanel' aria-labelledby='event-tab')
+                                .ongoing_sale 
+                                    if events.total > 0
+                                        .content-all-1.row
+                                            .col-1
+                                            .col-10.row
+                                            each event in events.docs
+                                                .col-md-3.event_list
+                                                    .event_img
+                                                        a(href=event.link)
+                                                            if(event.img)
+                                                                img(src=event.img style='width:90%; height:90%; margin-left:0;')
+                                                            else
+                                                                img(src='images/default_icon.JPG' style='width:90%; height:90%; margin-left:0;')
+                                                            br
+                                                            span.name #{event.title}
+                                                    .event_info
+                                                        br
+                                                        span.brand 브랜드: #{event.brand} 
+                                                        br
+                                                        span.period #{event.start} ~ #{event.end}
+                                            .col-1
+                                        hr
+                                        .pagination
+                                            +paginate(events, '/salelists', query)
+                                    else
+                                        h3 행사중인 이벤트가 없습니다 
+                        
+            
+
 
 

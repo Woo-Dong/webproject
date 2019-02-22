@@ -1,9 +1,16 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+
+const router = express.Router();
+
+const Sale = require('../models/sale');
+const Event = require('../models/event');
+const catchErrors = require('../lib/async-error');
+
 
 const aws = require('aws-sdk');
 const S3_BUCKET = process.env.S3_BUCKET;
 const uuidv4 = require('uuid/v4');
+
 
 router.get('/s3', function(req, res, next) {
   const s3 = new aws.S3({region: 'ap-northeast-2'});
@@ -31,9 +38,29 @@ router.get('/s3', function(req, res, next) {
 });
 
 
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index');
-});
+router.get('/', catchErrors(async (req, res, next) => {
+
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 12;
+
+  var query = {};
+  var sales = await Sale.paginate(query, {
+    sort: {end: 1}, 
+    page: page, limit: limit
+  });
+  var query = {};
+  var events = await Event.paginate(query, {
+    sort: {end: 1},
+    page: page, limit: limit
+  });
+  eventsArr = events.docs;
+  var eventMain = new Array();
+  for(let i=0; i<3; i++){
+    eventMain.push(eventsArr[i]);
+  }
+  res.render('index', {sales: sales, events: events, eventMain: eventMain});
+}));
 
 module.exports = router;

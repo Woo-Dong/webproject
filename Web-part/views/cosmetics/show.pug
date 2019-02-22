@@ -2,6 +2,9 @@ extends cosLayout
 
 block maincontent
     link(rel='stylesheet', href='/stylesheets/product_sp.css')
+    link(href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css')
+
+    include ../includes/alert  
 
     #body-content.content-container.col-md-9.Aligner
         .product-content-row
@@ -10,39 +13,14 @@ block maincontent
                 span.error-text 잘못된 정보가 있나요??
                 a.error-button.d-lg-inline-block.mb-md-0.btn.error-btn-text(href=`/cosmetics/${cosmetic.id}/error`) 신고!
 
-            .product-sec-tion.row
+            .product-section.row
                 .col-4.product-img.Aligner-item-high
-                    if cosmetic.img
-                        img.img-fluid(src=cosmetic.img style='width:90%; margin-left:0;')
-                    else
-                        img.specific-product-img(src='/images/V.jpg' style='width:90%; margin-left:0;')
-
-                    fieldset.rating
-                        form(action = '/:id/like', method='POST')
-                            input#Like(type='radio' name='like' value='1')
-                            label(for='Like' title='쪼아욧!')
-                        script.
-                            var grd = function(){
-                                $("input[type='radio']").click(function() {
-                                    var previousValue = $(this).attr('previousValue');
-                                    var name = $(this).attr('name');
-
-                                    if (previousValue == 'checked') {
-                                        //- $(this).removeAttr('checked');
-                                        //- $(this).attr('previousValue', false);
-                                        $("input[name="+name+"]:radio").attr('previousValue', 'checked');
-                                        $(this).attr('previousValue', 'unchecked');
-                                    } else {
-                                        $("input[name="+name+"]:radio").attr('previousValue', false);
-                                        $(this).attr('previousValue', 'checked');
-
-                                    }
-                                });
-                            };
-
-                            grd('1');
-
-
+                    img.specific-product-img.img-responsive.center-block(src=cosmetic.img style='width:90%; margin-left:0;')
+                    
+                    label.trigger.product-like-btn(data-id=cosmetic.id)
+                        input(type='checkbox')
+                        .product-like 
+                        .text Like!
             
                 .col-7.product-info(style='margin-right:0;')
                     .mb-0
@@ -51,16 +29,25 @@ block maincontent
                         .product-info-subt.col-3
                             .borde 카테고리 :
                             .borde 정가 :  
-                            .borde 판매처 :  
-                            .borde 세부정보 :
+                            .borde 판매처 :
+                            .borde 제조사 :    
                             .borde 할인가 :   
                             .borde 판매처 홈페이지 :
+                            .borde 세부정보 :
 
                         .product-info-cont.col-9
                             .borde  #{cosmetic.category}
                             .borde #{cosmetic.price}원
-                            .borde #{cosmetic.shop}
-                            .borde #{cosmetic.detail_descrpt}
+                            if (cosmetic.shop)
+                                .borde #{cosmetic.shop}
+                            else
+                                .borde 판매처
+                            .borde #{cosmetic.brand}
                             
                             .borde (할인가)
                             .borde  (판매처 홈페이지)
+<<<<<<< HEAD
+=======
+                            .borde #{cosmetic.detail_descrpt}
+    script(src='/javascripts/cosmetic_like.js')
+>>>>>>> 27a4e6522b6c7693d00ea52285709794a0940300

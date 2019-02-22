@@ -12,17 +12,18 @@ block content
                 label(for='email') 이메일 주소 
                 input#exampleInputEmail1.form-control(type='email', name='email', aria-describedby='emailHelp', placeholder='Enter email', value=user.email, readonly)
                 small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+            if (currentUser.password)
+                .form-group
+                    label(for='current_password') 현재 비밀번호 
+                    input#exampleInputPassword1.form-control(type='password', name='current_password' placeholder='현재 비밀번호')
+                
+                .form-group
+                    label(for='password') 바꿀 비밀번호 
+                    input#exampleInputPassword1.form-control(type='password', name='password' placeholder='변경할 비밀번호')
+                .form-group
+                    label(for='passwordconf') 비밀번호 확인 
+                    input#exampleInputPassword1.form-control(type='password', name='passwordconf' placeholder='변경할 비밀번호 확인')
             
-            .form-group
-                label(for='current_password') 현재 비밀번호 
-                input#exampleInputPassword1.form-control(type='password', name='current_password' placeholder='현재 비밀번호')
-            
-            .form-group
-                label(for='password') 바꿀 비밀번호 
-                input#exampleInputPassword1.form-control(type='password', name='password' placeholder='변경할 비밀번호')
-            .form-group
-                label(for='passwordconf') 비밀번호 확인 
-                input#exampleInputPassword1.form-control(type='password', name='passwordconf' placeholder='변경할 비밀번호 확인')
             .form-group
                 label(for='name') 이름(닉네임) 
                 input.form-control(type='text', id='name', name='name', placeholder='Enter name', value=user.name)

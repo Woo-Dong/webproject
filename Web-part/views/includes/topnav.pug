@@ -7,8 +7,9 @@
                 a.logo-text-under(href='/') 희번득
         .col-md-8.search-section.Aligner-item
             .example.search-section-form
-                input.search-bar(type='text' placeholder='Search your product 0_0' name='search')
-                button.search-icon-button(type='submit' onclick='location.href="/"')
+                form(action='/cosmetics', method='GET')
+                    input.search-bar(type='text', name='termTotal', placeholder='Search 0_0')
+                    button.search-icon-button(type='submit')
                     i.fa.fa-search.search-bar-search-icon
         .col-md-2.login-section
             if (!currentUser)

@@ -2,7 +2,6 @@ const LocalStrategy = require('passport-local').Strategy;
 const KakaoStrategy = require('passport-kakao').Strategy;
 const NaverStrategy = require('passport-naver').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-// const FacebookStrategy = require('passport-facebook').Strategy;
 
 const User = require('../models/user');
 
@@ -32,9 +31,10 @@ module.exports = function(passport) {
   }));
 
   passport.use(new NaverStrategy({
-    clientID: '45a3VlIZkF7VifHlC6KG',
-    clientSecret: 'moGk6fZa2N',
-    callbackURL: 'https://heeburndeuk.herokuapp.com//auth/naver/callback'
+    clientID: '45a3VlIZkF7VifHlC6KG',  
+    clientSecret: 'moGk6fZa2N',   
+    callbackURL: 'https://heeburndeuk.herokuapp.com/auth/naver/callback'  
+
   }, async (token, refreshToken, profile, done) => {
     console.log('Naver', profile);
     try {
@@ -67,7 +67,7 @@ module.exports = function(passport) {
   passport.use(new KakaoStrategy({
     clientID: '84642e397324624c13023c0b133d7264',
     clientSecret: '831bcfbb9dcec678a26953db1c15df70',
-    callbackURL: 'https://heeburndeuk.herokuapp.com/auth/kakao/callback'
+    callbackURL: 'https://heeburndeuk.herokuapp.com/auth/kakao/callback' 
   }, async (token, refreshToken, profile, done) => {
     console.log('Kakao', profile);
     try {
@@ -100,7 +100,9 @@ module.exports = function(passport) {
   passport.use(new GoogleStrategy({
     clientID: '207585647134-ph1s3pg9b7u34eusag71rn96vqp11h59.apps.googleusercontent.com',
     clientSecret: 'HV2zxj2LGs1lxoKvKUoCWuvB',
-    callbackURL: 'https://heeburndeuk.herokuapp.com/auth/google/callback'
+
+    callbackURL: 'https://heeburndeuk.herokuapp.com/auth/google/callback' 
+
   }, async (token, refreshToken, profile, done) => {
     console.log('google', profile);
     try {
@@ -125,37 +127,5 @@ module.exports = function(passport) {
       done(err);
     }
   }));
-
-  // passport.use(new FacebookStrategy({
-  //   clientID : '2196214153961055',
-  //   clientSecret : '461cefd65b33668a6eff5d384faaf73c',
-  //   callbackURL : 'http://127.0.0.1:3000/auth/facebook/callback',
-  //   profileFields : ['email', 'name']
-  // }, async (token, refreshToken, profile, done) => {
-  //   console.log('Facebook', profile);
-  //   try {
-  //     var email = (profile.emails && profile.emails[0]) ? profile.emails[0].value : '';
-  //     var name = (profile.displayName) ? profile.displayName : 
-  //       [profile.name.givenName, profile.name.middleName, profile.name.familyName]
-  //         .filter(e => e).join(' ');
-  //     console.log(email, name, profile.name);
-  //     var user = await User.findOne({'facebook.id': profile.id});
-  //     if (!user) {
-  //       if (email) {
-  //         user = await User.findOne({email: email});
-  //       }
-  //       if (!user) {
-  //         user = new User({name: name});
-  //         user.email =  email ? email : `__unknown-${user._id}@no-email.com`;
-  //       }
-  //       user.facebook.id = profile.id;
-  //     }
-  //     user.facebook.token = profile.token;
-  //     await user.save();
-  //     return done(null, user);
-  //   } catch (err) {
-  //     done(err);
-  //   }
-  // }));
 
 };

@@ -1,4 +1,4 @@
-@import "compass/css3";
+/* @import "compass/css3"; */
 
 #body-content.content-container.col-md-9{
     position: absolute!important;
@@ -27,63 +27,75 @@
 .product-info-cont{font-size: .7em;}
 
 /* 즐찾 버튼*/
-.likebutton-in-image{
-    position: absolute!important;
-    bottom: 10%; right: 10%;
-    font-size: 1.2em;
-    padding: 1px 2px;
-    /* border: solid orange; */
-    /* background: orange; */
-    color: white;
-    transform:translate(-50%,-50%);
-    text-align:center; 
+.product-like-btn{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+
+    position: absolute;
+    bottom: 0;
+    right: -8px;
+    transform: translate(-50%, -50%);
+    width: 97px;
+    height: 35px;
+    background: #fff;
+    border-style: solid;
+    border-color: #ffc107;
+    border-radius: 75px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 18px;
+    text-decoration: none;
+    color: #262626;
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+.product-like-btn.active{
+    background: transparent;
+    border-style: none;
+    color: #fff;
+    line-height: 35px;
+}
+.product-like-btn:before{
+    content: '';
+    position: absolute;
+    bottom: 0%;
+    right: 34px;
+    background: #ff0047;
+    width: 50%;
+    height: 100%;
+    transition: 0.5s;
+    z-index: -1;
+    transform: translateX(-200px) rotate(-325deg);
+    opacity: 0;
 }
 
-@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-
-
-/****** Style Star Rating Widget *****/
-
-.rating { 
-  border: none;
-/*   float: left; */
+.product-like-btn.active:before{
+    transform: translateX(0) rotate(35deg);
+    border-bottom-left-radius: 75px;
+    border-top-left-radius: 75px;
+    opacity: 1;
+}
+.product-like-btn:after{
+    content: '';
+    position: absolute;
+    bottom: 0%;
+    right: 14px;
+    background: #ff0047;
+    width: 50%;
+    height: 100%;
+    transition: 0.5s;
+    z-index: -1;
+    transform: translateX(200px) rotate(325deg);
+    opacity: 0;
 }
 
-.rating > input { display: none; } 
-.rating > label:before { 
-  margin: 5px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
+.product-like-btn.active:after{
+    transform: translateX(0) rotate(-35deg);
+    border-bottom-right-radius: 75px;
+    border-top-right-radius: 75px;
+    opacity: 1;
 }
-
-.rating > label{ 
-    color: #ddd; 
-    float: right; 
-}
-
-/***** CSS Magic to Highlight Stars on Hover *****/
-
-
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label {
-  color: #FFD700;  
-} /* hover previous stars in list */
-
-.rating > input:checked + label:hover, /* hover current star when changing rating 누른 상태에서 hover 시 */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label{
-  color: #FFED85;  
-} 
-
-.fa{
-    color: black;
-    font-size: 2em;
-}
-
 /*오류 작성 페이지*/
 .error-input-section{ margin-top: 0;}
 .error-inline-block{display:inline;}

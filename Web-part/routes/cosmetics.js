@@ -6,7 +6,6 @@ const catchErrors = require('../lib/async-error');
 
 const router = express.Router();
 
-// var Sale = require('../models/sale');
 function needAuth(req, res, next) {
   if (req.isAuthenticated() ) {
     next();
@@ -16,6 +15,7 @@ function needAuth(req, res, next) {
   }
 }
 
+<<<<<<< HEAD
 
 
 function subCategory(selector, apply){
@@ -27,14 +27,14 @@ function subCategory(selector, apply){
     });
   }
 
+=======
+>>>>>>> 27a4e6522b6c7693d00ea52285709794a0940300
 router.get('/', catchErrors(async (req, res, next) => {
-  console.log(req.body);
-  console.log(params);
-  console.log(User);
-  const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
 
-  var query = {};
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 12;
+
+  var query;
   const termTotal = req.query.termTotal;
   if (termTotal) {
     query = {$or: [
@@ -44,32 +44,60 @@ router.get('/', catchErrors(async (req, res, next) => {
       {brand: {'$regex': termTotal, '$options': 'i'}},
       {detail_descrpt: {'$regex': termTotal, '$options': 'i'}}
     ]};
+    cosmetics = await Cosmetic.paginate(query, {
+      sort: {name: -1}, 
+      page: page, limit: limit
+    });
   }
 
   const termCategory = req.query.termCategory;
   if(termCategory) {
-    query = {category: {'$regex': termCategory, '$options': 'i'}};
+    query = {category: {$in:termCategory} };
+    cosmetics = await Cosmetic.paginate(query, {
+      sort: {category: -1}, 
+      page: page, limit: limit
+    });
+    var strQuery = "";
+    if( (typeof termCategory) != "string"){
+      for(let i=0; i<termCategory.length; i++){
+        strQuery += termCategory[i] + ", ";
+      }
+      strQuery = strQuery.slice(0, -2);
+    }
+    else{
+      strQuery = termCategory;
+    }
   }
   const termBrand = req.query.termBrand;
   if(termBrand) {
-    query = {brand: {'$regex': termBrand, '$options': 'i'}};
+    query = {brand: {$in:termBrand}};
+    cosmetics = await Cosmetic.paginate(query, {
+      sort: {brand: -1}, 
+      page: page, limit: limit
+    });
   }
-  const cosmetics = await Cosmetic.paginate(query, {
-    sort: {name: -1}, 
-    page: page, limit: limit
-  });
-  res.render('cosmetics/index', {cosmetics: cosmetics, query: req.query});
+  const termShop = req.query.termShop;
+  if(termShop) {
+    query = {shop: {$in:termShop}};
+    cosmetics = await Cosmetic.paginate(query, {
+      sort: {shop: -1}, 
+      page: page, limit: limit
+    });
+  }
+  if(!query){
+    query = {};
+    var cosmetics = await Cosmetic.paginate(query, {
+      sort: {name: -1}, 
+      page: page, limit: limit
+    });
+  }
+  
+  res.render('cosmetics/index', {cosmetics: cosmetics, query: req.query, strQuery: strQuery});
 
 }));
 
-router.get('/1', (req, res, next) => {
-
-  res.render('cosmetics/product_sp');
-});
-
 router.get('/:id', (req, res, next) => {
   Cosmetic.findById(req.params.id, function(err, cosmetic) {
-
     if (err) {
       return next(err);
     }
@@ -98,9 +126,9 @@ router.post('/', needAuth, (req, res, next) => {
     }
 
     req.flash('신고 접수 중');
-
     
     var newComplain = new Complain({
+      category : req.body.errorCate,
       name: req.body.nameC,
       brand: req.body.brand,
       price: req.body.price,
@@ -124,7 +152,42 @@ router.post('/', needAuth, (req, res, next) => {
   });
 });
 
-
-
+router.post('/:id/like', catchErrors (async (req, res, next) => {
+  const cosmetic = await Cosmetic.findById(req.params.id);
+  if (!cosmetic) {
+    return next({status: 404, msg: 'Not exist product!'});
+  }
+  const user = await User.findById(req.user._id);
+  var bool =true;
+  if(user.productLike){
+    console.log(typeof user.productLike);
+    var str = user.productLike;
+    console.log(str.lastIndexOf(","));
+    if(!str.lastIndexOf(",")){
+      var productArr = user.productLike.split(",");
+      for(let i=0; i<productArr.length; i++){  //user.productLike = string type => array type으로 바꿔줘야 함
+        if (cosmetic.id == productArr[i]){
+          bool = false;
+        }
+      }
+      if(bool){
+        var newProductLike = user.productlike;
+        newProductLike.push(cosmetic.id);
+        user.productLike = newProductLike;
+      }
+    }
+    else{
+      var productArr = new Array();
+      productArr[0] = user.productLike;
+      productArr.push(cosmetic.id);
+      user.productLike = productArr;
+    }
+  }
+  else{
+    user.productLike = cosmetic.id;
+  }
+  await user.save();
+  return res.json(user);
+}));
 
 module.exports = router;

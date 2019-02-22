@@ -1,5 +1,6 @@
 const express = require('express');
 const  User = require('../models/user');
+const  Cosmetic = require('../models/cosmetic');
 const catchErrors = require('../lib/async-error');
 
 module.exports = io => {
@@ -94,7 +95,17 @@ module.exports = io => {
 
   router.get('/:id', catchErrors(async (req, res, next) => {
     const user = await User.findById(req.params.id);
-    res.render('users/show', {user: user});
+    var cosmetics = new Array();
+    if(user.productLike){
+        var userPrdLike = user.productLike;
+      userPrdLkArr = userPrdLike.split(",");
+      for(let i=0; i<userPrdLkArr.length; i++){
+        cosmetic = await Cosmetic.findById(userPrdLkArr[i]);
+        cosmetics.push(cosmetic);
+      }
+    }
+
+    res.render('users/show', {user: user, cosmetics: cosmetics});
   }));
 
   router.post('/', catchErrors(async (req, res, next) => {

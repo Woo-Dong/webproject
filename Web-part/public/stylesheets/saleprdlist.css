@@ -1,58 +1,55 @@
 .sale_content .box_wrap {
-  border: solid 2px gray;
-  width: 90%; 
-  margin-left: auto; 
-  margin-right: auto; 
-  background-image: url('../images/ricepaper_v3.png');
-  margin-top: 15px;
+    border: solid 2px gray;
+    width: 90%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    background-image: url('../images/ricepaper_v3.png');
+    margin-top: 15px;
+    }
+  
+  .box_wrap .box01 {
+    border-right:solid 0.5px gray; 
+    width:23%;
   }
-
-.box_wrap .box01 {
-  border-right:solid 0.5px gray; 
-  width:23%;
-}
-
-.box_wrap .box01 {
-  text-align: center;
-}
-
-.box_wrap .box01 img {
-  width:80%;
-}
-
-.box_wrap .box01 .origin_price {
-  text-decoration: line-through
-}
-
-.box_wrap .box01 .buylink {
-  display: block; 
-  margin-left:auto; 
-  margin-right: auto;
-}
-
-.box_wrap li {
-  list-style-type: none;
-}
-
-.box_wrap .prd_category {
-  margin-top: 16px;
-}
-
-.buylink {
-  margin-top: 10px;
-  margin-bottom: 25px;
-}
-
-.sale_prd_list {
-  text-align: center; 
-  font-size: 50px; 
-  text-decoration: underline;
-}
-
-.sale_name {
-  text-align: center; 
-  font-size: 25px;
-}
-
-
-
+  
+  .box_wrap .box01 {
+    text-align: center;
+  }
+  
+  .box_wrap .box01 img {
+    width:80%;
+  }
+  
+  .box_wrap .box01 .origin_price {
+    text-decoration: line-through
+  }
+  
+  .box_wrap .box01 .buylink {
+    display: block; 
+    margin-left:auto; 
+    margin-right: auto;
+  }
+  
+  .box_wrap li {
+    list-style-type: none;
+  }
+  
+  .box_wrap .prd_category {
+    margin-top: 16px;
+  }
+  
+  .buylink {
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+  
+  .sale_prd_list {
+    text-align: center; 
+    font-size: 50px; 
+    text-decoration: underline;
+  }
+  
+  .sale_name {
+    text-align: center; 
+    font-size: 25px;
+  }

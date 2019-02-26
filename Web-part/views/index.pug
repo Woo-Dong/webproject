@@ -5,8 +5,7 @@ block content
     .container
         .row
             .col-2
-                block sidenav
-                    include ./includes/sidenav
+                include ./includes/sidenav
 
             .col-10
                 block maincontent
@@ -23,7 +22,7 @@ block content
                                     .row
                                         .col-8
                                             a(href=`salelists/${eventMain[0].id}`)
-                                                img(src=eventMain[0].img, width='100%', height='80%')
+                                                img(src=eventMain[0].img)
                                         .col-4
                                             .carousel-caption.text-left
                                                 h3=eventMain[0].title
@@ -32,7 +31,7 @@ block content
                                     .row
                                         .col-8
                                             a(href=`salelists/${eventMain[1].id}`)
-                                                img(src=eventMain[1].img, width='100%', height='80%')
+                                                img(src=eventMain[1].img)
                                         .col-4
                                             .carousel-caption.text-left
                                                 h3=eventMain[1].title
@@ -42,18 +41,18 @@ block content
                                     .row
                                         .col-8
                                             a(href=`salelists/${eventMain[2].id}`)
-                                                img(src=eventMain[2].img, width='100%', height='80%')
+                                                img(src=eventMain[2].img)
                                         .col-4
                                             .carousel-caption.text-left
                                                 h3=eventMain[2].title
                                                 p 이벤트 기간: #{eventMain[2].start} ~ #{eventMain[2].end}
                                 
-                            a.carousel-control-prev(href='#slide', role='button', data-slide='prev')
-                                span.carousel-control-prev-icon(aria-hidden='true')
-                                span.sr-only Previous
-                            a.carousel-control-next(href='#slide', role='button', data-slide='next')
-                                span.carousel-control-next-icon(aria-hidden='true')
-                                span.sr-only Next
+                                a.carousel-control-prev(href='#slide', role='button', data-slide='prev')
+                                    span.carousel-control-prev-icon(aria-hidden='true')
+                                    span.sr-only Previous
+                                a.carousel-control-next(href='#slide', role='button', data-slide='next')
+                                    span.carousel-control-next-icon(aria-hidden='true')
+                                    span.sr-only Next
 
 
                     hr

@@ -15,10 +15,13 @@ var schema = new Schema({
   brandLike: {type: String},
   categoryLike: {type: String},
   productLike: {type: String},
+  alarmcheckNum: {type: Number, default: 0},
   
   salt: {type: String},
   createdAt: {type: Date, default: Date.now},
-  isAdmin: {type: Boolean, default: false}
+  isAdmin: {type: Boolean, default: false},
+
+  notiTarget_id: {type: String}
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}

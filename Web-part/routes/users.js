@@ -1,6 +1,9 @@
 const express = require('express');
 const  User = require('../models/user');
 const  Cosmetic = require('../models/cosmetic');
+const Notice = require('../models/notice');
+
+
 const catchErrors = require('../lib/async-error');
 
 module.exports = io => {
@@ -82,6 +85,9 @@ module.exports = io => {
     user.name = req.body.name;
     user.email = req.body.email;
     user.isAdmin = req.body.isAdmin;
+    user.brandLike = req.body.brandLike;
+    user.categoryLike = req.body.categoryLike;
+
     await user.save();
     req.flash('success', '성공적으로 회원정보가 수정되었습니다.');
     res.redirect('back');
@@ -101,7 +107,9 @@ module.exports = io => {
       userPrdLkArr = userPrdLike.split(",");
       for(let i=0; i<userPrdLkArr.length; i++){
         cosmetic = await Cosmetic.findById(userPrdLkArr[i]);
+        if(cosmetic){
         cosmetics.push(cosmetic);
+        }
       }
     }
     console.log(cosmetics);
@@ -126,6 +134,9 @@ module.exports = io => {
     user = new User({
       name: req.body.name,
       email: req.body.email,
+      brandLike: req.body.brandLike,
+      categoryLike: req.body.categoryLike,
+      alarmcheckNum : 0
     });
     user.password = await user.generateHash(req.body.password);
     await user.save();

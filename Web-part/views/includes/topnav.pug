@@ -19,7 +19,7 @@
                 p.login-text #{currentUser.name}님 반갑습니다.
                 button.btn.login-button.mypage-button.d-lg-inline-block.mb-md-0.login-button-text(type='button')
                     | Messages 
-                    span.badge 4
+                    span.badge #{currentUser.alarmcheckNum}
 
                 if (currentUser.isAdmin)
                        a.btn.login-button.mypage-button.d-lg-inline-block.mb-md-0.login-button-text(href='/admin') 관리자 페이지 

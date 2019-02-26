@@ -4,6 +4,95 @@ const NaverStrategy = require('passport-naver').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const User = require('../models/user');
+const Notice = require('../models/notice');
+const Sale = require('../models/sale');
+
+
+function func(userId, eachId) { 
+  var isDuplicate = Notice.find(
+  { 'user_id': userId, 'target_id': eachId});
+    return isDuplicate;
+}
+
+Array.prototype.remove = function() {
+  var what, a = arguments, L = a.length, ax;
+  while (L && this.length) {
+      what = a[--L];
+      while ((ax = this.indexOf(what)) !== -1) {
+          this.splice(ax, 1);
+      }
+  }
+  return this;
+};
+
+function checkAlarm(user) {
+
+  // var brandLike = user.brandLike;
+  // var productLike = user.productLike;
+
+  var categoryLike = user.categoryLike;
+
+  if(categoryLike){
+
+    var tmpCate = new Array();
+    tmpCate = categoryLike.split(",");
+    
+    tmpCate.forEach(async function(eachCate) {
+      await Sale.find({'category': eachCate}, function(err, docs) {
+        
+        //각 카테고리별 일치하는 세일 화장품 찾기
+        if (!err){ 
+          
+          docs.forEach(async function(eachSale) {
+            
+              var result = await func(user._id, eachSale._id);
+                if(result.length != 0){
+                  console.log("already exitst!");
+                }
+                else{
+
+                  var newAlarm = new Notice({     // 새 알람 만들기
+                    user_id: user._id,
+                    target_id: eachSale._id,
+                    content: eachSale.name,
+                    category: "세일"
+                  });
+                  await newAlarm.save();
+
+                  // 사용자 스키마에 알람 대상 id 추가
+                  if(user.notiTarget_id){
+                    var bool = true;
+                    var temp = new Array(); 
+                    temp = user.notiTarget_id.split(",");
+                    var challenger = eachSale._id;
+                    temp.forEach(function(ggon) {
+                      if (challenger==ggon){
+                        bool = false;
+                      }
+                    }) 
+                    if(bool){
+                      temp.push(eachSale._id);
+                      user.notiTarget_id = temp;
+                    }
+                  }
+                  else{
+                    user.notiTarget_id = eachSale._id;
+                    
+                  }
+                  console.log("saved user: ", user.notiTarget_id);
+                  user.alarmcheckNum += 1;
+                  await user.save();
+                }
+              })
+
+        } // if (!err){ end 
+        
+      });
+    })
+
+  } // if(categoryLike){ end
+  return user;
+}
 
 module.exports = function(passport) {
   passport.serializeUser((user, done) => {
@@ -20,8 +109,16 @@ module.exports = function(passport) {
     passReqToCallback : true
   }, async (req, email, password, done) => {
     try {
-      const user = await User.findOne({email: email});
+      var user = await User.findOne({email: email});
       if (user && await user.validatePassword(password)) {
+        
+        
+        user = await checkAlarm(user);
+        
+        if(user.alarmcheckNum  > 0){
+          var str = user.alarmcheckNum + '개의 할인 정보가 있습니다.';
+          return done(null, user, req.flash('success', str) );
+        }
         return done(null, user, req.flash('success', '정상적으로 로그인되었습니다!'));
       }
       return done(null, false, req.flash('danger', '이메일 혹은 비밀번호가 일치하지 않습니다.'));

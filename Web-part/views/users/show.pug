@@ -52,8 +52,8 @@ block content
                       each cosmetic in cosmetics
                           .col-md-3.content-product-info
                               .content-img-frame
-                                  a(href=`/cosmetics/${cosmetic.id}`)
-                                      img.content-product-img.img-responsive.center-block(src=cosmetic.img style='width:70%; margin-left:0;')
+                                a(href=`/cosmetics/${cosmetic.id}`)
+                                  img.content-product-img.img-responsive.center-block(src=cosmetic.img style='width:70%; margin-left:0;')
                               .content-product-detail
                                   p.content-product-brand
                                       td= cosmetic.brand

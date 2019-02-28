@@ -6,7 +6,7 @@ block maincontent
     link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')    
             
     .example.search-section-form  
-        input.search-bar(type='text' placeholder='Search your product 0_0' name='search')
+        input.search-bar(type='text' placeholder='Search 0_0' name='search')
         button.search-icon-button(type='submit' onclick='location.href="/"')
             i.fa.fa-search.search-bar-search-icon
         input.form-control(type="date", name="start", placeholder="시작날짜")
@@ -14,26 +14,35 @@ block maincontent
     
 
     .ongoing_sale 진행중 세일
- 
-    .event_sale_list
-        .event_sale_link
-            a(href='/saleLists/1')
-                .event_sale_img
-                    img(src='https://images.innisfree.co.kr/upload/event/799_0.jpg')
-                .event_sale_info
-                    span.brand 이니스프리<br>
-                    span.title 설/맞/이 설 선물세트<br>
-                    span.period 2019.01.21 ~ 2019.02.12
-
-
-    // 화면 오른쪽 밑에 맨위로, 장바구니, 관심상품 으로 가는 버튼 추가하면 좋을듯
-    // js 추가해서 화면크기에 따라 다르게 속성 수정
-    .btn-group-vertical
-        a.btn.btn-secondary(href='#', type='button')  맨 위로
-        //button.btn.btn-secondary(type='button')  맨 위로
     
-    //.pagination
-        +paginate(salelists, '/salelists', query) 
-
+    if sales
+        if sales.total > 0
+            .content-all-1.row
+                .col-1
+                .col-10.row
+                each sale in sales.docs
+                    .col-md-3.event_sale_list
+                        .event_sale_img
+                            a(href=sale.link)
+                                img(src=sale.img style='width:90%; margin-left:0;')
+                        .event_sale_info
+                            span.name #{sale.name}
+                            br
+                            span.brand 브랜드: #{sale.shop} 
+                            br
+                            a(href=sale.eventLink)
+                                span.saleTitle 이벤트명: #{sale.saleTitle}
+                            br
+                            span.price
+                                del=sale.price 
+                                p #{sale.salePrice}
+                            span.salePer #{sale.salePer} 할인
+                            br
+                            span.period #{sale.start} ~ #{sale.end}
+                .col-1
+        .pagination
+            +paginate(sales, '/salelists', query)
+    else
+        span 일치하는 결과가 없습니다. 
 
 

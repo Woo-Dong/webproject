@@ -17,10 +17,16 @@ block maincontent
                 .col-4.product-img.Aligner-item-high
                     img.specific-product-img.img-responsive.center-block(src=cosmetic.img style='width:90%; margin-left:0;')
                     
-                    label.trigger.product-like-btn(data-id=cosmetic.id)
-                        input(type='checkbox')
-                        .product-like 
-                        .text Like!
+                    if (currentUser)
+                        if ( currentUser.productLike.split(",").indexOf(cosmetic.id) >= 0 )
+                            label.product-like-btn.active(data-id=cosmetic.id)
+                                .txt like!
+                        else
+                            label.product-like-btn(data-id=cosmetic.id)
+                                .txt like!
+                    else
+                        label.product-like-btn(data-id=cosmetic.id)
+                            .txt like!
             
                 .col-7.product-info(style='margin-right:0;')
                     .mb-0

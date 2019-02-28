@@ -104,6 +104,7 @@ module.exports = io => {
         cosmetics.push(cosmetic);
       }
     }
+    console.log(cosmetics);
 
     res.render('users/show', {user: user, cosmetics: cosmetics});
   }));

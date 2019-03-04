@@ -69,7 +69,9 @@ module.exports = io => {
     if(req.user){
       var user = req.user;
       var checkAlarm = user.alarmcheckNum;
-      io.to(user._id.toString()).emit('alarm', {checkAlarm: checkAlarm});
+      console.log(user._id.toString());
+      io.to(user._id.toString())
+        .emit('alarm', {checkAlarm: checkAlarm});
       console.log("socket emit: ", checkAlarm, {checkAlarm: checkAlarm});
     }
   

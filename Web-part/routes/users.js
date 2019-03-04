@@ -2,7 +2,7 @@ const express = require('express');
 const  User = require('../models/user');
 const  Cosmetic = require('../models/cosmetic');
 const Notice = require('../models/notice');
-
+const Sale = require('../models/sale');
 
 const catchErrors = require('../lib/async-error');
 
@@ -143,5 +143,14 @@ module.exports = io => {
     req.flash('success', '성공적으로 등록되었습니다. 다시 로그인 해주세요.');
     res.redirect('/signin');
   }));
+
+  router.get('/:id/alarm', catchErrors(async (req, res, next) => {
+    
+    var user = await User.findById({_id : req.params.id});
+    const sales = await Notice.find({'user_id':req.params.id}).populate('target');
+    console.log("alarmSale: ", sales);
+    res.render('users/alarm', {user: user, sales: sales});
+  }));
+    
   return router;
 }

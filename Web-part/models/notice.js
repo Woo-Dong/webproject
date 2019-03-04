@@ -7,7 +7,8 @@ var schema = new Schema({
     checked: {type: Boolean, default: false},
     content: {type: String},
     target_id: {type: String},
-    category: {type: String}
+    category: {type: String},
+    target: { type: Schema.Types.ObjectId, ref: 'Sale' }
 
 }, {
   toJSON: { virtuals: true},

@@ -14,6 +14,22 @@ html
     link(href='https://fonts.googleapis.com/css?family=Playfair+Display:700,900', rel='stylesheet')
     script(src='/socket.io/socket.io.js')
     script(src='/javascripts/bootstrap-notify.js') 
+  
+  script.
+
+    // WebSocket을 만들고 접속
+    var socket = io();
+
+    socket.on('welcome', function() {
+      console.log('received welcome');
+      socket.emit('join');
+    });
+
+    socket.on('alarm', function(data) {
+      console.log('received alarm');
+      document.getElementById('alarm').innerHTML = data.user.alarmcheckNum;
+      
+    });
   body
     block topnav
       include ./includes/topnav
@@ -21,21 +37,5 @@ html
     .content
       block content
   
-    //- block footer
-    //-   include ./includes/footer
   
-    script.
-
-      // WebSocket을 만들고 접속
-      var socket = io();
-
-      socket.on('welcome', function() {
-        console.log('received welcome');
-        socket.emit('join');
-      });
-
-      socket.on('alarm', function(data) {
-        console.log("Data:", data);
-        document.getElementById('alarm').innerHTML = toSting(data.checkAlarm);
-        
-      });
+      

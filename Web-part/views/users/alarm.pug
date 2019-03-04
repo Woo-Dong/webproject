@@ -1,0 +1,44 @@
+extends ../layout
+include ../includes/_paginate
+block content
+    //- link(rel='stylesheet', href='/stylesheets/salelist.css')
+    .container
+        h1.main-title  #{user.name} 님
+            dl.row
+                dt.col-sm-3 알람 리스트
+                if (!sales)
+                    dd.col-sm-9 할인하는 정보가 없습니다.
+                else
+                    dd.col-sm-9
+                    .content-all-1.row
+                        .col-1
+                        .col-10.row
+                        
+                        each sale in sales
+                            
+                            .col-md-3.content-product-info
+                                .event_sale_img
+                                    a(href=sale.target.link)
+                                        if (sale.target.img)
+                                            img(src=sale.target.img style='width:90%; height:90%; margin-left:0;')
+                                        else
+                                            img(src='images/default_icon.JPG' style='width:90%; height:90%; margin-left:0;')
+                                        br
+                                        span.name #{sale.target.name}
+                                .event_sale_info
+                                    br
+                                    span.brand 브랜드: #{sale.target.shop} 
+                                    br
+                                    a(href=sale.target.eventLink)
+                                        span.saleTitle 이벤트명: #{sale.target.saleTitle}
+                                    br
+                                    span.price
+                                        del=sale.target.price 
+                                        p #{sale.target.salePrice}
+                                    span.salePer #{sale.target.salePer} 할인
+                                    br
+                                    span.period #{sale.target.start} ~ #{sale.target.end}
+                        .col-1
+                    //- hr
+                    //- .pagination
+                    //-     +paginate(sales, '/salelists', query)

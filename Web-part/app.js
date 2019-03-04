@@ -115,11 +115,11 @@ module.exports = (app, io) => {
         // 본인의 ID에 해당하는 채널에 가입시킨다. -> ._id 이름으로 로그인
         socket.join(socket.request.user._id.toString());
       });
+      var user = socket.request.user;
+      socket.emit('alarm', {user:user});
     }
   });
 
-  // Route
-  // app.use('/', indexRouter);
   
   app.use('/', indexRouter(io));
   app.use('/users', usersRouter(io));

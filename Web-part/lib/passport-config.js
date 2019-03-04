@@ -53,6 +53,7 @@ function checkAlarm(user) {
                   var newAlarm = new Notice({     // 새 알람 만들기
                     user_id: user._id,
                     target_id: eachSale._id,
+                    target: eachSale._id,
                     content: eachSale.name,
                     category: "세일"
                   });

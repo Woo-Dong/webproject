@@ -17,7 +17,7 @@
                 a.btn.login-button.d-lg-inline-block.mb-md-0.login-button-text(href='/signin') 로그인 / 회원가입
             else
                 p.login-text #{currentUser.name}님 반갑습니다.
-                button.btn.login-button.mypage-button.d-lg-inline-block.mb-md-0.login-button-text(type='button')
+                button.btn.login-button.mypage-button.d-lg-inline-block.mb-md-0.login-button-text(type='button', onclick=`location.href="/users/${currentUser._id}/alarm"`)
                     | Messages 
                     span#alarm 0
 

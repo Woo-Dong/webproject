@@ -12,7 +12,8 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js')
     link(href='https://fonts.googleapis.com/css?family=Playfair+Display:700,900', rel='stylesheet')
-    
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/bootstrap-notify.js') 
   body
     block topnav
       include ./includes/topnav
@@ -23,3 +24,18 @@ html
     //- block footer
     //-   include ./includes/footer
   
+    script.
+
+      // WebSocket을 만들고 접속
+      var socket = io();
+
+      socket.on('welcome', function() {
+        console.log('received welcome');
+        socket.emit('join');
+      });
+
+      socket.on('alarm', function(data) {
+        console.log("Data:", data);
+        document.getElementById('alarm').innerHTML = toSting(data.checkAlarm);
+        
+      });

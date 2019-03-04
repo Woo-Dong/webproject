@@ -1,6 +1,7 @@
 const express = require('express'); 
 const User = require('../models/user');
 const Cosmetic = require('../models/cosmetic');
+const Sale = require('../models/sale');
 const Complain = require('../models/complain');
 const catchErrors = require('../lib/async-error');
 
@@ -159,7 +160,64 @@ router.get('/:id', (req, res, next) => {
     if (err) {
       return next(err);
     }
-    res.render('cosmetics/show', {cosmetic: cosmetic});
+
+    if(cosmetic){
+
+      var name = cosmetic.name;
+    
+      var regexr = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+      var SC=regexr.test(name);
+      var name2 = name
+      if (SC){
+        while (SC){
+
+          if (/\(/ig.test(name2)){          
+            var idx1=name2.search(/\(/ig);
+            var idx2=name2.search(/\)/ig);
+            var head=name2.substring(0,idx1);
+            var tail=name2.substring(idx2+1,name2.length);
+            var name2=head+tail
+          }
+          else if (/\[/ig.test(name2)){
+            var idx1=name2.search(/\[/ig);
+            var idx2=name2.search(/\]/ig);
+            var head=name2.substring(0,idx1);
+            var tail=name2.substring(idx2+1,name2.length);
+            var name2=head+tail
+
+          }
+          else if (/\{/ig.test(name2)){
+            var idx1=name2.search(/\{/ig);
+            var idx2=name2.search(/\}/ig);
+            var head=name2.substring(0,idx1);
+            var tail=name2.substring(idx2+1,name2.length);
+            var name2=head+tail
+
+          }
+          else if (/\-/ig.test(name2)){
+            var idx1=name2.search(/\-/ig);
+            var head=name2.substring(0,idx1);
+            var name2=head
+
+          }
+          SC=regexr.test(name2);
+        }
+      }
+      if (cosmetic) {
+        query = {$or: [
+          {name: {'$regex': name, '$options': 'i'}},
+          {name: {'$regex': name, '$options': 'x'}},
+          {name: {'$regex': name2, '$options': 'i'}},
+          {name: {'$regex': name2, '$options': 'x'}}
+        ]};
+      }
+      Sale.find(query, function(err, sales){
+        if (err) {
+          return next(err);
+        }
+        res.render('cosmetics/show', {cosmetic: cosmetic, sales: sales});
+      });
+    }
   });
 });
 

@@ -4,13 +4,35 @@ extends saleLayout
 block maincontent
     link(rel='stylesheet', href='/stylesheets/salelist.css')
     link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')    
-            
-    //- .example.search-section-form  
-    //-     input.search-bar(type='text' placeholder='Search 0_0' name='search')
-    //-     button.search-icon-button(type='submit' onclick='location.href="/"')
-    //-         i.fa.fa-search.search-bar-search-icon
-    //-     input.form-control(type="date", name="start", placeholder="시작날짜")
+    
+    .category-title.row
 
+        .col-2
+        .col-8.row
+            .col-sm-2
+            .col-md-2
+            .col-md-4
+                h2.category-title-text 검색 결과
+                
+            .col-md-2 
+            .col-md-2 
+        .col-2
+
+    .formdiv
+        form.form-inline.search-input-group(action='/salelists', method='GET')
+            i.fa.fa-search
+            .form-group
+                input(type='radio' name='selectForm' value ='total' checked)
+                label 전체
+                input(type='radio' name='selectForm' value ='salePuct')
+                label 세일 품목
+                input(type='radio' name='selectForm' value ='event')
+                label 이벤트
+
+            input.form-control.mr-sm-2(type='text', name='term', placeholder='Search', aria-label='Search', value=term)
+            button.btn.btn-primary(type="submit") 검색
+
+        
     .container
         ul#myTab.nav.nav-tabs(role='tablist')
             li.nav-item
@@ -22,72 +44,81 @@ block maincontent
         #myTabContent.tab-content
             #prd.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='prd-tab') 
                 .ongoing_sale 
-                    if sales.total > 0
-                        .content-all-1.row
-                            .col-1
-                            .col-10.row
-                            each sale in sales.docs
-                                .col-md-3.event_sale_list
-                                    .event_sale_img
-                                        a(href=sale.link)
-                                            if(sale.img)
-                                                img(src=sale.img style='width:90%; height:90%; margin-left:0;')
-                                            else
-                                                img(src='images/default_icon.JPG' style='width:90%; height:90%; margin-left:0;')
+                    if (sales)
+                        if (strQuery)
+                            span - #{strQuery}
+                        if sales.total > 0
+                            .content-all-1.row
+                                .col-1
+                                .col-10.row
+                                each sale in sales.docs
+                                    .col-md-3.event_sale_list
+                                        .event_sale_img
+                                            a(href=sale.link)
+                                                if(sale.img)
+                                                    img(src=sale.img style='width:90%; height:90%; margin-left:0;')
+                                                else
+                                                    img(src='images/default_icon.JPG' style='width:90%; height:90%; margin-left:0;')
+                                                br
+                                                span.name #{sale.name}
+                                        .event_sale_info
                                             br
-                                            span.name #{sale.name}
-                                    .event_sale_info
-                                        br
-                                        span.brand 브랜드: #{sale.shop} 
-                                        br
-                                        a(href=sale.eventLink)
-                                            span.saleTitle 이벤트명: #{sale.saleTitle}
-                                        br
-                                        span.price
-                                            del=sale.price 
-                                            p #{sale.salePrice}
-                                        span.salePer #{sale.salePer} 할인
-                                        br
-                                        span.period #{sale.start} ~ #{sale.end}
-                            .col-1
-                        hr
-                        .pagination
-                            +paginate(sales, '/salelists', query)
+                                            span.brand 브랜드: #{sale.shop} 
+                                            br
+                                            a(href=sale.eventLink)
+                                                span.saleTitle 이벤트명: #{sale.saleTitle}
+                                            br
+                                            span.price
+                                                del=sale.price 
+                                                p #{sale.salePrice}
+                                            span.salePer #{sale.salePer} 할인
+                                            br
+                                            span.period #{sale.start} ~ #{sale.end}
+                                .col-1
+                            hr
+                            .pagination
+                                +paginate(sales, '/salelists', query)
+                        else
+                            span 일치하는 결과가 없습니다. 
                     else
-                        span 일치하는 결과가 없습니다. 
+                        h3 이벤트 검색중...
 
 
             #event.tab-pane.fade(role='tabpanel' aria-labelledby='event-tab')
                 .ongoing_sale 
-                    if events.total > 0
-                        .content-all-1.row
-                            .col-1
-                            .col-10.row
-                            each event in events.docs
-                                .col-md-3.event_list
-                                    .event_img
-                                        a(href=`/saleists/${event.id}`)
-                                            if(event.img)
-                                                img(src=event.img style='width:90%; height:90%; margin-left:0;')
-                                            else
-                                                img(src='images/default_icon.JPG' style='width:90%; height:90%; margin-left:0;')
+                    if (events)
+                        if (strQuery)
+                            span - #{strQuery}
+                        if events.total > 0
+                            .content-all-1.row
+                                .col-1
+                                .col-10.row
+                                each event in events.docs
+                                    .col-md-3.event_list
+                                        .event_img
+                                            a(href=`/salelists/${event.id}`)
+                                                if(event.img)
+                                                    img(src=event.img style='width:90%; height:90%; margin-left:0;')
+                                                else
+                                                    img(src='images/default_icon.JPG' style='width:90%; height:90%; margin-left:0;')
+                                                br
+                                                span.name #{event.name}
+                                        .event_info
                                             br
-                                            span.name #{event.name}
-                                    .event_info
-                                        br
-                                        span.brand 브랜드: #{event.brand} 
-                                        br
-                                        a(href=event.link)
-                                            span.eventTitle 이벤트명: #{event.title}
-                                        br
-                                        span.period #{event.start} ~ #{event.end}
-                            .col-1
-                        hr
-                        .pagination
-                            +paginate(events, '/salelists', query)
-                    else
-                        h3 행사중인 이벤트가 없습니다 
-              
+                                            span.brand 브랜드: #{event.brand} 
+                                            br
+                                            a(href=event.link)
+                                                span.eventTitle 이벤트명: #{event.title}
+                                            br
+                                            span.period #{event.start} ~ #{event.end}
+                                .col-1
+                            hr
+                            .pagination
+                                +paginate(events, '/salelists', query)
+                        else
+                            h3 행사중인 이벤트가 없습니다 
+                    else 
+                        h3 품목 검색중...
     
 
 

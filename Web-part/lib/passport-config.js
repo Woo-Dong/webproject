@@ -47,7 +47,6 @@ function checkAlarm(user) {
             
               var result = await func(user._id, eachSale._id);
                 if(result.length != 0){
-                  console.log("already exitst!");
                 }
                 else{
 
@@ -78,10 +77,10 @@ function checkAlarm(user) {
                   else{
                     user.notiTarget_id = eachSale._id;
                     
-                  }
-                  console.log("saved user: ", user.notiTarget_id);
+                  } 
                   user.alarmcheckNum += 1;
                   await user.save();
+                  
                 }
               })
 

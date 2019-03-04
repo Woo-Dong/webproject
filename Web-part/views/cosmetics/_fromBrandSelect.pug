@@ -1,0 +1,47 @@
+.brand-brand-buttons
+    
+    label.specific-brand-text(value="네이처리퍼블릭") Nature Republic
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value = "네이처리퍼블릭")
+    label.specific-brand-text(value="더페이스샵") The Face Shop
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="더페이스샵")
+
+    label.specific-brand-text(value="랄라블라") Lalavla
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="랄라블라")
+
+    label.specific-brand-text(value="롭스") LOHBs
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="롭스")
+
+    label.specific-brand-text(value="미샤") 미샤
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="미샤")
+    label.specific-brand-text(value="아리따움") 아리따움
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="아리따움")
+    label.specific-brand-text(value="아모레퍼시픽") 아모레퍼시픽    
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="아모레퍼시픽")
+    label.specific-brand-text(value="어퓨") 어퓨
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="어퓨")
+    label.specific-brand-text(value="에뛰드하우스") 에뛰드하우스
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="에뛰드하우스")
+    label.specific-brand-text(value="에스쁘아") Espoir
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="에스쁘아")
+    label.specific-brand-text(value="올리브영") 올리브영
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="올리브영")
+    label.specific-brand-text(value="이니스프리") Innisfree
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="이니스프리")
+    label.specific-brand-text(value="토니모리") 토니모리
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="토니모리")
+    label.specific-brand-text(value="클리오") ClubClio
+        input.btn-secondary.brand-button(type="checkbox" name="TermBrand" value="클리오")
+
+
+script.
+    $(function() {
+        $("input").click(function() {
+            if (this.checked){
+                $(`label[value="${this.value}"]`).css({"background-color": "#ffc107", "color" : "white"}); // 해당 요소의 CSS 스타일을 변경함.  
+            }
+            else{
+                $(`label[value="${this.value}"]`).css({"background-color": "white", "color": "black"});
+            }
+        });
+
+    });

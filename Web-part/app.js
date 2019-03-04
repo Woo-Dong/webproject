@@ -12,6 +12,7 @@ var mongoose   = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
+var brandRouter = require('./routes/brand');
 var cosmeticsRouter = require('./routes/cosmetics');
 var salelistsRouter = require('./routes/salelists');
 var passportSocketIo = require('passport.socketio');
@@ -111,17 +112,20 @@ module.exports = (app, io) => {
       // 로그인이 된 경우에만 join 요청을 받는다.
       socket.emit('welcome');
       socket.on('join', data => {
-        // 본인의 ID에 해당하는 채널에 가입시킨다.
+        // 본인의 ID에 해당하는 채널에 가입시킨다. -> ._id 이름으로 로그인
         socket.join(socket.request.user._id.toString());
       });
     }
   });
 
   // Route
-  app.use('/', indexRouter);
+  // app.use('/', indexRouter);
+  
+  app.use('/', indexRouter(io));
   app.use('/users', usersRouter(io));
   app.use('/admin', adminRouter(io));
   app.use('/cosmetics', cosmeticsRouter);
+  app.use('/brand', brandRouter);
   app.use('/salelists', salelistsRouter);
   require('./routes/auth')(app, passport);
   app.use('/api', require('./routes/api'));

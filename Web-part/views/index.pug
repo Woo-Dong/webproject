@@ -4,10 +4,11 @@ include includes/_paginate
 block content
     .container
         .row
-            .col-2
-                include ./includes/sidenav
+            .col-md-2
+                block sidebar
+                    include ./includes/sidenav
 
-            .col-10
+            .col-md-10
                 block maincontent
                     include ./includes/alert
             

@@ -53,4 +53,39 @@ block maincontent
                             .borde (할인가)
                             .borde  (판매처 홈페이지)
                             .borde #{cosmetic.detail_descrpt}
+
+        .ongoing_sale 
+            if sales.length>0
+                .content-all-1.row
+                    .col-1
+                    .col-10.row
+                    each sale in sales
+                        .col-md-3.event_sale_list
+                            .event_sale_img
+                                a(href=sale.link)
+                                    if(sale.img)
+                                        img(src=sale.img style='width:90%; height:90%; margin-left:0;')
+                                    else
+                                        img(src='images/default_icon.JPG' style='width:90%; height:90%; margin-left:0;')
+                                    br
+                                    span.name #{sale.name}
+                            .event_sale_info
+                                br
+                                span.brand 브랜드: #{sale.shop} 
+                                br
+                                a(href=sale.eventLink)
+                                    span.saleTitle 이벤트명: #{sale.saleTitle}
+                                br
+                                span.price
+                                    del=sale.price 
+                                    p #{sale.salePrice}
+                                span.salePer #{sale.salePer} 할인
+                                br
+                                span.period #{sale.start} ~ #{sale.end}
+                    .col-1
+                hr
+                .pagination
+                    +paginate(sales, '/salelists', query)
+            else
+                span 세일 데이터가 없습니다.
     script(src='/javascripts/cosmetic_like.js')

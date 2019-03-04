@@ -1,0 +1,137 @@
+extends cosLayout
+
+block maincontent
+    link(rel='stylesheet', href='/stylesheets/product_BrandList.css')
+    main(role='main')
+        .category-title.row
+
+            .col-2
+            .col-8.row
+                .col-sm-2
+                .col-md-2
+                .col-md-4
+                    h2.category-title-text 검색 결과
+                    
+                .col-md-2 
+                .col-md-2 
+            .col-2
+                
+
+        form.brand-brand-menubar(action='/brand', method='GET')
+            include _fromBrandSelect
+            input.default-brand-check(type='checkbox' name='selectForm' value ='brand' checked = 'checked')
+            .choice-submit-area.row
+                button.choice-submit-button(type='submit') 선택 적용
+        
+        .searchResult-brand    
+            hr
+            
+            h2 브랜드별 검색 결과
+            if (strQuery_brand)
+                span - #{strQuery_brand}
+            if cosmetics_brand
+
+                if cosmetics_brand.total > 0
+                    .content-all-1.row
+                        .col-1
+                        .col-10.row
+                        each cosmetic in cosmetics_brand.docs
+                            .col-md-3.content-product-info
+                                .content-img-frame
+                                    a(href=`/cosmetics/${cosmetic.id}`)
+                                        img.content-product-img(src=cosmetic.img)
+                                .content-product-detail
+                                    p.content-product-brand
+                                        td= cosmetic.brand
+                                    
+                                    p.content-product-name 
+                                        a(href=`/cosmetics/${cosmetic.id}`)=cosmetic.name
+                                    p.content-product-price
+                                        td= cosmetic.price + '원'
+                                    p.content-product-price
+                                        td= cosmetic.category
+                        .col-1
+            
+                .pagination
+                    +paginate(cosmetics_brand, '/brand', query)
+            else
+                span 일치하는 결과가 없습니다.
+
+
+        //- .searchResult-category    
+        //-     hr
+            
+        //-     h2 카테고리별 검색 결과
+        //-     if (strQuery_cate)
+        //-         span - #{strQuery_cate}
+        //-     if cosmetics_cate
+
+        //-         if cosmetics_cate.total > 0
+        //-             .content-all-1.row
+        //-                 .col-1
+        //-                 .col-10.row
+        //-                 each cosmetic in cosmetics_cate.docs
+        //-                     .col-md-3.content-product-info
+        //-                         .content-img-frame
+        //-                             a(href=`/cosmetics/${cosmetic.id}`)
+        //-                                 img.content-product-img(src=cosmetic.img)
+        //-                         .content-product-detail
+        //-                             p.content-product-brand
+        //-                                 td= cosmetic.brand
+                                    
+        //-                             p.content-product-name 
+        //-                                 a(href=`/cosmetics/${cosmetic.id}`)=cosmetic.name
+        //-                             p.content-product-price
+        //-                                 td= cosmetic.price + '원'
+        //-                             p.content-product-price
+        //-                                 td= cosmetic.category
+        //-                 .col-1
+            
+        //-         .pagination
+        //-             +paginate(cosmetics_cate, '/cosmetics', query)
+        //-     else
+        //-         span 일치하는 결과가 없습니다.
+
+        //- .searchResult-name    
+        //-     hr
+            
+        //-     h2 이름별 검색 결과
+        //-     if (strQuery_name)
+        //-                 span - #{strQuery_name}
+        //-     if cosmetics_name
+
+        //-         if cosmetics_name.total > 0
+        //-             .content-all-1.row
+        //-                 .col-1
+        //-                 .col-10.row
+        //-                 each cosmetic in cosmetics_name.docs
+        //-                     .col-md-3.content-product-info
+        //-                         .content-img-frame
+        //-                             a(href=`/cosmetics/${cosmetic.id}`)
+        //-                                 img.content-product-img(src=cosmetic.img)
+        //-                         .content-product-detail
+        //-                             p.content-product-brand
+        //-                                 td= cosmetic.brand
+                                    
+        //-                             p.content-product-name 
+        //-                                 a(href=`/cosmetics/${cosmetic.id}`)=cosmetic.name
+        //-                             p.content-product-price
+        //-                                 td= cosmetic.price + '원'
+        //-                             p.content-product-price
+        //-                                 td= cosmetic.category
+        //-                 .col-1
+            
+        //-         .pagination
+        //-             +paginate(cosmetics_name, '/cosmetics', query)
+        //-     else
+        //-         span 일치하는 결과가 없습니다.
+        
+
+
+    script.
+        function function_name(id, className) {
+            if($("#"+id).is(":checked")){
+                $("."+className).prop("checked", true);
+            }
+            else{$("."+className).prop("checked", false);}
+        }

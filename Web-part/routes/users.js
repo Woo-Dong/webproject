@@ -151,6 +151,29 @@ module.exports = io => {
     console.log("alarmSale: ", sales);
     res.render('users/alarm', {user: user, sales: sales});
   }));
+
+  router.get('/:id/alarm/:alarm', catchErrors(async (req, res, next) => {
+    Notice.findById({_id: req.params.alram}, catchErrors(async (err, notice) => {
+      if (err) {
+        return next(err);
+      }
+
+      notice.checked = true;
+      await notice.save();
+
+      res.json(notice);
+    }))
+  }));
+
+  router.delete('/:id/alarm/:alarm', (req, res, next) => {
+    Notice.findOneAndRemove({_id: req.params.alarm}, function(err) {
+      if (err) {
+        return next(err);
+      }
+      req.flash('success', '성공적으로 알람을 삭제하였습니다.');
+      res.redirect('back');
+    });
+  });
     
   return router;
 }

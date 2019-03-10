@@ -18,9 +18,10 @@ block maincontent
                     img.specific-product-img.img-responsive.center-block(src=cosmetic.img style='width:50%; height:50%; margin-left:0;')
                     
                     if (currentUser)
-                        if ( currentUser.productLike.split(",").indexOf(cosmetic.id) >= 0 )
-                            label.product-like-btn.active(data-id=cosmetic.id)
-                                .txt like!
+                        if ( currentUser.productLike )
+                            if ( currentUser.productLike.split(",").indexOf(cosmetic.id) >= 0 )
+                                label.product-like-btn.active(data-id=cosmetic.id)
+                                    .txt like!
                         else
                             label.product-like-btn(data-id=cosmetic.id)
                                 .txt like!

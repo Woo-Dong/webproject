@@ -148,8 +148,24 @@ module.exports = io => {
     
     var user = await User.findById({_id : req.params.id});
     const sales = await Notice.find({'user_id':req.params.id}).populate('target');
-    console.log("alarmSale: ", sales);
-    res.render('users/alarm', {user: user, sales: sales});
+    
+    var divDict = {};
+    sales.forEach(function(challenger){
+    
+      if(!(challenger.target.shop in divDict)){
+        var temp = new Array();
+        temp.push(challenger.target);
+        divDict[challenger.target.shop] = temp;
+
+      }
+      else{
+        divDict[challenger.target.shop].push(challenger.target);
+      }
+    })
+    console.log(divDict);
+
+    // console.log("alarmSale: ", sales);
+    res.render('users/alarm', {user: user, sales: divDict});
   }));
 
   router.get('/:id/alarm/:alarm', catchErrors(async (req, res, next) => {
@@ -170,8 +186,15 @@ module.exports = io => {
       if (err) {
         return next(err);
       }
-      req.flash('success', '성공적으로 알람을 삭제하였습니다.');
-      res.redirect('back');
+      User.findById({_id: req.params.id}, function(err, user){
+        if (err) {
+          return next(err);
+        }
+        user.alarmcheckNum -= 1;
+        user.save();
+        req.flash('success', '성공적으로 알람을 삭제하였습니다.');
+        res.redirect('back');
+      })
     });
   });
     

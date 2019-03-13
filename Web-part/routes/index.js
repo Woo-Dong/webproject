@@ -74,7 +74,7 @@ module.exports = io => {
         .emit('alarm', {checkAlarm: checkAlarm});
       console.log("socket emit: ", checkAlarm, {checkAlarm: checkAlarm});
     }
-  
+    
     res.render('index', {sales: sales, events: events, eventMain: eventMain});
   }));
   return router;

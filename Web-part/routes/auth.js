@@ -1,3 +1,4 @@
+
 module.exports = (app, passport) => {
     app.get('/signin', (req, res, next) => {
         res.render('signIn');
@@ -59,17 +60,5 @@ module.exports = (app, passport) => {
         res.redirect('/');
     });
 
-    // app.get('/auth/facebook',
-    //     passport.authenticate('facebook',{ scope: ['profile']})
-    // );
-    // app.get('/auth/facebook/callback',
-    //     passport.authenticate('facebook', {
-    //     failureRedirect : '/signin',
-    //     failureFlash : true // allow flash messages
-    //     }), (req, res, next) => {
-    //     req.flash('success', 'Welcome!');
-    //     res.redirect('/');
-    //     }
-    // );
 };
   

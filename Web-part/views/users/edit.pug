@@ -37,23 +37,13 @@ block content
             hr
             p
                 strong 관심브랜드
-            .custom-control.custom-checkbox.brandLike
-                input#jb-brand-checkbox1.custom-control-input(type='checkbox', name='brandLike', value='네이처리퍼블릭')
-                label.custom-control-label(for='jb-brand-checkbox1') 네이처리퍼블릭
+            include _brandlist
 
-            .custom-control.custom-checkbox.brandLike
-                input#jb-brand-checkbox2.custom-control-input(type='checkbox', name='brandLike', value='랄라블라')
-                label.custom-control-label(for='jb-brand-checkbox2') 랄라블라
             hr
             p  
                 strong 관심카테고리
-                .custom-control.custom-checkbox.categoryLike
-                    input#jb-category-checkbox1.custom-control-input(type='checkbox', name='categoryLike', value='립스틱')
-                    label.custom-control-label(for='jb-category-checkbox1') 립스틱
-
-                .custom-control.custom-checkbox.categoryLike
-                    input#jb-category-checkbox2.custom-control-input(type='checkbox', name='categoryLike', value='클렌징')
-                    label.custom-control-label(for='jb-category-checkbox2') 클렌징
+                
+            include _categorylist
 
             
             button.btn.btn-primary(type='submit') 회원정보 수정

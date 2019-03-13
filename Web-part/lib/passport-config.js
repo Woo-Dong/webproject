@@ -27,10 +27,10 @@ Array.prototype.remove = function() {
 
 function checkAlarm(user) {
 
-  // var brandLike = user.brandLike;
-  // var productLike = user.productLike;
 
   var categoryLike = user.categoryLike;
+  var brandLike = user.brandLike;
+  var productLike = user.productLike;
 
   if(categoryLike){
 
@@ -91,6 +91,125 @@ function checkAlarm(user) {
     })
 
   } // if(categoryLike){ end
+
+  if(brandLike){
+
+    var tmpCate = new Array();
+    tmpCate = brandLike.split(",");
+    
+    tmpCate.forEach(async function(eachBrand) {
+      await Sale.find({'brand': eachBrand}, function(err, docs) {
+        
+        //각 카테고리별 일치하는 세일 화장품 찾기
+        if (!err){ 
+          
+          docs.forEach(async function(eachSale) {
+            
+              var result = await func(user._id, eachSale._id);
+                if(result.length != 0){
+                }
+                else{
+
+                  var newAlarm = new Notice({     // 새 알람 만들기
+                    user_id: user._id,
+                    target_id: eachSale._id,
+                    target: eachSale._id,
+                    content: eachSale.name,
+                  });
+                  await newAlarm.save();
+
+                  // 사용자 스키마에 알람 대상 id 추가
+                  if(user.notiTarget_id){
+                    var bool = true;
+                    var temp = new Array(); 
+                    temp = user.notiTarget_id.split(",");
+                    var challenger = eachSale._id;
+                    temp.forEach(function(ggon) {
+                      if (challenger==ggon){
+                        bool = false;
+                      }
+                    }) 
+                    if(bool){
+                      temp.push(eachSale._id);
+                      user.notiTarget_id = temp;
+                    }
+                  }
+                  else{
+                    user.notiTarget_id = eachSale._id;
+                    
+                  } 
+                  user.alarmcheckNum += 1;
+                  await user.save();
+                  
+                }
+              })
+
+        } // if (!err){ end 
+        
+      });
+    })
+
+  } // if(brandLike){ end
+
+  if(productLike){
+
+    var tmpCate = new Array();
+    tmpCate = productLike.split(",");
+    
+    tmpCate.forEach(async function(eachProduct) {
+      await Sale.find({'name': eachProduct}, function(err, docs) {
+        
+        //각 카테고리별 일치하는 세일 화장품 찾기
+        if (!err){ 
+          
+          docs.forEach(async function(eachSale) {
+            
+              var result = await func(user._id, eachSale._id);
+                if(result.length != 0){
+                }
+                else{
+
+                  var newAlarm = new Notice({     // 새 알람 만들기
+                    user_id: user._id,
+                    target_id: eachSale._id,
+                    target: eachSale._id,
+                    content: eachSale.name,
+                  });
+                  await newAlarm.save();
+
+                  // 사용자 스키마에 알람 대상 id 추가
+                  if(user.notiTarget_id){
+                    var bool = true;
+                    var temp = new Array(); 
+                    temp = user.notiTarget_id.split(",");
+                    var challenger = eachSale._id;
+                    temp.forEach(function(ggon) {
+                      if (challenger==ggon){
+                        bool = false;
+                      }
+                    }) 
+                    if(bool){
+                      temp.push(eachSale._id);
+                      user.notiTarget_id = temp;
+                    }
+                  }
+                  else{
+                    user.notiTarget_id = eachSale._id;
+                    
+                  } 
+                  user.alarmcheckNum += 1;
+                  await user.save();
+                  
+                }
+              })
+
+        } // if (!err){ end 
+        
+      });
+    })
+
+  } // if(productLike){ end
+
   return user;
 }
 
@@ -133,7 +252,6 @@ module.exports = function(passport) {
     callbackURL: 'https://heeburndeuk.herokuapp.com/auth/naver/callback'  
 
   }, async (token, refreshToken, profile, done) => {
-    console.log('Naver', profile);
     try {
       var properties = profile._json;
       var email = properties.email;
@@ -141,11 +259,11 @@ module.exports = function(passport) {
       if(!name){
         name = properties.email;
       }
-      console.log(email, name);
       var user = await User.findOne({'naver.id': profile.id});
       if (!user) {
         if (email) {
           user = await User.findOne({email: email});
+          user = await checkAlarm(user);
         }
         if (!user) {
           user = new User({name: name});
@@ -166,7 +284,6 @@ module.exports = function(passport) {
     clientSecret: '831bcfbb9dcec678a26953db1c15df70',
     callbackURL: 'https://heeburndeuk.herokuapp.com/auth/kakao/callback' 
   }, async (token, refreshToken, profile, done) => {
-    console.log('Kakao', profile);
     try {
       // var properties = profile._json;
       var email = profile.id;
@@ -174,11 +291,11 @@ module.exports = function(passport) {
       if(!name){
         name = properties.email;
       }
-      console.log("email, name: ", email, name);
       var user = await User.findOne({'kakao.id': profile.id});
       if (!user) {
         if (email) {
           user = await User.findOne({email: email});
+          
         }
         if (!user) {
           user = new User({name: name});
@@ -210,6 +327,7 @@ module.exports = function(passport) {
       if (!user) {
         if (email) {
           user = await User.findOne({email: email});
+          user = await checkAlarm(user);
         }
         if (!user) {
           user = new User({name: name});

@@ -17,15 +17,14 @@ module.exports = io => {
   }
 
   function isAdmin(req, res, next) {
-    next();
-    // const user = req.user;
-    // console.log(user.name);
-    // if(user.isAdmin){
-    //   next();
-    // } else {
-    //   req.flash('danger', '관리자 권한이 없습니다!');
-    //   res.redirect('/');
-    // }
+    const user = req.user;
+    console.log(user.name);
+    if(user.isAdmin){
+      next();
+    } else {
+      req.flash('danger', '관리자 권한이 없습니다!');
+      res.redirect('/');
+    }
   }
 
   // 화장품 추가 함수

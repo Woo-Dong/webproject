@@ -1,0 +1,47 @@
+extends index
+
+include ../includes/_paginate
+block maincontent
+
+    h1 이벤트 관리
+    .container.formdiv.col-md-8
+        form.form-inline
+            input.form-control(type='text', name='term', placeholder='Search', aria-label='Search', value=term)
+            button.btn.btn-primary(type='submit') 검색
+
+    .container.formdiv.col-md-2
+        a.btn.btn-outline-primary.btn-md(href='/admin/eventlists/add') 추가
+        
+    hr
+    if eventList.total > 0
+        .table-area
+            table.table.table-hover.text-center
+                thead
+                tr.bg-secondary
+                    th N0.
+                    th 이미지
+                    th 품목
+                    th 브랜드
+                    th 행사기간
+                    th 관리
+                tbody       
+
+                each event, index in eventList.docs
+                    tr
+                        td(scope='row')
+                            h6= index+1
+
+                        td.event_sale_img(style='width:12%; height:10%;')
+                            a(href=event.link)
+                                if(event.img)
+                                    img(src=event.img style='width:100%; height:auto; ')
+                                else
+                                    img(src='images/default_icon.JPG' style='width:50%; height:10%;')
+                        td= event.title
+                        td= event.brand
+                        td #{moment(event.start).format('YY-MM-DD')} ~ #{moment(event.end).format('YY-MM-DD')}
+                        td 
+                            a.btn.btn-outline-primary.btn-sm(href=`/admin/eventLists/${event._id}/edit`)  수정
+                            a.btn.btn-outline-danger.btn-sm.delete-btn(href=`/admin/eventLists/${event._id}?_method=DELETE`) 삭제
+        .pagination
+            +paginate(eventList, '/admin/eventLists', query)

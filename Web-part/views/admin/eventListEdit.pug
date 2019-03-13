@@ -1,0 +1,59 @@
+extends index
+
+block maincontent
+  
+    .container.formdiv
+        h1 이벤트 수정
+        .input-box(style=' margin-left:auto; margin-right:auto;')
+            include ../includes/alert
+            form(action=`/admin/eventlists/${event._id}?_method=PUT`, method='POST')
+                .row
+                    .event_sale_img.col-md-4
+                        a(href=event.link)
+                            if(event.img)
+                                img(src=event.img style="width: 100%; height: auto;")
+                            else
+                                img(src='images/default_icon.JPG' style="max-width: auto; height: auto;")
+                    sale_info.col-md-4
+                        .form-group
+                            label(for='title')  * 타이틀
+                            input.form-control(type='text', id='title', name='title', value=event.title)
+                        
+                        .form-group
+                            label(for='brand')  * 브랜드
+                            input.form-control(type='text', id='brand', name='brand', value=event.brand)
+
+                        .form-group
+                            label(for='date', style='margin-bottom:4px;' )  * 세일 기간
+                            .input-group
+                                input#exampleInputAmount.form-control(type='text'  name='start' value=event.start)
+                                .input-group-addon ~
+                                input#exampleInputAmount.form-control(type='text' name='end' value=event.end)
+                .col-md-8
+                    .form-group
+                        label(for='img', style='margin-bottom:4px;')  * 이미지 링크
+                        input.form-control(type='text', id='img', name='img', value=event.img)
+
+                    .form-group
+                        label(for='link', style='margin-bottom:4px;')  * 판매 페이지 링크
+                        input.form-control(type='text', id='link', name='link', value=event.link)
+
+                    .form-group
+                        label(for='detail', style='margin-bottom:4px;')  * 세부 내용
+                        input.form-control(type='text', id='detail', name='detail', value=event.detail)
+
+                    .form-group
+                        label(for='eventLink', style='margin-bottom:4px;')  * 세부 이미지 링크
+                        input.form-control(type='text', id='detailImg', name='detailImg', value=event.detailImg)
+                    button.btn.btn-primary(type='submit') 세일 정보 수정
+                    a.btn.btn-default(href='javascript:window.history.back();') 돌아가기
+                    hr
+                    .event_sale_img
+                        label(for='detailImg', style='margin-bottom:4px;')  * 세부 이미지
+                        if(event.detailImg)
+                            img(src=event.detailImg style="width: 100%; height: auto;")
+                        else
+                            img(src='images/default_icon.JPG' style="max-width: auto; height: auto;")
+
+                
+            

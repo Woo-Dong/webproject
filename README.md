@@ -31,7 +31,7 @@ pip install selenium
 ## Usage example
 1. 난 이니스프리가 좋아 -> 이니스프리 세일날짜에 맞춰서 알람이 갑니다!!
 2. 난 스킨/로션이 필요해 -> 모든 브랜드의 스킨/로션 세일 정보를 알려드립니다!!
-3. 다 필요없고 화장품 뽐뿌와서 싸게 사고 싶다 -> 우리가 세일정보 다모았다니깐요!
+3. 다 필요없고 화장품 뽐뿌와서 싸게 사고 싶다 -> 우리가 세일정보 다모았다니깐요!! <br>
 세일정보에 눈이 "희번득" 돌아가죠? 그래서 저희가 
 
 
@@ -60,10 +60,10 @@ npm test
     * Work in progress
 
 ## Meta [https://github.com/Woo-Dong/webproject]
-Park Dong Woo https://github.com/Woo-Dong
-Joe Seon Hee  https://github.com/seonhee99
-Lee Jun Kyu   https://github.com/Woo-Dong
-Kim Dong Gu   https://github.com/ehdrn463    god.donggu@gmail.com
+Park Dong Woo https://github.com/Woo-Dong <br>
+Joe Seon Hee  https://github.com/seonhee99 <br>
+Lee Jun Kyu   https://github.com/Woo-Dong <br>
+Kim Dong Gu   https://github.com/ehdrn463    god.donggu@gmail.com <br>
 
 
 Distributed under the XYZ license. See ``LICENSE`` for more information.
